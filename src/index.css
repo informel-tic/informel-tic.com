@@ -23,7 +23,8 @@
   --bg: #ffffff;
   --surface: #f8fafc;
   --text: #0f172a;
-  --muted: #6b7280;
+  /* Increased contrast for small/muted text to meet WCAG */
+  --muted: #94a3b8;
   --border: rgba(15,23,42,0.06);
   --accent: #f97316; /* orange */
   --accent-2: #fb923c; /* lighter orange */
@@ -32,6 +33,18 @@
   /* Text color to use on orange accents (ensures WCAG contrast) */
   --accent-contrast: #0f172a;
 }
+
+/* Footer-specific contrast overrides (dark footer used inside light theme)
+   Ensure links & small text in the dark footer reach WCAG contrast thresholds. */
+.theme-light footer,
+.theme-light footer p,
+.theme-light footer a,
+.theme-light footer .text-slate-400,
+.theme-light footer .text-slate-700,
+.theme-light footer .container-lg > p {
+  color: #cbd5e1; /* slightly muted but readable on dark footer */
+}
+.theme-light footer a:hover { color: var(--accent-2); }
 
 * {
   box-sizing: border-box;

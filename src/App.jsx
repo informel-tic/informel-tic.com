@@ -20,7 +20,7 @@ export default function App() {
         <a href="#content" className="skip-link">Aller au contenu</a>
         <Navbar />
         {config.CONTACT_PHONE && (
-          <a href={`tel:${config.CONTACT_PHONE.replace(/\s+/g, '')}`} className="call-button" aria-label="Appeler INFORMEL-TIC">
+          <a href={`tel:${config.CONTACT_PHONE.replace(/\s+/g, '')}`} className="call-button" role="complementary" aria-label="Appeler INFORMEL-TIC">
             <Phone size={20} aria-hidden="true" />
             <span className="sr-only">Appeler INFORMEL-TIC</span>
           </a>

@@ -96,7 +96,36 @@ if (!empty($errors)) {
     exit;
 }
 
-// ─── 6. Construction et envoi de l'e-mail ─────────────────────────────────────
+// ─── 6. Rate limiting et sanitisation finale avant envoi ───────────────────────
+
+// Basic rate limiting per IP (simple file-based, suitable for low-traffic sites)
+$ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
+$rateDir = sys_get_temp_dir() . '/informel_mailer';
+if (!is_dir($rateDir)) { @mkdir($rateDir, 0700, true); }
+$rateFile = $rateDir . '/last_' . md5($ip);
+$now = time();
+$limitSeconds = 60; // minimum seconds between submissions from same IP
+if (file_exists($rateFile) && ($now - (int)@file_get_contents($rateFile) < $limitSeconds)) {
+    http_response_code(429);
+    echo json_encode(['success' => false, 'message' => 'Trop de requêtes. Veuillez réessayer dans quelques instants.']);
+    exit;
+}
+@file_put_contents($rateFile, (string)$now);
+
+// Final sanitisation to prevent header injection
+$email = filter_var($email, FILTER_SANITIZE_EMAIL);
+$email = preg_replace('/[\r\n]+/', '', $email);
+$name = preg_replace('/[\r\n]+/', ' ', $name);
+$subject = preg_replace('/[\r\n]+/', ' ', $subject);
+
+// Ensure email still valid after sanitisation
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    http_response_code(422);
+    echo json_encode(['success' => false, 'message' => 'L\'adresse e-mail est invalide.']);
+    exit;
+}
+
+// ─── 7. Construction et envoi de l'e-mail ─────────────────────────────────────
 $to      = 'contact@informel-tic.com';
 $subject_mail = '[Site Web] ' . $subject;
 
@@ -115,14 +144,17 @@ $body .= "───────────────────────�
 $body .= "Envoyé le : " . date('d/m/Y à H:i:s') . "\n";
 
 // Headers sécurisés — pas d'injection via les champs
+$safe_reply = preg_replace('/[^\w\.@\-\+]/', '', $email);
 $headers  = "From: noreply@informel-tic.com\r\n";
-$headers .= "Reply-To: " . $email . "\r\n";
+$headers .= "Reply-To: " . $safe_reply . "\r\n";
 $headers .= "X-Mailer: INFORMEL-TIC-Mailer/1.0\r\n";
 $headers .= "MIME-Version: 1.0\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 $headers .= "Content-Transfer-Encoding: 8bit\r\n";
 
-$sent = mail($to, $subject_mail, $body, $headers);
+// Use a safe envelope sender if possible
+$additional_params = '-f noreply@informel-tic.com';
+$sent = @mail($to, $subject_mail, $body, $headers, $additional_params);
 
 if ($sent) {
     http_response_code(200);

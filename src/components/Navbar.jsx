@@ -3,15 +3,15 @@ import { NavLink, Link } from 'react-router-dom';
 import { Menu, X, Zap } from 'lucide-react';
 
 const links = [
-  { to: '/',              label: 'Accueil',   end: true },
-  { to: '/a-propos',      label: 'À propos' },
-  { to: '/offres',        label: 'Offres & Tarifs' },
-  { to: '/contact',       label: 'Contact' },
+  { to: '/', label: 'Accueil', end: true },
+  { to: '/a-propos', label: 'À propos' },
+  { to: '/offres', label: 'Offres & Tarifs' },
+  { to: '/contact', label: 'Contact' },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen]         = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -39,9 +39,7 @@ export default function Navbar() {
           <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-emerald-400 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
             <Zap size={16} style={{ color: 'var(--accent-contrast, #fff)' }} strokeWidth={2.5} aria-hidden="true" />
           </div>
-          <span className="font-display font-bold text-lg tracking-tight">
-            INFORMEL-<span className="gradient-text">TIC</span>
-          </span>
+          <Image src="/logo.svg" alt="INFORMEL-TIC" width={120} height={24} className="hidden sm:block" />
         </Link>
 
         {/* Desktop links */}
@@ -89,10 +87,9 @@ export default function Navbar() {
                 end={end}
                 onClick={() => setOpen(false)}
                 className={({ isActive }) =>
-                  `block py-3 px-4 rounded-lg font-medium transition-all ${
-                    isActive
-                      ? 'text-white bg-indigo-500/20 text-indigo-300'
-                      : 'text-slate-300 hover:text-white hover:bg-white/5'
+                  `block py-3 px-4 rounded-lg font-medium transition-all ${isActive
+                    ? 'text-white bg-indigo-500/20 text-indigo-300'
+                    : 'text-slate-300 hover:text-white hover:bg-white/5'
                   }`
                 }
               >
