@@ -1,0 +1,122 @@
+@use 'mixins' as m;
+
+// ─── Containers ──────────────────────────────────────
+.container-xl {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+.container-lg {
+  width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+.container-md {
+  width: 100%;
+  max-width: 56rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+.container-sm {
+  width: 100%;
+  max-width: 42rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+// ─── App root ────────────────────────────────────────
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+// ─── Section spacing ─────────────────────────────────
+.section-padding {
+  padding: 7rem 1.5rem;
+
+  @include m.max-md {
+    padding: 4.5rem 1rem;
+  }
+}
+
+.section-alt {
+  background-color: #f9fafb;
+}
+
+// ─── Section header (centered) ───────────────────────
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  color: var(--muted);
+  max-width: 42rem;
+  margin-inline: auto;
+  font-size: 1.125rem;
+}
+
+// ─── Responsive grids ────────────────────────────────
+.grid-3col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+
+  @include m.md {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include m.lg {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// ─── Text & font utilities ───────────────────────────
+.text-center  { text-align: center; }
+.items-start  { align-items: flex-start; }
+.font-display { font-family: var(--font-display); }
+.font-black   { font-weight: 900; }
+.font-bold    { font-weight: 700; }
+
+// ─── 404 page ────────────────────────────────────────
+.page-404 {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.not-found-code {
+  font-size: 6rem;
+  font-family: var(--font-display);
+  font-weight: 900;
+  margin-bottom: 1rem;
+}
+
+.not-found-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.not-found-meta {
+  color: #94a3b8;
+  margin-bottom: 2rem;
+}

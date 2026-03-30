@@ -44,34 +44,32 @@ const TESTIMONIALS = [
 
 export default function Testimonials() {
   return (
-    <section className="section-padding bg-gray-50">
+    <section className="section-padding section-alt">
       <div className="container-lg">
         <RevealSection>
-          <div className="text-center mb-14">
-            <h2 className="font-display font-bold text-[clamp(1.75rem,4vw,2.5rem)] text-[color:var(--text)] mb-4">
+          <div className="section-header" style={{ marginBottom: '3.5rem' }}>
+            <h2 className="section-title">
               Ils nous font confiance
             </h2>
-            <p className="text-[color:var(--muted)] text-lg">
+            <p className="section-subtitle">
               Des résultats concrets pour des professionnels locaux.
             </p>
           </div>
         </RevealSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid-3col">
           {TESTIMONIALS.map(({ name, role, text, stars }, i) => (
             <RevealSection key={name} delay={i * 100}>
-              <div className="glass glass-hover rounded-2xl p-8 h-full flex flex-col">
-                <div className="flex gap-1 mb-4">
+              <div className="glass glass-hover testimonial-card">
+                <div className="stars">
                   {[...Array(stars)].map((_, j) => (
-                    <Star key={j} size={16} className="text-[color:var(--accent-2)] fill-[color:var(--accent-2)]" aria-hidden="true" />
+                    <Star key={j} size={16} className="star" aria-hidden="true" />
                   ))}
                 </div>
-                <p className="text-[color:var(--muted)] text-[0.9375rem] leading-relaxed italic flex-1">
-                  "{text}"
-                </p>
-                <div className="mt-6 pt-4 border-t border-gray-200">
-                  <p className="text-[color:var(--text)] font-semibold text-[0.9375rem]">{name}</p>
-                  <p className="text-[color:var(--muted)] text-xs mt-1">{role}</p>
+                <p className="testimonial-quote">"{text}"</p>
+                <div className="testimonial-footer">
+                  <p className="testimonial-name">{name}</p>
+                  <p className="testimonial-role">{role}</p>
                 </div>
               </div>
             </RevealSection>

@@ -30,21 +30,15 @@ export default function Navbar() {
   useEffect(() => { setOpen(false); }, []);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'nav-scrolled' : 'bg-transparent'}`}
-    >
+    <header className={`navbar${scrolled ? ' nav-scrolled' : ''}`}>
       <nav className="container-lg" style={{ height: '3.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         {/* Logo */}
-        <Link to="/" className="flex items-center group" aria-label="INFORMEL-TIC — Accueil">
-          <img
-            src="/logo.svg"
-            alt="logo INFORMEL-TIC"
-            className="nav-logo"
-          />
+        <Link to="/" className="nav-logo-wrap" aria-label="INFORMEL-TIC — Accueil">
+          <img src="/logo.svg" alt="logo INFORMEL-TIC" className="nav-logo" />
         </Link>
 
         {/* Desktop links */}
-        <ul className="hidden md:flex items-center gap-8" role="navigation">
+        <ul className="nav-desktop-links" role="navigation">
           {links.map(({ to, label, end }) => (
             <li key={to}>
               <NavLink
@@ -59,15 +53,15 @@ export default function Navbar() {
         </ul>
 
         {/* Desktop CTA */}
-        <div className="hidden md:block">
-          <Link to="/contact" className="btn-primary text-sm py-2.5 px-5">
+        <div className="nav-desktop-cta">
+          <Link to="/contact" className="btn-primary" style={{ fontSize: '0.875rem', padding: '0.625rem 1.25rem' }}>
             Demander un devis
           </Link>
         </div>
 
         {/* Mobile burger */}
         <button
-          className="md:hidden p-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition-all"
+          className="nav-burger"
           onClick={() => setOpen(!open)}
           aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
           aria-expanded={open}
@@ -77,32 +71,26 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile menu */}
-      <div
-        className={`md:hidden transition-all duration-300 overflow-hidden ${open ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} mobile-menu-bg`}
-      >
-        <ul className="flex flex-col px-6 py-4 gap-1">
+      <div className={`nav-mobile${open ? ' nav-mobile--open' : ''}`}>
+        <ul className="nav-mobile__list">
           {links.map(({ to, label, end }) => (
             <li key={to}>
               <NavLink
                 to={to}
                 end={end}
                 onClick={() => setOpen(false)}
-                className={({ isActive }) =>
-                  `block py-3 px-4 rounded-lg font-medium transition-all ${isActive
-                    ? 'bg-orange-500/10 text-[color:var(--accent)]'
-                    : 'text-gray-600 hover:text-[color:var(--accent)] hover:bg-orange-50'
-                  }`
-                }
+                className={({ isActive }) => `nav-mobile__link${isActive ? ' active' : ''}`}
               >
                 {label}
               </NavLink>
             </li>
           ))}
-          <li className="mt-3">
+          <li className="nav-mobile__cta-item">
             <Link
               to="/contact"
               onClick={() => setOpen(false)}
-              className="btn-primary w-full justify-center text-sm"
+              className="btn-primary"
+              style={{ width: '100%', justifyContent: 'center', fontSize: '0.875rem' }}
             >
               Demander un devis
             </Link>

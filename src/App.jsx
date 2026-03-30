@@ -16,7 +16,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <div className="noise min-h-screen flex flex-col theme-light">
+      <div className="app-root noise theme-light">
         <a href="#content" className="skip-link">Aller au contenu</a>
         <Navbar />
         {config.CONTACT_PHONE && (
@@ -25,7 +25,7 @@ export default function App() {
             <span className="sr-only">Appeler INFORMEL-TIC</span>
           </a>
         )}
-        <main id="content" className="flex-1">
+        <main id="content" style={{ flex: 1 }}>
           <Routes>
             <Route path="/"            element={<HomePage />} />
             <Route path="/a-propos"    element={<AboutPage />} />
@@ -44,10 +44,10 @@ export default function App() {
 
 function NotFound() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center text-center px-4">
-      <p className="text-8xl font-display font-black gradient-text mb-4">404</p>
-      <h1 className="text-2xl font-bold mb-4">Page introuvable</h1>
-      <p className="text-slate-400 mb-8">Cette page n'existe pas ou a été déplacée.</p>
+    <div className="page-404">
+      <p className="not-found-code gradient-text">404</p>
+      <h1 className="not-found-title">Page introuvable</h1>
+      <p className="not-found-meta">Cette page n'existe pas ou a été déplacée.</p>
       <Link to="/" className="btn-primary">← Retour à l'accueil</Link>
     </div>
   );

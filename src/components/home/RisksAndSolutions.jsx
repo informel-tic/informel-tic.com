@@ -59,47 +59,47 @@ const RISKS = [
 
 export default function RisksAndSolutions() {
   return (
-    <section className="section-padding bg-gray-50">
+    <section className="section-padding section-alt">
       <div className="container-lg">
         <RevealSection>
-          <div className="text-center mb-16">
-            <h2 className="font-display font-bold text-[clamp(1.75rem,4vw,3rem)] text-[color:var(--text)] mb-4">
-              Les <span className="text-[color:var(--error)]">Risques</span> des Outils Mal Utilisés
+          <div className="section-header">
+            <h2 className="section-title">
+              Les <span style={{ color: 'var(--error)' }}>Risques</span> des Outils Mal Utilisés
             </h2>
-            <p className="text-[color:var(--muted)] max-w-2xl mx-auto text-lg">
+            <p className="section-subtitle">
               De nombreux commerçants utilisent des outils inadaptés. Voici les pièges les plus fréquents, et comment nous vous en protégeons.
             </p>
           </div>
         </RevealSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid-3col">
           {RISKS.map(({ icon: Icon, title, subtitle, problem, solution, iconColor, bg }, i) => (
             <RevealSection key={title} delay={i * 80}>
-              <div className="glass glass-hover rounded-2xl p-6 h-full flex flex-col relative overflow-hidden group">
-                
+              <div className="glass glass-hover risk-card">
+
                 {/* Header: Icon & Title */}
-                <div className="flex items-center gap-4 mb-4 relative z-10">
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0" style={{ backgroundColor: bg }}>
+                <div className="risk-card__header">
+                  <div className="risk-icon-wrap" style={{ backgroundColor: bg }}>
                     <Icon size={24} style={{ color: iconColor }} aria-hidden="true" />
                   </div>
                   <div>
-                    <h3 className="text-[color:var(--text)] font-bold text-lg leading-tight">{title}</h3>
-                    <p className="text-[color:var(--error)] text-xs font-semibold mt-1 flex items-center gap-1">
+                    <h3 className="risk-title">{title}</h3>
+                    <p className="risk-subtitle">
                       <ShieldAlert size={12} aria-hidden="true" /> {subtitle}
                     </p>
                   </div>
                 </div>
 
                 {/* Problem vs Solution Content */}
-                <div className="flex-1 flex flex-col gap-4 relative z-10">
-                  <div className="bg-red-50 p-4 rounded-xl border border-red-100">
-                    <p className="text-gray-600 text-sm italic">"{problem}"</p>
+                <div className="risk-card__body">
+                  <div className="risk-problem">
+                    <p>"{problem}"</p>
                   </div>
-                  <div className="mt-auto">
-                    <div className="flex items-start gap-2">
-                      <ArrowRight size={16} className="text-[color:var(--accent)] shrink-0 mt-0.5" aria-hidden="true" />
-                        <p className="text-gray-800 text-sm font-medium leading-relaxed">
-                        <span className="text-[color:var(--accent)] font-bold block mb-0.5">La Solution :</span>
+                  <div className="risk-solution-wrap">
+                    <div className="risk-solution">
+                      <ArrowRight size={16} className="icon-accent" style={{ marginTop: '0.125rem' }} aria-hidden="true" />
+                      <p className="solution-text">
+                        <span className="solution-label">La Solution :</span>
                         {solution}
                       </p>
                     </div>

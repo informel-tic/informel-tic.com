@@ -1,0 +1,71 @@
+// ─── CSS Custom Properties ───────────────────────────
+:root {
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Outfit', sans-serif;
+
+  /* Charte : Gris clair – Orange – Blanc */
+  --bg: #ffffff;
+  --surface: #f3f4f6;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --border: rgba(0, 0, 0, 0.09);
+  --accent: #f97316;
+  --accent-2: #fb923c;
+  --accent-contrast: #1f2937;
+  --glass-bg: rgba(255, 255, 255, 0.92);
+  --glass-border: rgba(0, 0, 0, 0.09);
+  --error: #dc2626;
+  --success: #16a34a;
+}
+
+.theme-light {
+  --bg: #ffffff;
+  --surface: #f3f4f6;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --border: rgba(0, 0, 0, 0.09);
+  --accent: #f97316;
+  --accent-2: #fb923c;
+  --accent-contrast: #1f2937;
+  --glass-bg: rgba(255, 255, 255, 0.92);
+  --glass-border: rgba(0, 0, 0, 0.09);
+}
+
+// ─── Reset ───────────────────────────────────────────
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// ─── Base elements ───────────────────────────────────
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+// ─── Scrollbar ───────────────────────────────────────
+::-webkit-scrollbar        { width: 6px; }
+::-webkit-scrollbar-track  { background: #f3f4f6; }
+::-webkit-scrollbar-thumb  { background: #f97316; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #fb923c; }
+
+// ─── Text selection ──────────────────────────────────
+::selection { background-color: #f97316; color: #fff; }
+
+// ─── Footer link hover ───────────────────────────────
+footer a:hover { color: var(--accent-2); }
+
+// ─── Focus visible ───────────────────────────────────
+:focus-visible { outline: none; }

@@ -30,44 +30,44 @@ function TypingWord() {
 
 export default function Hero() {
   return (
-    <section className="hero-bg grid-bg min-h-screen flex items-center justify-center relative">
-      <div className="container-md flex flex-col items-center text-center pt-24 pb-20">
-        
-        <div className="badge bg-orange-500/10 border border-orange-500/20 text-[color:var(--accent)] mb-8">
-          <Zap size={14} className="text-[color:var(--accent)]" aria-hidden="true" />
+    <section className="hero-section hero-bg grid-bg">
+      <div className="container-md hero-body">
+
+        <div className="badge hero-badge">
+          <Zap size={14} aria-hidden="true" />
           Le Partenaire Digital des Commerces de Proximité
         </div>
 
-        <h1 className="font-display font-black text-[clamp(2.5rem,6vw,5rem)] text-[color:var(--text)] leading-tight mb-6 max-w-4xl">
+        <h1 className="hero-title">
           Votre site et votre visibilité,<br />
           <TypingWord />
         </h1>
 
-        <p className="text-[color:var(--muted)] text-[clamp(1rem,2vw,1.25rem)] max-w-2xl leading-relaxed mb-10">
-          Nous construisons des écosystèmes numériques locaux pour que vous soyez les premiers trouvés dans votre zone de chalandise, <strong className="text-[color:var(--text)]">sans stress technique</strong>.
+        <p className="hero-desc">
+          Nous construisons des écosystèmes numériques locaux pour que vous soyez les premiers trouvés dans votre zone de chalandise, <strong style={{ color: 'var(--text)' }}>sans stress technique</strong>.
         </p>
 
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          <Link to="/contact" className="btn-primary text-base py-3 px-8">
+        <div className="hero-actions">
+          <Link to="/contact" className="btn-primary" style={{ fontSize: '1rem', padding: '0.75rem 2rem' }}>
             Demander un devis <ArrowRight size={18} aria-hidden="true" />
           </Link>
-          <Link to="/offres" className="btn-secondary text-base py-3 px-8">
+          <Link to="/offres" className="btn-secondary" style={{ fontSize: '1rem', padding: '0.75rem 2rem' }}>
             Voir nos offres
           </Link>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-5 text-sm text-[color:var(--muted)]">
+        <div className="hero-features">
           {['Zéro charge mentale', 'Visibilité maximale', 'Code source livré', 'Sans engagement'].map((item) => (
-            <span key={item} className="flex items-center gap-2">
-              <CheckCircle size={16} className="text-[color:var(--accent-2)] shrink-0" aria-hidden="true" /> {item}
+            <span key={item} className="feature-item">
+              <CheckCircle size={16} style={{ color: 'var(--accent-2)', flexShrink: 0 }} aria-hidden="true" /> {item}
             </span>
           ))}
         </div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500 animate-bounce">
-        <span className="text-xs font-medium uppercase tracking-widest">Découvrir</span>
-        <div className="w-px h-8 bg-gradient-to-b from-slate-500 to-transparent" />
+      <div className="scroll-hint">
+        <span>Découvrir</span>
+        <div className="scroll-line" />
       </div>
     </section>
   );
