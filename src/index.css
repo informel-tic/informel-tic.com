@@ -340,6 +340,28 @@ body {
 .nav-link:hover::after,
 .nav-link.active::after { width: 100%; }
 
+/* Logo in navbar */
+.nav-logo {
+  height: 2rem;
+  width: auto;
+  transition: transform 0.3s ease;
+  display: block;
+}
+.group:hover .nav-logo {
+  transform: scale(1.05);
+}
+
+/* Responsive logo sizes (correspondent à h-8 / h-10 / h-12 / h-14) */
+@media (min-width: 640px) {
+  .nav-logo { height: 2.5rem; } /* sm */
+}
+@media (min-width: 768px) {
+  .nav-logo { height: 3rem; } /* md */
+}
+@media (min-width: 1024px) {
+  .nav-logo { height: 3.5rem; } /* lg */
+}
+
 /* scrolled header handling */
 .nav-scrolled { background: rgba(255,255,255,0.93); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
 .theme-light .nav-scrolled { background: rgba(255,255,255,0.93); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.06); }

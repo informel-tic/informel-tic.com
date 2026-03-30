@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { Menu, X, Zap } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const links = [
   { to: '/', label: 'Accueil', end: true },
@@ -33,13 +33,14 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'nav-scrolled' : 'bg-transparent'}`}
     >
-      <nav className="container-lg" style={{ height: '4rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      <nav className="container-lg" style={{ height: '3.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 group" aria-label="INFORMEL-TIC — Accueil">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-amber-400 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-            <Zap size={16} style={{ color: 'var(--accent-contrast, #fff)' }} strokeWidth={2.5} aria-hidden="true" />
-          </div>
-          <img src="/logo.svg" alt="INFORMEL-TIC" width={120} height={24} className="hidden sm:block" />
+        <Link to="/" className="flex items-center group" aria-label="INFORMEL-TIC — Accueil">
+          <img
+            src="/logo.svg"
+            alt="logo INFORMEL-TIC"
+            className="nav-logo"
+          />
         </Link>
 
         {/* Desktop links */}
