@@ -36,10 +36,10 @@ export default function Navbar() {
       <nav className="container-lg" style={{ height: '4rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 group" aria-label="INFORMEL-TIC — Accueil">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-emerald-400 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-amber-400 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
             <Zap size={16} style={{ color: 'var(--accent-contrast, #fff)' }} strokeWidth={2.5} aria-hidden="true" />
           </div>
-          <Image src="/logo.svg" alt="INFORMEL-TIC" width={120} height={24} className="hidden sm:block" />
+          <img src="/logo.svg" alt="INFORMEL-TIC" width={120} height={24} className="hidden sm:block" />
         </Link>
 
         {/* Desktop links */}
@@ -88,8 +88,8 @@ export default function Navbar() {
                 onClick={() => setOpen(false)}
                 className={({ isActive }) =>
                   `block py-3 px-4 rounded-lg font-medium transition-all ${isActive
-                    ? 'text-white bg-indigo-500/20 text-indigo-300'
-                    : 'text-slate-300 hover:text-white hover:bg-white/5'
+                    ? 'bg-orange-500/10 text-[color:var(--accent)]'
+                    : 'text-gray-600 hover:text-[color:var(--accent)] hover:bg-orange-50'
                   }`
                 }
               >

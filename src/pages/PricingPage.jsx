@@ -7,21 +7,21 @@ const PLANS = [
     id: 'essentielle', name: 'Vitrine Essentielle', tagline: 'Exister sur Google',
     price: 490, monthly: 29, featured: false, badge: null,
     target: 'Premier pas en ligne, artisans et petits commerces.',
-    features: ["Site jusqu'à 5 pages",'Nom de domaine .fr','Hébergement professionnel','Adresse e-mail professionnelle','Formulaire de contact sécurisé','Référencement Google de base','Certificat SSL','Code source livré'],
+    features: ["Site jusqu'à 5 pages", 'Nom de domaine .fr', 'Hébergement professionnel', 'Adresse e-mail professionnelle', 'Formulaire de contact sécurisé', 'Référencement Google de base', 'Certificat SSL', 'Code source livré'],
     cta: 'Commencer', ctaVariant: 'secondary',
   },
   {
     id: 'connecte', name: 'Commerce Connecté', tagline: 'Commandes en ligne & réputation',
     price: 890, monthly: 49, featured: false, badge: null,
     target: 'Restaurants, commerces, artisans avec prise de commande.',
-    features: ["Tout l'offre Vitrine Essentielle","Jusqu'à 8 pages",'Module Click & Collect (WhatsApp)','Optimisation Fiche Google complète','Réponses aux 15 derniers avis Google','Harmonisation annuaires (PagesJaunes, Yelp, Tripadvisor)'],
+    features: ["Tout l'offre Vitrine Essentielle", "Jusqu'à 8 pages", 'Module Click & Collect (WhatsApp)', 'Optimisation Fiche Google complète', 'Réponses aux 15 derniers avis Google', 'Harmonisation annuaires (PagesJaunes, Yelp, Tripadvisor)'],
     cta: 'Choisir cette offre', ctaVariant: 'secondary',
   },
   {
     id: 'totale', name: 'Identité Totale', tagline: 'Domination locale & SEO avancé',
     price: 1490, monthly: 89, featured: true, badge: '⭐ Recommandé',
     target: 'Ambition maximale, référencement local dominant, reporting mensuel.',
-    features: ["Tout l'offre Commerce Connecté","Jusqu'à 12 pages + blog",'Référencement SEO local avancé','Shooting photo produits (20 visuels HD)','Refonte page Facebook (10 posts inclus)','Inscription Waze & Mappy','Rapport mensuel visibilité'],
+    features: ["Tout l'offre Commerce Connecté", "Jusqu'à 12 pages + blog", 'Référencement SEO local avancé', 'Shooting photo produits (20 visuels HD)', 'Refonte page Facebook (10 posts inclus)', 'Inscription Waze & Mappy', 'Rapport mensuel visibilité'],
     cta: 'Choisir cette offre', ctaVariant: 'primary',
   },
 ];
@@ -29,15 +29,18 @@ const PLANS = [
 function PricingCard({ plan }) {
   const { name, tagline, price, monthly, featured, badge, target, features, cta, ctaVariant } = plan;
   const cardStyle = featured
-    ? { background: 'linear-gradient(135deg, rgba(99,102,241,0.12), rgba(52,211,153,0.08))', border: '1px solid rgba(99,102,241,0.5)', boxShadow: '0 0 40px rgba(99,102,241,0.2)', position: 'relative', overflow: 'hidden', borderRadius: '1rem', padding: '2rem', display: 'flex', flexDirection: 'column', height: '100%', transition: 'all 0.3s' }
+    ? { background: 'linear-gradient(135deg, rgba(249,115,22,0.08), rgba(251,146,60,0.04))', border: '1px solid rgba(249,115,22,0.40)', boxShadow: '0 0 40px rgba(249,115,22,0.15)', position: 'relative', overflow: 'hidden', borderRadius: '1rem', padding: '2rem', display: 'flex', flexDirection: 'column', height: '100%', transition: 'all 0.3s' }
     : { background: 'var(--glass-bg)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid var(--glass-border)', borderRadius: '1rem', padding: '2rem', display: 'flex', flexDirection: 'column', height: '100%', transition: 'all 0.3s' };
 
   return (
     <div className={featured ? '' : 'glass-hover'} style={cardStyle}>
-      {featured && <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '2px', background: 'linear-gradient(90deg, var(--accent), var(--accent-2))' }} />}
-      {badge && (
-        <div style={{ position: 'absolute', top: '-1rem', left: '50%', transform: 'translateX(-50%)', whiteSpace: 'nowrap', zIndex: 10 }}>
-          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.375rem', padding: '0.375rem 1rem', borderRadius: '9999px', background: 'linear-gradient(135deg, var(--accent), var(--accent-2))', color: 'var(--accent-contrast)', fontSize: '0.75rem', fontWeight: 600, boxShadow: '0 4px 14px rgba(0,0,0,0.08)' }}>{badge}</span>
+      {featured && <div style={{ position: 'absolute', display: 'inline-flex', top: 0, left: 0, right: 50, width: '2px', height: '2px', background: 'linear-gradient(90deg, var(--accent), var(--accent-2))' }} />}
+      {badge  && (
+        <div style={{ position: 'relative', display: 'flex', justifyContent: 'center', width: '100%', top: '-2rem', whiteSpace: 'nowrap', zIndex: 10 }}>
+          <span style={{
+            display: 'inline-flex', width: '80%', alignItems: 'center', justifyContent: 'center', gap: '0.375rem', padding: '0.375rem 1rem', borderEndEndRadius: '9999px', borderEndStartRadius: '9999px',
+            background: 'linear-gradient(135deg, var(--accent), var(--accent-2))', color: 'var(--accent-contrast)', fontSize: '0.75rem', fontWeight: 600, boxShadow: '0 4px 14px rgba(0,0,0,0.08)'
+          }}>{badge}</span>
         </div>
       )}
 

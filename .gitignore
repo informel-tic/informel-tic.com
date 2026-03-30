@@ -26,3 +26,6 @@ axe-results.json
 docs/rapport-de-positionnement-et-contexte-projet-v2.md
 docs/intégration JSON-LD.md
 lighthouse-report.json
+test_out.json
+test_out.txt
+.agents/rules/instructions.md

@@ -4,47 +4,37 @@
   --font-sans: 'Inter', sans-serif;
   --font-display: 'Outfit', sans-serif;
 
-  /* Default (dark-friendly) values left as fallback */
-  --bg: #0a0a0f;
-  --surface: rgba(255,255,255,0.04);
-  --text: #e2e8f0;
-  --muted: #94a3b8;
-  --border: rgba(255,255,255,0.05);
-  --accent: #6366f1;
-  --accent-2: #34d399;
-  --glass-bg: rgba(255,255,255,0.04);
-  --glass-border: rgba(255,255,255,0.1);
-  --error: #b91c1c;
-  --success: #065f46;
+  /* Charte : Gris clair – Orange – Blanc */
+  --bg: #ffffff;
+  --surface: #f3f4f6;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --border: rgba(0, 0, 0, 0.09);
+  --accent: #f97316;
+  --accent-2: #fb923c;
+  --accent-contrast: #1f2937;
+  --glass-bg: rgba(255, 255, 255, 0.92);
+  --glass-border: rgba(0, 0, 0, 0.09);
+  --error: #dc2626;
+  --success: #16a34a;
 }
 
-/* Light theme variables (apply `theme-light` to the root element) */
+/* Light theme alias — applied via class="theme-light" on root div */
 .theme-light {
   --bg: #ffffff;
-  --surface: #f8fafc;
-  --text: #0f172a;
-  /* Increased contrast for small/muted text to meet WCAG */
-  --muted: #94a3b8;
-  --border: rgba(15,23,42,0.06);
-  --accent: #f97316; /* orange */
-  --accent-2: #fb923c; /* lighter orange */
-  --glass-bg: rgba(255,255,255,0.8);
-  --glass-border: rgba(15,23,42,0.06);
-  /* Text color to use on orange accents (ensures WCAG contrast) */
-  --accent-contrast: #0f172a;
+  --surface: #f3f4f6;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --border: rgba(0, 0, 0, 0.09);
+  --accent: #f97316;
+  --accent-2: #fb923c;
+  --accent-contrast: #1f2937;
+  --glass-bg: rgba(255, 255, 255, 0.92);
+  --glass-border: rgba(0, 0, 0, 0.09);
 }
 
-/* Footer-specific contrast overrides (dark footer used inside light theme)
-   Ensure links & small text in the dark footer reach WCAG contrast thresholds. */
-.theme-light footer,
-.theme-light footer p,
-.theme-light footer a,
-.theme-light footer .text-slate-400,
-.theme-light footer .text-slate-700,
-.theme-light footer .container-lg > p {
-  color: #cbd5e1; /* slightly muted but readable on dark footer */
-}
-.theme-light footer a:hover { color: var(--accent-2); }
+/* Footer dark section on light page — preserve readability */
+footer a:hover { color: var(--accent-2); }
 
 * {
   box-sizing: border-box;
@@ -104,12 +94,12 @@ body {
 
 /* ─── Scrollbar ─────────────────────────────────── */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #111118; }
-::-webkit-scrollbar-thumb { background: #4f46e5; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #6366f1; }
+::-webkit-scrollbar-track { background: #f3f4f6; }
+::-webkit-scrollbar-thumb { background: #f97316; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #fb923c; }
 
 /* ─── Selection ─────────────────────────────────── */
-::selection { background-color: #6366f1; color: #fff; }
+::selection { background-color: #f97316; color: #fff; }
 
 /* ─── Gradient text utility ─────────────────────── */
 .gradient-text {
@@ -128,11 +118,11 @@ body {
 
 /* ─── Glow effects ───────────────────────────────── */
 .glow-brand {
-  box-shadow: 0 0 40px rgba(99, 102, 241, 0.35);
+  box-shadow: 0 0 40px rgba(249, 115, 22, 0.30);
 }
 
 .glow-accent {
-  box-shadow: 0 0 40px rgba(52, 211, 153, 0.35);
+  box-shadow: 0 0 40px rgba(251, 146, 60, 0.25);
 }
 
 /* ─── Glass card ─────────────────────────────────── */
@@ -141,6 +131,7 @@ body {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
 }
 
 .glass-hover {
@@ -179,8 +170,8 @@ body {
 /* ─── Grid lines background ───────────────────────── */
 .grid-bg {
   background-image:
-    linear-gradient(rgba(99, 102, 241, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
@@ -274,7 +265,7 @@ body {
 .typing-cursor::after {
   content: '|';
   animation: blink 0.8s step-end infinite;
-  color: #6366f1;
+  color: var(--accent);
 }
 @keyframes blink { 50% { opacity: 0; } }
 
@@ -349,13 +340,13 @@ body {
 .nav-link:hover::after,
 .nav-link.active::after { width: 100%; }
 
-/* scrolled header handling (used in Navbar.jsx) */
-.nav-scrolled { background: rgba(10,10,15,0.9); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255,255,255,0.05); box-shadow: 0 10px 24px rgba(0,0,0,0.5); }
-.theme-light .nav-scrolled { background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); box-shadow: 0 10px 24px rgba(15,23,42,0.06); }
+/* scrolled header handling */
+.nav-scrolled { background: rgba(255,255,255,0.93); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+.theme-light .nav-scrolled { background: rgba(255,255,255,0.93); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
 
-/* Mobile menu background (theme-aware) */
-.mobile-menu-bg { background: rgba(17,17,24,0.98); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.05); }
-.theme-light .mobile-menu-bg { background: rgba(255,255,255,0.96); border-bottom: 1px solid var(--border); }
+/* Mobile menu background */
+.mobile-menu-bg { background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+.theme-light .mobile-menu-bg { background: rgba(255,255,255,0.97); border-bottom: 1px solid var(--border); }
 
 /* Skip link for keyboard users */
 .skip-link {
@@ -403,8 +394,8 @@ body {
 
 /* ─── Pricing card featured ───────────────────────── */
 .pricing-featured {
-  background: linear-gradient(135deg, rgba(99,102,241,0.12), rgba(52,211,153,0.08));
-  border: 1px solid rgba(99, 102, 241, 0.5);
+  background: linear-gradient(135deg, rgba(249,115,22,0.08), rgba(251,146,60,0.04));
+  border: 1px solid rgba(249, 115, 22, 0.40);
   position: relative;
   overflow: hidden;
 }
@@ -413,7 +404,7 @@ body {
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 2px;
-  background: linear-gradient(90deg, #6366f1, #34d399);
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
 }
 
 /* ─── Checkmark list ─────────────────────────────── */

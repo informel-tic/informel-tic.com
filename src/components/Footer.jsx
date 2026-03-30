@@ -19,7 +19,7 @@ export default function Footer() {
         {/* Brand */}
         <div>
           <Link to="/" className="flex items-center gap-2 mb-4">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-emerald-400 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-amber-400 flex items-center justify-center">
               <Zap size={16} className="text-white" strokeWidth={2.5} aria-hidden="true" />
             </div>
             <span className="font-display font-bold text-white text-lg">
@@ -46,7 +46,7 @@ export default function Footer() {
               <li key={to}>
                 <Link
                   to={to}
-                  className="text-slate-400 text-sm hover:text-indigo-400 transition-colors duration-200 flex items-center gap-1.5 group"
+                  className="text-slate-400 text-sm hover:text-[color:var(--accent)] transition-colors duration-200 flex items-center gap-1.5 group"
                 >
                   <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                   {label}
@@ -65,12 +65,12 @@ export default function Footer() {
                 href="mailto:contact@informel-tic.com"
                 className="flex items-center gap-3 text-slate-400 text-sm hover:text-indigo-400 transition-colors group"
               >
-                <Mail size={15} className="text-indigo-500 flex-shrink-0" aria-hidden="true" />
+                <Mail size={15} className="text-[color:var(--accent)] flex-shrink-0" aria-hidden="true" />
                 contact@informel-tic.com
               </a>
             </li>
             <li className="flex items-start gap-3 text-slate-400 text-sm">
-              <MapPin size={15} className="text-indigo-500 flex-shrink-0 mt-0.5" aria-hidden="true" />
+              <MapPin size={15} className="text-[color:var(--accent)] flex-shrink-0 mt-0.5" aria-hidden="true" />
               <span>1333 Rue Jean Jaurès<br />59156 Lourches, France</span>
             </li>
           </ul>
@@ -86,7 +86,7 @@ export default function Footer() {
       <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)', padding: '1.25rem 0' }}>
         <div className="container-lg" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '0.75rem', fontSize: '0.75rem', color: 'var(--text)' }}>
           <p>
-            © {year} INFORMEL-TIC — CHON Rachid, Bouzid, Sénouci. Entrepreneur Individuel.
+            © {year} INFORMEL-TIC — Rachid Chon. Entrepreneur Individuel.
             SIREN : 101 902 567
           </p>
           <div className="flex items-center gap-4">
