@@ -182,7 +182,7 @@
 .call-button {
   position: fixed;
   right: 1rem;
-  bottom: 4.5rem;
+  bottom: 1rem;
   width: 3.75rem;
   height: 3.75rem;
   border-radius: 9999px;
@@ -287,6 +287,94 @@
   }
 }
 
+// ─── Pricing layout / cards ───────────────────────
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.pricing-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 1rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  &--featured {
+    background: linear-gradient(135deg, rgba(249,115,22,0.08), rgba(251,146,60,0.04));
+    border: 1px solid rgba(249,115,22,0.40);
+    box-shadow: 0 0 40px rgba(249,115,22,0.15);
+  }
+
+  &--normal { /* no-op modifier for clarity */ }
+}
+
+.pricing-accent-line {
+  position: absolute;
+  top: 0; bottom: 0; left: 0;
+  width: 6px;
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+  opacity: 0.9;
+}
+
+.pricing-badge-wrap { position: relative; width: 100%; transform: translateY(-2rem); white-space: nowrap; z-index: 10; display:flex; justify-content:center; }
+.pricing-badge {
+  display: inline-flex;
+  width: 80%;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  padding: 0.375rem 1rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: var(--accent-contrast);
+  font-size: 0.75rem;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+.pricing-header { margin-bottom: 1rem; }
+.pricing-title { font-weight: 700; font-size: 1.25rem; margin-bottom: 0.25rem; color: var(--text); }
+.pricing-tagline { color: var(--muted); font-size: 0.875rem; }
+
+.pricing-prices { margin-bottom: 1rem; }
+.pricing-main { display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 0.25rem; }
+.price-number { font-family: var(--font-display); font-weight: 900; font-size: 3rem; color: var(--text); }
+.price-sub { color: var(--muted); font-size: 0.875rem; }
+.pricing-sub { display: flex; align-items: center; gap: 0.5rem; }
+.price-month { font-size: 1.5rem; font-weight: 700; color: var(--text); }
+.price-month.accent { color: var(--accent-2); }
+.price-month-sub { font-size: 1rem; font-weight: 400; color: var(--muted); }
+.price-note { color: var(--muted); font-size: 0.75rem; }
+.pricing-target { font-size: 0.875rem; color: var(--muted); margin-top: 0.5rem; }
+
+.pricing-features { flex: 1; margin-bottom: 2rem; }
+
+.pricing-cta .btn-primary, .pricing-cta .btn-secondary { width: 100%; justify-content: center; }
+
+.center-note { display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 3rem; color: var(--muted); font-size: 0.875rem; }
+.center-note .accent-icon { color: rgba(249,115,22,0.6); }
+
+.badge--muted { background: var(--surface); border: 1px solid var(--border); color: var(--accent); margin-bottom: 1.5rem; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.25rem 0.75rem; }
+
+.btn-lg { font-size: 1rem; padding: 1rem 2.5rem; }
+
+.faq-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+
+/* Utility spacing helpers (used to remove inline margins) */
+.mt-5 { margin-top: 5rem; }
+.mt-7 { margin-top: 7rem; }
+.mb-3 { margin-bottom: 3rem; }
+
 // ─── Check list ──────────────────────────────────────
 .check-list {
   list-style: none;
@@ -323,22 +411,42 @@
   padding: 0.75rem 1rem;
   border-radius: 0.5rem;
   box-shadow: 0 12px 40px rgba(2, 6, 23, 0.08);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  display: none; // hidden by default; shown when `.open` is toggled
   color: var(--text);
 
   p { margin: 0; color: var(--muted); }
 
-  button {
-    background: var(--accent);
-    color: var(--accent-contrast);
-    padding: 0.35rem 0.6rem;
-    border-radius: 0.35rem;
-    border: none;
-    cursor: pointer;
-  }
+  button { cursor: pointer; }
 }
+
+.cookie-consent.open {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Cookie banner inner layout helpers */
+.cookie-inner { display: flex; align-items: center; gap: 0.75rem; }
+.cookie-actions { display: flex; gap: 0.5rem; margin-left: 0.5rem; }
+.cookie-title { margin: 0; font-size: 0.95rem; }
+.btn-cookie { padding: 0.35rem 0.6rem; border-radius: 0.35rem; border: none; background: var(--accent); color: var(--accent-contrast); font-weight: 600; }
+.cookie-manage { padding: 0.35rem 0.6rem; border-radius: 0.35rem; border: 1px solid var(--border); background: transparent; color: var(--text); text-decoration: none; }
+.cookie-close { margin-left: 0.5rem; background: transparent; border: none; color: var(--muted); }
+
+/* Page layout / helpers */
+.page-hero { padding-top: 10rem; padding-bottom: 2rem; }
+.page-title { font-weight: 900; font-size: clamp(2rem, 5vw, 3rem); color: var(--text); margin-bottom: 1rem; }
+.page-title--inverse { color: white; }
+.page-lead { color: var(--muted); max-width: 36rem; margin: 0 auto; }
+.page-section-lg { padding-bottom: 6rem; }
+.stack-col { display: flex; flex-direction: column; gap: 1.5rem; }
+.muted { color: var(--muted); }
+.main-content { flex: 1; }
+.glass--large { border-radius: 1rem; padding: 2rem; margin-bottom: 1.5rem; }
+.section-title { color: var(--text); font-weight: 700; font-size: 1.125rem; margin-bottom: 0.75rem; }
+.section-title--inverse { color: white; }
+.body-sm { font-size: 0.875rem; line-height: 1.8; }
+.pre-line { white-space: pre-line; }
 
 // ═══════════════════════════════════════════════════════
 // NAVBAR
@@ -362,19 +470,20 @@
   align-items: center;
   gap: 2rem;
 
-  @include m.md { display: flex; }
+  // Show desktop links from small breakpoint (>= $bp-sm)
+  @include m.sm { display: flex; }
 }
 
 .nav-desktop-cta {
   display: none;
-  @include m.md { display: block; }
+  @include m.sm { display: block; }
 }
 
 .nav-burger {
   display: block;
   padding: 0.5rem;
   border-radius: 0.5rem;
-  color: #cbd5e1;
+  color: var(--text);
   background: transparent;
   border: none;
   cursor: pointer;
@@ -402,7 +511,11 @@
     opacity: 1;
   }
 
-  @include m.md { display: none; }
+  // Hide mobile menu from small breakpoint and up
+  @include m.sm { display: none; }
+
+  // Ensure mobile menu overlays content when open
+  z-index: 60;
 }
 
 .nav-mobile__list {
@@ -440,7 +553,8 @@
 // ─── Desktop nav link ────────────────────────────────
 .nav-link {
   position: relative;
-  color: var(--muted);
+  /* increase default link contrast */
+  color: var(--text);
   text-decoration: none;
   font-weight: 500;
   font-size: 0.9rem;
@@ -473,10 +587,24 @@
   transition: transform 0.3s ease;
   display: block;
 
-  @include m.sm { height:4rem;width: 20rem; }
-  @include m.md { height:4rem;width: 20rem; }
-  @include m.lg { height:4rem;width: 20rem; }
+  // Use fixed heights with auto width to preserve aspect ratio
+  height: 2.5rem;
+  width: auto;
+
+  @include m.sm { height: 3.25rem; }
+  @include m.md { height: 4rem; }
+  @include m.lg { height: 4.5rem; }
 }
+
+.navbar .container-lg {
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-desktop-cta .btn-primary { font-size: 0.875rem; padding: 0.625rem 1.25rem; }
+.nav-mobile .btn-primary { width: 100%; justify-content: center; font-size: 0.875rem; }
 
 .nav-logo-wrap:hover .nav-logo { transform: scale(1.05); }
 
@@ -495,6 +623,22 @@
   background: #0a0a0f;
   margin-top: 4rem;
 }
+
+/* Footer layout moved from inline styles to SCSS */
+.footer-top-grid {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 3rem;
+}
+
+/* MapPin spacing only inside footer address */
+.footer-address .icon-accent { margin-top: 0.125rem; }
+
+.footer-cta .btn-primary { font-size: 0.875rem; padding: 0.625rem 1.25rem; }
+
+.footer-bottom-bar { border-top: 1px solid rgba(255,255,255,0.05); padding: 1.25rem 0; }
 
 .footer-brand {
   display: flex;
@@ -520,6 +664,16 @@
   font-weight: 700;
   color: white;
   font-size: 1.125rem;
+}
+
+.footer-logo {
+  display: block;
+  height: 3rem;
+  width: auto;
+
+  // Larger footer logo for better visibility across breakpoints
+  @include m.sm { height: 3.75rem; }
+  @include m.md { height: 4.25rem; }
 }
 
 .footer-tagline {
@@ -658,6 +812,7 @@
   text-align: center;
   padding-top: 6rem;
   padding-bottom: 5rem;
+  max-height: 80%;
 }
 
 .hero-badge {
@@ -681,8 +836,8 @@
   color: var(--muted);
   font-size: clamp(1rem, 2vw, 1.25rem);
   max-width: 42rem;
-  line-height: 1.65;
-  margin-bottom: 2.5rem;
+  line-height: 1.35;
+  margin-bottom: 1.5rem;
 }
 
 .hero-actions {
@@ -690,7 +845,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
 }
 
 .hero-features {
@@ -713,6 +868,104 @@
   height: 2rem;
   background: linear-gradient(to bottom, #64748b, transparent);
 }
+
+// ─── Typing / CLS helpers ───────────────────────────
+.typing-wrap {
+  display: inline-block;
+  min-width: 18ch; // reserve width for the longest typing word to avoid CLS
+  vertical-align: bottom;
+}
+
+.typing-cursor::after {
+  content: '';
+  display: inline-block;
+  width: 0.12em;
+  height: 1em;
+  margin-left: 0.25rem;
+  background: currentColor;
+  animation: blink 1s steps(2, start) infinite;
+  vertical-align: bottom;
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
+.feature-icon { color: var(--accent-2); flex-shrink: 0; }
+.text-strong { color: var(--text); font-weight: 700; }
+
+// ─── About page specific helpers ───────────────────
+.about-hero { padding-top: 10rem; padding-bottom: 4rem; text-align: center; }
+.about-badge { background: rgba(249,115,22,0.06); border: 1px solid rgba(249,115,22,0.18); color: var(--accent); margin-bottom: 1.5rem; display: inline-flex; }
+.about-title { font-weight: 900; font-size: clamp(2rem, 5vw, 3.75rem); color: var(--text); margin-bottom: 1rem; }
+.about-lead { color: var(--muted); font-size: 1.125rem; max-width: 42rem; margin: 0 auto; }
+.about-section { padding-bottom: 4rem; }
+.glass--padded { border-radius: 1rem; padding: 2.5rem; margin-bottom: 3rem; }
+
+.info-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; }
+.icon-wrap { width: 3rem; height: 3rem; border-radius: 0.75rem; background: linear-gradient(135deg, var(--accent), var(--accent-2)); display: flex; align-items: center; justify-content: center; }
+.icon-accent-contrast { color: var(--accent-contrast, #fff); }
+.info-title { color: var(--text); font-weight: 700; font-size: 1.25rem; }
+.story-text { color: var(--muted); line-height: 1.8; display: flex; flex-direction: column; gap: 1rem; }
+
+.values-title { font-weight: 700; font-size: clamp(1.6rem, 4vw, 1.875rem); color: var(--text); text-align: center; margin-bottom: 2.5rem; }
+.values-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 4rem; }
+.glass--value { border-radius: 1rem; padding: 1.75rem; }
+.value-icon-wrap { width: 2.75rem; height: 2.75rem; border-radius: 0.75rem; background: rgba(249,115,22,0.12); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+.value-icon { color: var(--accent); }
+.value-title { color: var(--text); font-weight: 700; margin-bottom: 0.5rem; }
+.value-desc { color: var(--muted); font-size: 0.875rem; line-height: 1.7; }
+
+/* Risks & Solutions helpers */
+.text-error { color: var(--error); }
+.risk-icon-wrap { width: 3rem; height: 3rem; border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: var(--risk-bg, rgba(249,115,22,0.08)); }
+.risk-icon { color: var(--risk-icon, var(--accent)); }
+.risk-arrow { margin-top: 0.125rem; }
+
+/* Lead variant for larger paragraph used above CTAs */
+.lead-lg { font-size: 1.125rem; margin-bottom: 1.25rem; }
+
+/* Contact / Form helpers (migrated from inline styles) */
+.badge--accent { background: rgba(249,115,22,0.06); border: 1px solid rgba(249,115,22,0.18); color: var(--accent); margin-bottom: 1.5rem; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.25rem 0.75rem; }
+
+.action-row { display: flex; justify-content: center; gap: 0.75rem; margin-top: 1.25rem; }
+
+.contact-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; }
+@include m.lg { .contact-grid { grid-template-columns: 2fr 3fr; } }
+
+.contact-info-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1.25rem; }
+.contact-info-list li { display: flex; align-items: flex-start; gap: 1rem; }
+.contact-link { color: var(--text); font-size: 0.95rem; text-decoration: none; display: inline-block; }
+
+.icon-accent-contrast { color: var(--accent-contrast, #fff); }
+.accent-check { color: var(--accent-2); margin-bottom: 0.75rem; }
+
+.link-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+.link-inline { color: var(--muted); font-size: 0.95rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; }
+
+.form-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.25rem; margin-bottom: 1.25rem; }
+
+.btn-full { width: 100%; justify-content: center; }
+.toast--spaced { margin-bottom: 1.5rem; }
+.toast-icon { flex-shrink: 0; }
+
+.mb-3 { margin-bottom: 1.5rem; }
+
+.body-sm { font-size: 0.875rem; }
+
+/* Field / form label + error helpers */
+.field-label { display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: var(--muted); font-weight: 500; margin-bottom: 0.5rem; }
+.required-star { color: var(--accent); margin-left: 0.25rem; }
+.form-textarea { resize: vertical; min-height: 120px; }
+.field-error { margin-top: 0.375rem; font-size: 0.75rem; color: var(--error); display: flex; align-items: center; gap: 0.25rem; }
+
+
+
+.guarantees-card { border-radius: 1rem; padding: 2rem; background: linear-gradient(135deg, rgba(251,146,60,0.09), rgba(251,146,60,0.04)); border: 1px solid rgba(251,146,60,0.12); margin-bottom: 3rem; }
+.guarantee-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: var(--muted); }
+.accent-check { color: var(--accent-2); font-weight: 700; }
+.glass--small { border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; }
+
+.text-right { text-align: right; }
+.text-center { text-align: center; }
 
 // ═══════════════════════════════════════════════════════
 // CTA BANNER

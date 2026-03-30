@@ -42,23 +42,23 @@ Email hébergeur : contact@informel-tic.com`,
 export default function LegalPage() {
   return (
     <>
-      <section className="hero-bg" style={{ paddingTop: '10rem', paddingBottom: '2rem', textAlign: 'center' }}>
+      <section className="hero-bg page-hero text-center">
         <div className="container-lg">
-          <h1 className="font-display" style={{ fontWeight: 900, fontSize: 'clamp(2rem, 5vw, 3rem)', color: 'white', marginBottom: '1rem' }}>
+          <h1 className="font-display page-title page-title--inverse">
             Mentions <span className="gradient-text">légales</span>
           </h1>
-          <p style={{ color: 'var(--muted)', maxWidth: '36rem', margin: '0 auto' }}>
+          <p className="page-lead">
             Informations légales conformes à la loi LCEN du 21 juin 2004.
           </p>
         </div>
       </section>
 
-      <section style={{ paddingBottom: '6rem' }}>
-        <div className="container-md" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+      <section className="page-section-lg">
+        <div className="container-md stack-col">
           {SECTIONS.map(({ title, content }) => (
-            <div key={title} className="glass" style={{ borderRadius: '1rem', padding: '2rem' }}>
-              <h2 style={{ color: 'white', fontWeight: 700, fontSize: '1.125rem', marginBottom: '0.75rem' }}>{title}</h2>
-              <p style={{ color: 'var(--muted)', fontSize: '0.875rem', lineHeight: 1.8, whiteSpace: 'pre-line' }}>{content}</p>
+            <div key={title} className="glass glass--large">
+              <h2 className="section-title section-title--inverse">{title}</h2>
+              <p className="muted body-sm pre-line">{content}</p>
             </div>
           ))}
         </div>

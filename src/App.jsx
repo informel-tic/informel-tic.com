@@ -25,7 +25,7 @@ export default function App() {
             <span className="sr-only">Appeler INFORMEL-TIC</span>
           </a>
         )}
-        <main id="content" style={{ flex: 1 }}>
+        <main id="content" className="main-content">
           <Routes>
             <Route path="/"            element={<HomePage />} />
             <Route path="/a-propos"    element={<AboutPage />} />

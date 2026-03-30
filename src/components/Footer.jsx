@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Zap, Mail, MapPin, Phone, ExternalLink } from 'lucide-react';
+import { Mail, MapPin } from 'lucide-react';
 
 const navLinks = [
   { to: '/',                  label: 'Accueil' },
@@ -14,17 +14,12 @@ export default function Footer() {
 
   return (
     <footer className="site-footer">
-      <div className="container-lg" style={{ paddingTop: '4rem', paddingBottom: '4rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '3rem' }}>
+      <div className="container-lg footer-top-grid">
 
         {/* Brand */}
         <div>
           <Link to="/" className="footer-brand" aria-label="INFORMEL-TIC — Accueil">
-            <div className="footer-icon">
-              <Zap size={16} className="text-white" strokeWidth={2.5} aria-hidden="true" style={{ color: 'white' }} />
-            </div>
-            <span className="footer-name">
-              INFORMEL-<span className="gradient-text">TIC</span>
-            </span>
+            <img src="/logo.svg" alt="INFORMEL-TIC" className="footer-logo" />
           </Link>
           <p className="footer-tagline">
             Développement web sur-mesure et optimisation de visibilité locale
@@ -64,12 +59,12 @@ export default function Footer() {
               </a>
             </li>
             <li className="footer-address">
-              <MapPin size={15} className="icon-accent" style={{ marginTop: '0.125rem' }} aria-hidden="true" />
+              <MapPin size={15} className="icon-accent" aria-hidden="true" />
               <span>1333 Rue Jean Jaurès<br />59156 Lourches, France</span>
             </li>
           </ul>
           <div className="footer-cta">
-            <Link to="/contact" className="btn-primary" style={{ fontSize: '0.875rem', padding: '0.625rem 1.25rem' }}>
+            <Link to="/contact" className="btn-primary">
               Demander un devis
             </Link>
           </div>
@@ -77,7 +72,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)', padding: '1.25rem 0' }}>
+      <div className="footer-bottom-bar">
         <div className="container-lg footer-bottom">
           <p>
             © {year} INFORMEL-TIC — Rachid Chon. Entrepreneur Individuel.

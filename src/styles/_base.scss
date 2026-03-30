@@ -7,11 +7,12 @@
   --bg: #ffffff;
   --surface: #f3f4f6;
   --text: #1f2937;
-  --muted: #6b7280;
-  --border: rgba(0, 0, 0, 0.09);
+  /* Muted text and accents tuned for better contrast (A11y) */
+  --muted: #4b5563; /* darker muted for better small-text contrast */
+  --border: rgba(15, 23, 42, 0.06);
   --accent: #f97316;
   --accent-2: #fb923c;
-  --accent-contrast: #1f2937;
+  --accent-contrast: #ffffff; /* use white text on accent backgrounds for contrast */
   --glass-bg: rgba(255, 255, 255, 0.92);
   --glass-border: rgba(0, 0, 0, 0.09);
   --error: #dc2626;

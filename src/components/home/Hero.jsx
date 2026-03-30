@@ -40,18 +40,18 @@ export default function Hero() {
 
         <h1 className="hero-title">
           Votre site et votre visibilité,<br />
-          <TypingWord />
+          <span className="typing-wrap"><TypingWord /></span>
         </h1>
 
         <p className="hero-desc">
-          Nous construisons des écosystèmes numériques locaux pour que vous soyez les premiers trouvés dans votre zone de chalandise, <strong style={{ color: 'var(--text)' }}>sans stress technique</strong>.
+          Nous construisons des écosystèmes numériques locaux pour que vous soyez les premiers trouvés dans votre zone de chalandise, <strong className="text-strong">sans stress technique</strong>.
         </p>
 
         <div className="hero-actions">
-          <Link to="/contact" className="btn-primary" style={{ fontSize: '1rem', padding: '0.75rem 2rem' }}>
+          <Link to="/contact" className="btn-primary">
             Demander un devis <ArrowRight size={18} aria-hidden="true" />
           </Link>
-          <Link to="/offres" className="btn-secondary" style={{ fontSize: '1rem', padding: '0.75rem 2rem' }}>
+          <Link to="/offres" className="btn-secondary">
             Voir nos offres
           </Link>
         </div>
@@ -59,15 +59,16 @@ export default function Hero() {
         <div className="hero-features">
           {['Zéro charge mentale', 'Visibilité maximale', 'Code source livré', 'Sans engagement'].map((item) => (
             <span key={item} className="feature-item">
-              <CheckCircle size={16} style={{ color: 'var(--accent-2)', flexShrink: 0 }} aria-hidden="true" /> {item}
+              <CheckCircle size={16} className="feature-icon" aria-hidden="true" /> {item}
             </span>
           ))}
         </div>
-      </div>
-
-      <div className="scroll-hint">
+        <div className="scroll-hint">
         <span>Découvrir</span>
         <div className="scroll-line" />
+      </div>
+
+      
       </div>
     </section>
   );

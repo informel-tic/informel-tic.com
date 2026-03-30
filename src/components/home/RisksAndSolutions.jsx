@@ -15,10 +15,17 @@ function useReveal() {
   return ref;
 }
 
-function RevealSection({ children, className = '', delay = 0 }) {
+function RevealSection({ children, className = '', delay = 0, vars = {} }) {
   const ref = useReveal();
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (delay) el.style.setProperty('--reveal-delay', `${delay}ms`);
+    Object.entries(vars).forEach(([k, v]) => el.style.setProperty(k, v));
+  }, [delay, vars, ref]);
+
   return (
-    <div ref={ref} className={`reveal ${className}`} style={{ transitionDelay: `${delay}ms` }}>
+    <div ref={ref} className={`reveal ${className}`}>
       {children}
     </div>
   );
@@ -64,7 +71,7 @@ export default function RisksAndSolutions() {
         <RevealSection>
           <div className="section-header">
             <h2 className="section-title">
-              Les <span style={{ color: 'var(--error)' }}>Risques</span> des Outils Mal Utilisés
+              Les <span className="text-error">Risques</span> des Outils Mal Utilisés
             </h2>
             <p className="section-subtitle">
               De nombreux commerçants utilisent des outils inadaptés. Voici les pièges les plus fréquents, et comment nous vous en protégeons.
@@ -74,13 +81,13 @@ export default function RisksAndSolutions() {
 
         <div className="grid-3col">
           {RISKS.map(({ icon: Icon, title, subtitle, problem, solution, iconColor, bg }, i) => (
-            <RevealSection key={title} delay={i * 80}>
+            <RevealSection key={title} delay={i * 80} vars={{ '--risk-bg': bg, '--risk-icon': iconColor }}>
               <div className="glass glass-hover risk-card">
 
                 {/* Header: Icon & Title */}
-                <div className="risk-card__header">
-                  <div className="risk-icon-wrap" style={{ backgroundColor: bg }}>
-                    <Icon size={24} style={{ color: iconColor }} aria-hidden="true" />
+                  <div className="risk-card__header">
+                  <div className="risk-icon-wrap">
+                    <Icon size={24} className="risk-icon" aria-hidden="true" />
                   </div>
                   <div>
                     <h3 className="risk-title">{title}</h3>
@@ -97,7 +104,7 @@ export default function RisksAndSolutions() {
                   </div>
                   <div className="risk-solution-wrap">
                     <div className="risk-solution">
-                      <ArrowRight size={16} className="icon-accent" style={{ marginTop: '0.125rem' }} aria-hidden="true" />
+                      <ArrowRight size={16} className="icon-accent risk-arrow" aria-hidden="true" />
                       <p className="solution-text">
                         <span className="solution-label">La Solution :</span>
                         {solution}

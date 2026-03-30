@@ -70,8 +70,8 @@
 
 // ─── Scroll hint (hero bounce) ───────────────────────
 .scroll-hint {
-  position: absolute;
-  bottom: 2rem;
+  position: absolute  ;
+  bottom: 0rem;
   left: 50%;
   animation: scrollBounce 1s infinite;
   display: flex;

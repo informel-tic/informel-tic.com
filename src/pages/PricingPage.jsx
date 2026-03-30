@@ -28,54 +28,45 @@ const PLANS = [
 
 function PricingCard({ plan }) {
   const { name, tagline, price, monthly, featured, badge, target, features, cta, ctaVariant } = plan;
-  const cardStyle = featured
-    ? { background: 'linear-gradient(135deg, rgba(249,115,22,0.08), rgba(251,146,60,0.04))', border: '1px solid rgba(249,115,22,0.40)', boxShadow: '0 0 40px rgba(249,115,22,0.15)', position: 'relative', overflow: 'hidden', borderRadius: '1rem', padding: '2rem', display: 'flex', flexDirection: 'column', height: '100%', transition: 'all 0.3s' }
-    : { background: 'var(--glass-bg)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid var(--glass-border)', borderRadius: '1rem', padding: '2rem', display: 'flex', flexDirection: 'column', height: '100%', transition: 'all 0.3s' };
 
   return (
-    <div className={featured ? '' : 'glass-hover'} style={cardStyle}>
-      {featured && <div style={{ position: 'absolute', display: 'inline-flex', top: 0, left: 0, right: 50, width: '2px', height: '2px', background: 'linear-gradient(90deg, var(--accent), var(--accent-2))' }} />}
-      {badge  && (
-        <div style={{ position: 'relative', display: 'flex', justifyContent: 'center', width: '100%', top: '-2rem', whiteSpace: 'nowrap', zIndex: 10 }}>
-          <span style={{
-            display: 'inline-flex', width: '80%', alignItems: 'center', justifyContent: 'center', gap: '0.375rem', padding: '0.375rem 1rem', borderEndEndRadius: '9999px', borderEndStartRadius: '9999px',
-            background: 'linear-gradient(135deg, var(--accent), var(--accent-2))', color: 'var(--accent-contrast)', fontSize: '0.75rem', fontWeight: 600, boxShadow: '0 4px 14px rgba(0,0,0,0.08)'
-          }}>{badge}</span>
+    <div className={`pricing-card ${featured ? 'pricing-card--featured' : 'pricing-card--normal'}`}>
+      {featured && <div className="pricing-accent-line" aria-hidden="true" />}
+
+      {badge && (
+        <div className="pricing-badge-wrap" aria-hidden="true">
+          <span className="pricing-badge">{badge}</span>
         </div>
       )}
 
-      <div style={{ marginBottom: '1.5rem' }}>
-        <h3 className="font-display" style={{ fontWeight: 700, fontSize: '1.25rem', marginBottom: '0.25rem', color: featured ? undefined : 'var(--text)' }}>
+      <div className="pricing-header">
+        <h3 className="font-display pricing-title">
           {featured ? <span className="gradient-text">{name}</span> : name}
         </h3>
-        <p style={{ color: 'var(--muted)', fontSize: '0.875rem' }}>{tagline}</p>
+        <p className="muted pricing-tagline">{tagline}</p>
       </div>
 
-      <div style={{ marginBottom: '1.5rem' }}>
-        <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.5rem', marginBottom: '0.25rem' }}>
-          <span className="font-display" style={{ fontWeight: 900, fontSize: '3rem', color: 'var(--text)' }}>{price.toLocaleString('fr-FR')} €</span>
-          <span style={{ color: 'var(--muted)', fontSize: '0.875rem' }}>à la création</span>
+      <div className="pricing-prices">
+        <div className="pricing-main">
+          <span className="price-number">{price.toLocaleString('fr-FR')} €</span>
+          <span className="price-sub muted">à la création</span>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <span style={{ fontSize: '1.5rem', fontWeight: 700, color: featured ? 'var(--accent-2)' : 'var(--text)' }}>
-            + {monthly} €<span style={{ fontSize: '1rem', fontWeight: 400, color: 'var(--muted)' }}>/mois</span>
-          </span>
-          <span style={{ color: 'var(--muted)', fontSize: '0.75rem' }}>(maintenance)</span>
+        <div className="pricing-sub"> 
+          <span className={`price-month ${featured ? 'accent' : ''}`}>+ {monthly} €<span className="price-month-sub">/mois</span></span>
+          <span className="muted price-note">(maintenance)</span>
         </div>
-        <p style={{ fontSize: '0.75rem', color: 'var(--muted)', marginTop: '0.5rem', fontStyle: 'italic' }}>TVA non applicable — art. 293 B CGI</p>
+        <p className="pricing-target muted">🎯 {target}</p>
       </div>
 
-      <div style={{ borderRadius: '0.75rem', padding: '0.875rem', marginBottom: '1.5rem', fontSize: '0.875rem', background: 'var(--surface)', color: 'var(--muted)' }}>
-        🎯 {target}
-      </div>
-
-      <ul className="check-list" style={{ flex: 1, marginBottom: '2rem' }}>
+      <ul className="check-list pricing-features">
         {features.map((f) => <li key={f}>{f}</li>)}
       </ul>
 
-      <Link to="/contact" className={ctaVariant === 'primary' ? 'btn-primary' : 'btn-secondary'} style={{ width: '100%', justifyContent: 'center' }}>
-        {cta} <ArrowRight size={16} />
-      </Link>
+      <div className="pricing-cta">
+        <Link to="/contact" className={ctaVariant === 'primary' ? 'btn-primary' : 'btn-secondary'}>
+          {cta} <ArrowRight size={16} />
+        </Link>
+      </div>
     </div>
   );
 }
@@ -91,49 +82,48 @@ const FAQS = [
 export default function PricingPage() {
   return (
     <>
-      <section className="hero-bg" style={{ paddingTop: '10rem', paddingBottom: '4rem', textAlign: 'center' }}>
+      <section className="hero-bg page-hero text-center">
         <div className="container-lg">
-          <div className="badge" style={{ background: 'var(--surface)', border: '1px solid var(--border)', color: 'var(--accent)', marginBottom: '1.5rem', display: 'inline-flex' }}>
+          <div className="badge badge--muted">
             <Zap size={12} /> Offres & Tarifs
           </div>
-          <h1 className="font-display" style={{ fontWeight: 900, fontSize: 'clamp(2rem, 5vw, 3.75rem)', color: 'var(--text)', marginBottom: '1.25rem' }}>
+          <h1 className="font-display page-title">
             Des offres <span className="gradient-text">claires</span>,<br />sans mauvaise surprise
           </h1>
-          <p style={{ color: 'var(--muted)', fontSize: '1.125rem', maxWidth: '42rem', margin: '0 auto' }}>
+          <p className="page-lead">
             Choisissez l'offre qui correspond à vos ambitions. Tous nos sites sont 100% sur-mesure, sans WordPress, ultra-rapides.
           </p>
         </div>
       </section>
-
-      <section style={{ paddingBottom: '6rem' }}>
+      <section className="page-section-lg">
         <div className="container-lg">
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginBottom: '3rem', color: 'var(--muted)', fontSize: '0.875rem' }}>
-            <AlertCircle size={14} style={{ color: 'rgba(249,115,22,0.6)' }} />
+          <div className="center-note muted">
+            <AlertCircle size={14} className="accent-icon" />
             TVA non applicable — art. 293 B du CGI. Prix TTC pour les particuliers.
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1.5rem', alignItems: 'start' }}>
+          <div className="pricing-grid">
             {PLANS.map((plan) => <PricingCard key={plan.id} plan={plan} />)}
           </div>
 
-          <div style={{ marginTop: '5rem', textAlign: 'center' }}>
-            <p style={{ color: 'var(--muted)', marginBottom: '1.25rem', fontSize: '1.125rem' }}>
+          <div className="text-center mt-5">
+            <p className="muted lead-lg">
               Vous ne savez pas quelle offre choisir ? Parlez-nous de votre projet.
             </p>
-            <Link to="/contact" className="btn-primary" style={{ fontSize: '1rem', padding: '1rem 2.5rem' }}>
+            <Link to="/contact" className="btn-primary btn-lg">
               Demander un devis <ArrowRight size={18} />
             </Link>
           </div>
 
-          <div style={{ marginTop: '7rem' }}>
-            <h2 className="font-display" style={{ fontWeight: 700, fontSize: '1.875rem', color: 'var(--text)', textAlign: 'center', marginBottom: '3rem' }}>
+          <div className="mt-7">
+            <h2 className="font-display section-title text-center mb-3">
               Questions fréquentes
             </h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1.5rem' }}>
+            <div className="faq-grid">
               {FAQS.map(({ q, a }) => (
-                <div key={q} className="glass" style={{ borderRadius: '0.75rem', padding: '1.5rem' }}>
-                  <h3 style={{ color: 'var(--text)', fontWeight: 600, marginBottom: '0.5rem', fontSize: '1rem' }}>{q}</h3>
-                  <p style={{ color: 'var(--muted)', fontSize: '0.875rem', lineHeight: 1.7 }}>{a}</p>
+                <div key={q} className="glass glass--small">
+                  <h3 className="section-title">{q}</h3>
+                  <p className="muted body-sm">{a}</p>
                 </div>
               ))}
             </div>

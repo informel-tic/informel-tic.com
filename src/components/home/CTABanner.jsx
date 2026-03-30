@@ -18,8 +18,14 @@ function useReveal() {
 
 function RevealSection({ children, className = '', delay = 0 }) {
   const ref = useReveal();
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (delay) el.style.setProperty('--reveal-delay', `${delay}ms`);
+  }, [delay, ref]);
+
   return (
-    <div ref={ref} className={`reveal ${className}`} style={{ transitionDelay: `${delay}ms` }}>
+    <div ref={ref} className={`reveal ${className}`}>
       {children}
     </div>
   );
@@ -41,10 +47,10 @@ export default function CTABanner() {
                 Décrivez-nous votre activité. Nous vous proposerons la solution idéale gratuitement et sans engagement.
               </p>
               <div className="cta-actions">
-                <Link to="/contact" className="btn-primary" style={{ fontSize: '1rem', padding: '0.75rem 2rem' }}>
+                <Link to="/contact" className="btn-primary btn-lg">
                   Je veux une visibilité maximale <ArrowRight size={18} aria-hidden="true" />
                 </Link>
-                <Link to="/offres" className="btn-secondary" style={{ fontSize: '1rem', padding: '0.75rem 2rem' }}>
+                <Link to="/offres" className="btn-secondary btn-lg">
                   Voir nos packs
                 </Link>
               </div>

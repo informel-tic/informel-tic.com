@@ -29,3 +29,6 @@ lighthouse-report.json
 test_out.json
 test_out.txt
 .agents/rules/instructions.md
+.agents/rules/instructions_reasonning.md
+.gitignore
+.agents/rules/mobile ui/ux best-practice.md

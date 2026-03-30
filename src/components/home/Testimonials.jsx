@@ -17,8 +17,14 @@ function useReveal() {
 
 function RevealSection({ children, className = '', delay = 0 }) {
   const ref = useReveal();
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (delay) el.style.setProperty('--reveal-delay', `${delay}ms`);
+  }, [delay, ref]);
+
   return (
-    <div ref={ref} className={`reveal ${className}`} style={{ transitionDelay: `${delay}ms` }}>
+    <div ref={ref} className={`reveal ${className}`}>
       {children}
     </div>
   );
@@ -47,7 +53,7 @@ export default function Testimonials() {
     <section className="section-padding section-alt">
       <div className="container-lg">
         <RevealSection>
-          <div className="section-header" style={{ marginBottom: '3.5rem' }}>
+          <div className="section-header">
             <h2 className="section-title">
               Ils nous font confiance
             </h2>

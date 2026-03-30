@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
 const links = [
@@ -28,10 +28,13 @@ export default function Navbar() {
 
   // Close mobile menu on route change
   useEffect(() => { setOpen(false); }, []);
+  // Close the mobile menu when the route changes
+  const location = useLocation();
+  useEffect(() => { setOpen(false); }, [location.pathname]);
 
   return (
     <header className={`navbar${scrolled ? ' nav-scrolled' : ''}`}>
-      <nav className="container-lg" style={{ height: '3.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      <nav className="container-lg">
         {/* Logo */}
         <Link to="/" className="nav-logo-wrap" aria-label="INFORMEL-TIC — Accueil">
           <img src="/logo.svg" alt="logo INFORMEL-TIC" className="nav-logo" />
@@ -54,7 +57,7 @@ export default function Navbar() {
 
         {/* Desktop CTA */}
         <div className="nav-desktop-cta">
-          <Link to="/contact" className="btn-primary" style={{ fontSize: '0.875rem', padding: '0.625rem 1.25rem' }}>
+          <Link to="/contact" className="btn-primary">
             Demander un devis
           </Link>
         </div>
@@ -90,7 +93,6 @@ export default function Navbar() {
               to="/contact"
               onClick={() => setOpen(false)}
               className="btn-primary"
-              style={{ width: '100%', justifyContent: 'center', fontSize: '0.875rem' }}
             >
               Demander un devis
             </Link>
