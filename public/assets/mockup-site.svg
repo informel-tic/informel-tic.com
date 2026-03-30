@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid meet">
+  <rect width="1200" height="600" fill="#0f172a" rx="10" />
+  <g transform="translate(60,50)">
+    <rect width="1080" height="500" rx="10" fill="#0b1220" />
+    <rect x="24" y="24" width="1032" height="452" rx="6" fill="#f8fafc" />
+    <rect x="48" y="48" width="320" height="200" rx="6" fill="#e2e8f0" />
+    <rect x="384" y="48" width="640" height="36" rx="6" fill="#e2e8f0" />
+    <rect x="384" y="96" width="640" height="300" rx="6" fill="#fff" />
+    <text x="60" y="380" fill="#94a3b8" font-family="Inter, Arial, sans-serif" font-size="20">Mockup de site — remplacez par captures réelles</text>
+  </g>
+</svg>

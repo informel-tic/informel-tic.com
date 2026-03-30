@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Zap, ArrowRight, CheckCircle } from 'lucide-react';
+import config from '../../config';
 
 /* ── Typing effect ─────────────────────────────────── */
 const WORDS = ['sous contrôle.', 'ultra-rapide.', 'sans WordPress.', 'pour vous.'];
@@ -29,6 +30,8 @@ function TypingWord() {
 }
 
 export default function Hero() {
+  const [photoSrc, setPhotoSrc] = useState(config.FOUNDER_PHOTO || '/assets/team-placeholder.svg');
+
   return (
     <section className="hero-section hero-bg grid-bg">
       <div className="container-md hero-body">
@@ -54,6 +57,9 @@ export default function Hero() {
           <Link to="/offres" className="btn-secondary">
             Voir nos offres
           </Link>
+          <Link to="/contact?audit=1" className="btn-tertiary" aria-label="Demander un audit gratuit">
+            Audit gratuit
+          </Link>
         </div>
 
         <div className="hero-features">
@@ -63,6 +69,25 @@ export default function Hero() {
             </span>
           ))}
         </div>
+        <div className="hero-media">
+          <div className="founder-card">
+            <img
+              src={photoSrc}
+              alt={config.FOUNDER_PHOTO_ALT || `Photo de ${config.OWNER_NAME}`}
+              className="founder-photo"
+              loading="lazy"
+              width="380"
+              height="250"
+              onError={() => setPhotoSrc('/assets/team-placeholder.svg')}
+            />
+            <div className="founder-info">
+              <p className="founder-name">{config.OWNER_NAME} — Auto-entrepreneur</p>
+              <p className="founder-area">Basé à {config.SERVICE_AREA}</p>
+            </div>
+          </div>
+          <img src="/assets/mockup-site.svg" alt="Mockup : exemple de site sur-mesure" className="hero-mockup" />
+        </div>
+
         <div className="scroll-hint">
         <span>Découvrir</span>
         <div className="scroll-line" />
