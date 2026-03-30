@@ -29,18 +29,18 @@ function Field({ id, label, icon: Icon, type = 'text', value, onChange, onBlur, 
 
   return (
     <div>
-      <label htmlFor={id} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.875rem', color: '#cbd5e1', fontWeight: 500, marginBottom: '0.5rem' }}>
-        <Icon size={14} style={{ color: '#818cf8' }} />
+      <label htmlFor={id} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.875rem', color: 'var(--muted)', fontWeight: 500, marginBottom: '0.5rem' }}>
+        <Icon size={14} style={{ color: 'var(--accent)' }} aria-hidden="true" />
         {label}
-        {required && <span style={{ color: '#818cf8' }}>*</span>}
+        {required && <span style={{ color: 'var(--accent)' }}>*</span>}
       </label>
       {isTextarea
         ? <textarea {...commonProps} rows={rows} style={{ resize: 'vertical', minHeight: '120px' }} />
         : <input {...commonProps} type={type} />
       }
       {error && (
-        <p id={`${id}-error`} role="alert" style={{ marginTop: '0.375rem', fontSize: '0.75rem', color: '#f87171', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
-          <XCircle size={12} /> {error}
+        <p id={`${id}-error`} role="alert" style={{ marginTop: '0.375rem', fontSize: '0.75rem', color: 'var(--error)', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+          <XCircle size={12} aria-hidden="true" /> {error}
         </p>
       )}
     </div>
@@ -131,15 +131,19 @@ export default function ContactPage() {
       {/* Header */}
       <section className="hero-bg" style={{ paddingTop: '10rem', paddingBottom: '4rem', textAlign: 'center' }}>
         <div className="container-lg">
-          <div className="badge" style={{ background: 'rgba(99,102,241,0.1)', border: '1px solid rgba(99,102,241,0.3)', color: '#a5b4fc', marginBottom: '1.5rem', display: 'inline-flex' }}>
+          <div className="badge" style={{ background: 'rgba(249,115,22,0.06)', border: '1px solid rgba(249,115,22,0.18)', color: 'var(--accent)', marginBottom: '1.5rem', display: 'inline-flex' }}>
             Contactez-nous
           </div>
-          <h1 className="font-display" style={{ fontWeight: 900, fontSize: 'clamp(2rem, 5vw, 3.75rem)', color: 'white', marginBottom: '1rem' }}>
+          <h1 className="font-display" style={{ fontWeight: 900, fontSize: 'clamp(2rem, 5vw, 3.75rem)', color: 'var(--text)', marginBottom: '1rem' }}>
             Parlons de votre <span className="gradient-text">projet</span>
           </h1>
-          <p style={{ color: '#94a3b8', fontSize: '1.125rem', maxWidth: '36rem', margin: '0 auto' }}>
-            Décrivez-nous votre activité et vos besoins. Nous vous répondons sous <strong style={{ color: 'white' }}>24 heures</strong> avec un devis personnalisé, gratuit et sans engagement.
+          <p style={{ color: 'var(--muted)', fontSize: '1.125rem', maxWidth: '36rem', margin: '0 auto' }}>
+            Décrivez-nous votre activité et vos besoins. Nous vous répondons sous <strong style={{ color: 'var(--text)' }}>24 heures</strong> avec un devis personnalisé, gratuit et sans engagement.
           </p>
+          <div style={{ marginTop: '1.25rem', display: 'flex', justifyContent: 'center', gap: '0.75rem' }}>
+            <a href="https://calendly.com/your-username/15min" target="_blank" rel="noopener noreferrer" className="btn-secondary" style={{ padding: '0.75rem 1.25rem' }}>Réserver un appel 15 min</a>
+            <Link to="/contact" className="btn-primary" style={{ padding: '0.75rem 1.25rem' }}>Demander un devis</Link>
+          </div>
         </div>
       </section>
 
@@ -152,45 +156,45 @@ export default function ContactPage() {
             {/* Info column */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
               <div className="glass" style={{ borderRadius: '1rem', padding: '1.75rem' }}>
-                <h2 style={{ color: 'white', fontWeight: 700, fontSize: '1.125rem', marginBottom: '1.25rem' }}>Informations de contact</h2>
+                <h2 style={{ color: 'var(--text)', fontWeight: 700, fontSize: '1.125rem', marginBottom: '1.25rem' }}>Informations de contact</h2>
                 <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
                   <li style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
-                    <div style={{ width: '2.5rem', height: '2.5rem', borderRadius: '0.75rem', background: 'rgba(99,102,241,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                      <Mail size={18} style={{ color: '#818cf8' }} />
+                    <div style={{ width: '2.5rem', height: '2.5rem', borderRadius: '0.75rem', background: 'rgba(249,115,22,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <Mail size={18} style={{ color: 'var(--accent)' }} aria-hidden="true" />
                     </div>
                     <div>
-                      <p style={{ fontSize: '0.75rem', color: '#64748b', marginBottom: '0.125rem' }}>E-mail</p>
-                      <a href="mailto:contact@informel-tic.com" style={{ color: '#e2e8f0', fontSize: '0.875rem', textDecoration: 'none' }}>contact@informel-tic.com</a>
+                      <p style={{ fontSize: '0.75rem', color: 'var(--muted)', marginBottom: '0.125rem' }}>E-mail</p>
+                      <a href="mailto:contact@informel-tic.com" style={{ color: 'var(--text)', fontSize: '0.875rem', textDecoration: 'none' }}>contact@informel-tic.com</a>
                     </div>
                   </li>
                   <li style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
-                    <div style={{ width: '2.5rem', height: '2.5rem', borderRadius: '0.75rem', background: 'rgba(99,102,241,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                      <MapPin size={18} style={{ color: '#818cf8' }} />
+                    <div style={{ width: '2.5rem', height: '2.5rem', borderRadius: '0.75rem', background: 'rgba(249,115,22,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <MapPin size={18} style={{ color: 'var(--accent)' }} aria-hidden="true" />
                     </div>
                     <div>
-                      <p style={{ fontSize: '0.75rem', color: '#64748b', marginBottom: '0.125rem' }}>Adresse</p>
-                      <p style={{ color: '#e2e8f0', fontSize: '0.875rem' }}>1333 Rue Jean Jaurès<br />59156 Lourches, France</p>
+                      <p style={{ fontSize: '0.75rem', color: 'var(--muted)', marginBottom: '0.125rem' }}>Adresse</p>
+                      <p style={{ color: 'var(--text)', fontSize: '0.875rem' }}>1333 Rue Jean Jaurès<br />59156 Lourches, France</p>
                     </div>
                   </li>
                 </ul>
               </div>
 
-              <div className="glass" style={{ borderRadius: '1rem', padding: '1.75rem', background: 'linear-gradient(135deg, rgba(52,211,153,0.1), rgba(52,211,153,0.05))', border: '1px solid rgba(52,211,153,0.2)' }}>
-                <CheckCircle size={20} style={{ color: '#34d399', marginBottom: '0.75rem' }} />
-                <h3 style={{ color: 'white', fontWeight: 600, marginBottom: '0.25rem' }}>Réponse sous 24h</h3>
-                <p style={{ color: '#94a3b8', fontSize: '0.875rem' }}>Obtenez votre devis personnalisé et gratuit en moins d'une journée ouvrée.</p>
+              <div className="glass" style={{ borderRadius: '1rem', padding: '1.75rem', background: 'linear-gradient(135deg, rgba(251,146,60,0.09), rgba(251,146,60,0.04))', border: '1px solid rgba(251,146,60,0.12)' }}>
+                <CheckCircle size={20} style={{ color: 'var(--accent-2)', marginBottom: '0.75rem' }} aria-hidden="true" />
+                <h3 style={{ color: 'var(--text)', fontWeight: 600, marginBottom: '0.25rem' }}>Réponse sous 24h</h3>
+                <p style={{ color: 'var(--muted)', fontSize: '0.875rem' }}>Obtenez votre devis personnalisé et gratuit en moins d'une journée ouvrée.</p>
               </div>
 
               <div className="glass" style={{ borderRadius: '1rem', padding: '1.75rem' }}>
-                <h3 style={{ color: 'white', fontWeight: 600, marginBottom: '1rem', fontSize: '0.875rem' }}>À consulter également</h3>
+                <h3 style={{ color: 'var(--text)', fontWeight: 600, marginBottom: '1rem', fontSize: '0.875rem' }}>À consulter également</h3>
                 <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                   {[
                     { to: '/offres', label: 'Nos offres & tarifs' },
                     { to: '/a-propos', label: "À propos d'INFORMEL-TIC" },
                   ].map(({ to, label }) => (
                     <li key={to}>
-                      <Link to={to} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#94a3b8', fontSize: '0.875rem', textDecoration: 'none' }}>
-                        <ArrowRight size={14} /> {label}
+                      <Link to={to} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--muted)', fontSize: '0.875rem', textDecoration: 'none' }}>
+                        <ArrowRight size={14} aria-hidden="true" /> {label}
                       </Link>
                     </li>
                   ))}
@@ -201,7 +205,7 @@ export default function ContactPage() {
             {/* Form column */}
             <div>
               <div className="glass" style={{ borderRadius: '1rem', padding: '2rem' }}>
-                <h2 style={{ color: 'white', fontWeight: 700, fontSize: '1.25rem', marginBottom: '1.5rem' }}>Envoyez-nous un message</h2>
+                <h2 style={{ color: 'var(--text)', fontWeight: 700, fontSize: '1.25rem', marginBottom: '1.5rem' }}>Envoyez-nous un message</h2>
 
                 {toast && (
                   <div role="alert" className={`toast ${toast.type}`} style={{ marginBottom: '1.5rem' }}>
@@ -235,7 +239,7 @@ export default function ContactPage() {
                     )}
                   </button>
 
-                  <p style={{ fontSize: '0.75rem', color: '#64748b', textAlign: 'center', marginTop: '1rem' }}>
+                  <p style={{ fontSize: '0.75rem', color: 'var(--muted)', textAlign: 'center', marginTop: '1rem' }}>
                     En envoyant ce formulaire, vous acceptez d'être contacté par INFORMEL-TIC concernant votre projet.
                   </p>
                 </form>

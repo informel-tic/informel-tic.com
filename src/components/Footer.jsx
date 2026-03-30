@@ -20,7 +20,7 @@ export default function Footer() {
         <div>
           <Link to="/" className="flex items-center gap-2 mb-4">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-emerald-400 flex items-center justify-center">
-              <Zap size={16} className="text-white" strokeWidth={2.5} />
+              <Zap size={16} className="text-white" strokeWidth={2.5} aria-hidden="true" />
             </div>
             <span className="font-display font-bold text-white text-lg">
               INFORMEL-<span className="gradient-text">TIC</span>
@@ -65,18 +65,18 @@ export default function Footer() {
                 href="mailto:contact@informel-tic.com"
                 className="flex items-center gap-3 text-slate-400 text-sm hover:text-indigo-400 transition-colors group"
               >
-                <Mail size={15} className="text-indigo-500 flex-shrink-0" />
+                <Mail size={15} className="text-indigo-500 flex-shrink-0" aria-hidden="true" />
                 contact@informel-tic.com
               </a>
             </li>
             <li className="flex items-start gap-3 text-slate-400 text-sm">
-              <MapPin size={15} className="text-indigo-500 flex-shrink-0 mt-0.5" />
+              <MapPin size={15} className="text-indigo-500 flex-shrink-0 mt-0.5" aria-hidden="true" />
               <span>1333 Rue Jean Jaurès<br />59156 Lourches, France</span>
             </li>
           </ul>
           <div className="mt-6">
             <Link to="/contact" className="btn-primary text-sm py-2.5 px-5 inline-flex">
-              Demander un devis →
+              Demander un devis
             </Link>
           </div>
         </div>
@@ -84,7 +84,7 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)', padding: '1.25rem 0' }}>
-        <div className="container-lg" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '0.75rem', fontSize: '0.75rem', color: '#64748b' }}>
+        <div className="container-lg" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '0.75rem', fontSize: '0.75rem', color: 'var(--text)' }}>
           <p>
             © {year} INFORMEL-TIC — CHON Rachid, Bouzid, Sénouci. Entrepreneur Individuel.
             SIREN : 101 902 567
@@ -93,6 +93,8 @@ export default function Footer() {
             <Link to="/mentions-legales" className="hover:text-slate-300 transition-colors">
               Mentions légales
             </Link>
+            <span className="text-slate-700">|</span>
+            <Link to="/politique-de-confidentialite" className="hover:text-slate-300 transition-colors">Politique de confidentialité</Link>
             <span className="text-slate-700">|</span>
             <span>TVA non applicable — art. 293 B CGI</span>
           </div>

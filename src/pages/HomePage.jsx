@@ -62,12 +62,12 @@ const STATS = [
 
 /* ── Features ──────────────────────────────────────── */
 const FEATURES = [
-  { icon: Rocket,     title: 'Ultra-rapide',       desc: "Chargement en moins de 2 secondes. Score PageSpeed proche de 100. Vos clients n'attendent pas.", iconColor: '#818cf8' },
-  { icon: Search,     title: 'Optimisé Google',     desc: 'SEO on-page, balisage sémantique, fiche Google My Business. Apparaissez en première page localement.', iconColor: '#6ee7b7' },
-  { icon: Smartphone, title: 'Responsive parfait',  desc: "Affiché impeccablement sur mobile, tablette et desktop. Aucun compromis sur l'expérience utilisateur.", iconColor: '#a78bfa' },
-  { icon: Code2,      title: 'Code source livré',   desc: 'Vous êtes propriétaire de votre site à 100%. Code source livré à la fin du projet. Zéro dépendance.', iconColor: '#fbbf24' },
-  { icon: Shield,     title: 'Sécurité SSL',        desc: 'Certificat SSL inclus, connexion HTTPS sécurisée, protection contre les failles communes.', iconColor: '#fb7185' },
-  { icon: Globe,      title: 'Sans WordPress',      desc: 'Code propre, sans plugins obsolètes ni failles de sécurité. Performance native, maintenance simplifiée.', iconColor: '#22d3ee' },
+  { icon: Rocket,     title: 'Ultra-rapide',       desc: "Chargement en moins de 2 secondes. Score PageSpeed proche de 100. Vos clients n'attendent pas.", iconColor: 'var(--accent)' },
+  { icon: Search,     title: 'Optimisé Google',     desc: 'SEO on-page, balisage sémantique, fiche Google My Business. Apparaissez en première page localement.', iconColor: 'var(--accent)' },
+  { icon: Smartphone, title: 'Responsive parfait',  desc: "Affiché impeccablement sur mobile, tablette et desktop. Aucun compromis sur l'expérience utilisateur.", iconColor: 'var(--accent)' },
+  { icon: Code2,      title: 'Code source livré',   desc: 'Vous êtes propriétaire de votre site à 100%. Code source livré à la fin du projet. Zéro dépendance.', iconColor: 'var(--accent)' },
+  { icon: Shield,     title: 'Sécurité SSL',        desc: 'Certificat SSL inclus, connexion HTTPS sécurisée, protection contre les failles communes.', iconColor: 'var(--accent)' },
+  { icon: Globe,      title: 'Sans WordPress',      desc: 'Code propre, sans plugins obsolètes ni failles de sécurité. Performance native, maintenance simplifiée.', iconColor: 'var(--accent)' },
 ];
 
 /* ── Testimonials ────────────────────────────────── */
@@ -93,36 +93,36 @@ export default function HomePage() {
       {/* ══ HERO ════════════════════════════════════════ */}
       <section className="hero-bg grid-bg" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
         {[...Array(6)].map((_, i) => (
-          <span key={i} className="particle" style={{ width: `${4 + i * 2}px`, height: `${4 + i * 2}px`, left: `${10 + i * 15}%`, background: i % 2 === 0 ? '#6366f1' : '#34d399', animationDuration: `${8 + i * 2}s`, animationDelay: `${i * 1.5}s` }} />
+          <span key={i} className="particle" style={{ width: `${4 + i * 2}px`, height: `${4 + i * 2}px`, left: `${10 + i * 15}%`, background: i % 2 === 0 ? 'var(--accent)' : 'var(--accent-2)', animationDuration: `${8 + i * 2}s`, animationDelay: `${i * 1.5}s` }} />
         ))}
 
         <div style={{ maxWidth: '64rem', margin: '0 auto', padding: '6rem 1.5rem 5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-          <div className="badge" style={{ background: 'rgba(99,102,241,0.1)', border: '1px solid rgba(99,102,241,0.3)', color: '#a5b4fc', marginBottom: '2rem' }}>
-            <Zap size={12} style={{ color: '#818cf8' }} />
+          <div className="badge" style={{ background: 'rgba(249,115,22,0.06)', border: '1px solid rgba(249,115,22,0.18)', color: 'var(--accent)', marginBottom: '2rem' }}>
+            <Zap size={12} style={{ color: 'var(--accent)' }} aria-hidden="true" />
             Développement web sur-mesure · Depuis Lourches (59)
           </div>
 
-          <h1 className="font-display" style={{ fontWeight: 900, fontSize: 'clamp(2.5rem, 6vw, 5rem)', color: 'white', lineHeight: 1.1, marginBottom: '1.5rem', maxWidth: '56rem' }}>
+          <h1 className="font-display" style={{ fontWeight: 900, fontSize: 'clamp(2.5rem, 6vw, 5rem)', color: 'var(--text)', lineHeight: 1.1, marginBottom: '1.5rem', maxWidth: '56rem' }}>
             Votre site web<br /><TypingWord />
           </h1>
 
-          <p style={{ color: '#94a3b8', fontSize: 'clamp(1rem, 2vw, 1.25rem)', maxWidth: '42rem', lineHeight: 1.7, marginBottom: '2.5rem' }}>
-            INFORMEL-TIC développe des sites web professionnels <strong style={{ color: 'white' }}>100% sur-mesure</strong>, sans WordPress, ultra-rapides et optimisés pour vous faire gagner des clients localement.
+          <p style={{ color: 'var(--muted)', fontSize: 'clamp(1rem, 2vw, 1.25rem)', maxWidth: '42rem', lineHeight: 1.7, marginBottom: '2.5rem' }}>
+            INFORMEL-TIC développe des sites web professionnels <strong style={{ color: 'var(--text)' }}>100% sur-mesure</strong>, sans WordPress, ultra-rapides et optimisés pour vous faire gagner des clients localement.
           </p>
 
           <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1rem', marginBottom: '3rem' }}>
             <Link to="/contact" className="btn-primary" style={{ fontSize: '1rem', padding: '0.875rem 2rem' }}>
-              Devis gratuit en 24h <ArrowRight size={18} />
+              Demander un devis <ArrowRight size={18} />
             </Link>
             <Link to="/offres" className="btn-secondary" style={{ fontSize: '1rem', padding: '0.875rem 2rem' }}>
               Voir nos offres
             </Link>
           </div>
 
-          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1.25rem', fontSize: '0.875rem', color: '#94a3b8' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1.25rem', fontSize: '0.875rem', color: 'var(--muted)' }}>
             {['Sans engagement', 'Devis gratuit 24h', 'Code source livré', 'SSL inclus'].map((item) => (
               <span key={item} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <CheckCircle size={14} style={{ color: '#34d399', flexShrink: 0 }} /> {item}
+                <CheckCircle size={14} style={{ color: 'var(--accent-2)', flexShrink: 0 }} /> {item}
               </span>
             ))}
           </div>
@@ -141,7 +141,7 @@ export default function HomePage() {
             {STATS.map(({ value, label }) => (
               <div key={label}>
                 <p className="stat-number gradient-text">{value}</p>
-                <p style={{ color: '#94a3b8', fontSize: '0.875rem', marginTop: '0.5rem' }}>{label}</p>
+                <p style={{ color: 'var(--text)', fontSize: '0.875rem', marginTop: '0.5rem' }}>{label}</p>
               </div>
             ))}
           </div>
@@ -153,10 +153,10 @@ export default function HomePage() {
         <div className="container-lg">
           <RevealSection>
             <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-              <h2 className="font-display" style={{ fontWeight: 700, fontSize: 'clamp(1.75rem, 4vw, 3rem)', color: 'white', marginBottom: '1rem' }}>
+              <h2 className="font-display" style={{ fontWeight: 700, fontSize: 'clamp(1.75rem, 4vw, 3rem)', color: 'var(--text)', marginBottom: '1rem' }}>
                 Pourquoi choisir <span className="gradient-text">INFORMEL-TIC ?</span>
               </h2>
-              <p style={{ color: '#94a3b8', maxWidth: '36rem', margin: '0 auto', fontSize: '1.125rem' }}>
+              <p style={{ color: 'var(--muted)', maxWidth: '36rem', margin: '0 auto', fontSize: '1.125rem' }}>
                 Chaque site est unique. Chaque ligne de code, réfléchie. Voici ce que vous obtenez quand vous travaillez avec nous.
               </p>
             </div>
@@ -166,11 +166,11 @@ export default function HomePage() {
             {FEATURES.map(({ icon: Icon, title, desc, iconColor }, i) => (
               <RevealSection key={title} delay={i * 80}>
                 <div className="glass glass-hover" style={{ borderRadius: '1rem', padding: '2rem', height: '100%' }}>
-                  <div style={{ width: '3rem', height: '3rem', borderRadius: '0.75rem', background: 'rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.25rem' }}>
-                    <Icon size={22} strokeWidth={1.8} style={{ color: iconColor }} />
+                    <div style={{ width: '3rem', height: '3rem', borderRadius: '0.75rem', background: 'var(--surface)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.25rem' }}>
+                    <Icon size={22} strokeWidth={1.8} style={{ color: iconColor }} aria-hidden="true" />
                   </div>
-                  <h3 style={{ color: 'white', fontWeight: 700, fontSize: '1.125rem', marginBottom: '0.75rem' }}>{title}</h3>
-                  <p style={{ color: '#94a3b8', fontSize: '0.875rem', lineHeight: 1.7 }}>{desc}</p>
+                  <h3 style={{ color: 'var(--text)', fontWeight: 700, fontSize: '1.125rem', marginBottom: '0.75rem' }}>{title}</h3>
+                  <p style={{ color: 'var(--muted)', fontSize: '0.875rem', lineHeight: 1.7 }}>{desc}</p>
                 </div>
               </RevealSection>
             ))}
@@ -183,10 +183,10 @@ export default function HomePage() {
         <div className="container-md">
           <RevealSection>
             <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
-              <h2 className="font-display" style={{ fontWeight: 700, fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', color: 'white', marginBottom: '1rem' }}>
+              <h2 className="font-display" style={{ fontWeight: 700, fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', color: 'var(--text)', marginBottom: '1rem' }}>
                 Comment ça fonctionne ?
               </h2>
-              <p style={{ color: '#94a3b8', fontSize: '1.125rem' }}>Un processus simple, transparent et efficace.</p>
+              <p style={{ color: 'var(--muted)', fontSize: '1.125rem' }}>Un processus simple, transparent et efficace.</p>
             </div>
           </RevealSection>
 
@@ -198,12 +198,12 @@ export default function HomePage() {
           ].map(({ step, title, desc }, i) => (
             <RevealSection key={step} delay={i * 100}>
               <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start', marginBottom: '2.5rem' }}>
-                <div style={{ flexShrink: 0, width: '3rem', height: '3rem', borderRadius: '50%', background: 'rgba(99,102,241,0.2)', border: '2px solid rgba(99,102,241,0.6)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '0.875rem', color: '#a5b4fc' }} className="font-display">
+                <div style={{ flexShrink: 0, width: '3rem', height: '3rem', borderRadius: '50%', background: 'rgba(249,115,22,0.12)', border: '2px solid rgba(249,115,22,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '0.875rem', color: 'var(--accent-2)' }} className="font-display">
                   {step}
                 </div>
                 <div className="glass" style={{ borderRadius: '1rem', padding: '1.5rem', flex: 1 }}>
-                  <h3 style={{ color: 'white', fontWeight: 700, fontSize: '1.125rem', marginBottom: '0.5rem' }}>{title}</h3>
-                  <p style={{ color: '#94a3b8', fontSize: '0.875rem', lineHeight: 1.7 }}>{desc}</p>
+                  <h3 style={{ color: 'var(--text)', fontWeight: 700, fontSize: '1.125rem', marginBottom: '0.5rem' }}>{title}</h3>
+                  <p style={{ color: 'var(--muted)', fontSize: '0.875rem', lineHeight: 1.7 }}>{desc}</p>
                 </div>
               </div>
             </RevealSection>
@@ -216,10 +216,10 @@ export default function HomePage() {
         <div className="container-lg">
           <RevealSection>
             <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
-              <h2 className="font-display" style={{ fontWeight: 700, fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', color: 'white', marginBottom: '1rem' }}>
+              <h2 className="font-display" style={{ fontWeight: 700, fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', color: 'var(--text)', marginBottom: '1rem' }}>
                 Ils nous font confiance
               </h2>
-              <p style={{ color: '#94a3b8', fontSize: '1.125rem' }}>Des résultats concrets pour des professionnels locaux.</p>
+              <p style={{ color: 'var(--muted)', fontSize: '1.125rem' }}>Des résultats concrets pour des professionnels locaux.</p>
             </div>
           </RevealSection>
 
@@ -229,13 +229,13 @@ export default function HomePage() {
                 <div className="glass glass-hover" style={{ borderRadius: '1rem', padding: '2rem', height: '100%', display: 'flex', flexDirection: 'column' }}>
                   <div style={{ display: 'flex', gap: '0.25rem', marginBottom: '1rem' }}>
                     {[...Array(stars)].map((_, j) => (
-                      <Star key={j} size={14} style={{ color: '#fbbf24', fill: '#fbbf24' }} />
-                    ))}
+                          <Star key={j} size={14} style={{ color: 'var(--accent-2)', fill: 'var(--accent-2)' }} aria-hidden="true" />
+                        ))}
                   </div>
-                  <p style={{ color: '#cbd5e1', fontSize: '0.875rem', lineHeight: 1.7, fontStyle: 'italic', flex: 1 }}>"{text}"</p>
-                  <div style={{ marginTop: '1.25rem', paddingTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-                    <p style={{ color: 'white', fontWeight: 600, fontSize: '0.875rem' }}>{name}</p>
-                    <p style={{ color: '#64748b', fontSize: '0.75rem', marginTop: '0.125rem' }}>{role}</p>
+                  <p style={{ color: 'var(--muted)', fontSize: '0.875rem', lineHeight: 1.7, fontStyle: 'italic', flex: 1 }}>"{text}"</p>
+                  <div style={{ marginTop: '1.25rem', paddingTop: '1rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+                    <p style={{ color: 'var(--text)', fontWeight: 600, fontSize: '0.875rem' }}>{name}</p>
+                    <p style={{ color: 'var(--muted)', fontSize: '0.75rem', marginTop: '0.125rem' }}>{role}</p>
                   </div>
                 </div>
               </RevealSection>
@@ -249,18 +249,18 @@ export default function HomePage() {
         <div className="container-md">
           <RevealSection>
             <div style={{ position: 'relative', borderRadius: '1.5rem', overflow: 'hidden' }}>
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(79,70,229,0.3), rgba(99,102,241,0.1), rgba(52,211,153,0.2))' }} />
-              <div style={{ position: 'absolute', inset: 0, borderRadius: '1.5rem', border: '1px solid rgba(99,102,241,0.35)' }} />
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(249,115,22,0.14), rgba(251,146,60,0.09), rgba(251,146,60,0.06))' }} />
+              <div style={{ position: 'absolute', inset: 0, borderRadius: '1.5rem', border: '1px solid rgba(251,146,60,0.12)' }} />
               <div style={{ position: 'relative', padding: 'clamp(2rem, 4vw, 4rem) clamp(2rem, 4vw, 4rem)', textAlign: 'center' }}>
-                <h2 className="font-display" style={{ fontWeight: 900, fontSize: 'clamp(1.75rem, 4vw, 3rem)', color: 'white', marginBottom: '1.25rem' }}>
+                <h2 className="font-display" style={{ fontWeight: 900, fontSize: 'clamp(1.75rem, 4vw, 3rem)', color: 'var(--text)', marginBottom: '1.25rem' }}>
                   Prêt à lancer votre projet ?
                 </h2>
-                <p style={{ color: '#cbd5e1', fontSize: '1.125rem', marginBottom: '2rem', maxWidth: '36rem', margin: '0 auto 2rem' }}>
+                <p style={{ color: 'var(--muted)', fontSize: '1.125rem', marginBottom: '2rem', maxWidth: '36rem', margin: '0 auto 2rem' }}>
                   Décrivez-nous votre activité. Nous vous proposons la solution idéale gratuitement et sans engagement.
                 </p>
                 <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1rem' }}>
                   <Link to="/contact" className="btn-primary" style={{ fontSize: '1rem', padding: '1rem 2.5rem' }}>
-                    Demander mon devis gratuit <ArrowRight size={18} />
+                    Demander un devis <ArrowRight size={18} />
                   </Link>
                   <Link to="/offres" className="btn-secondary" style={{ fontSize: '1rem', padding: '1rem 2.5rem' }}>
                     Voir les offres

@@ -26,9 +26,67 @@
     <!-- Preconnect for Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- LocalBusiness JSON-LD for local SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "INFORMEL-TIC",
+      "description": "INFORMEL-TIC — Développement web sur-mesure 100% sans WordPress. Sites ultra-rapides, optimisés Google, code source livré.",
+      "url": "https://informel-tic.com",
+      "email": "contact@informel-tic.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1333 Rue Jean Jaurès",
+        "addressLocality": "Lourches",
+        "postalCode": "59156",
+        "addressCountry": "FR"
+      }
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- Accessible cookie consent (placeholder) -->
+    <div id="cookie-consent" class="cookie-consent" role="dialog" aria-modal="true" aria-labelledby="cookie-title" tabindex="-1" style="display:none;">
+      <div style="display:flex;align-items:center;gap:0.75rem">
+        <p id="cookie-title" style="margin:0; font-size:0.95rem;">Nous utilisons des cookies pour améliorer l'expérience.</p>
+        <div style="display:flex;gap:0.5rem;margin-left:0.5rem">
+          <button id="accept-cookies" style="padding:0.35rem 0.6rem; border-radius:0.35rem; border:none; background:#f97316; color:#0f172a; font-weight:600;">Accepter</button>
+          <a id="manage-cookies" href="/politique-de-confidentialite" style="padding:0.35rem 0.6rem; border-radius:0.35rem; border:1px solid var(--border); background:transparent; color:var(--text); text-decoration:none;">Gérer</a>
+        </div>
+        <button id="close-cookies" aria-label="Fermer" style="margin-left:0.5rem; background:transparent; border:none; color:var(--muted);">✕</button>
+      </div>
+    </div>
+
+    <script>
+      (function(){
+        try{
+          if(document.cookie.indexOf('cookie_consent=1')===-1){
+            var el=document.getElementById('cookie-consent');
+            var acceptBtn=document.getElementById('accept-cookies');
+            var closeBtn=document.getElementById('close-cookies');
+            el.style.display='block';
+            // Move focus to the accept button for keyboard users
+            try{ acceptBtn.focus(); }catch(e){}
+
+            acceptBtn.addEventListener('click', function(){
+              document.cookie='cookie_consent=1;path=/;max-age=' + (60*60*24*365);
+              el.style.display='none';
+            });
+
+            closeBtn.addEventListener('click', function(){ el.style.display='none'; });
+
+            // Allow ESC to close the banner
+            document.addEventListener('keydown', function onKey(e){ if(e.key === 'Escape'){ el.style.display='none'; document.removeEventListener('keydown', onKey); } });
+          }
+        }catch(e){/* silent */}
+      })();
+    </script>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

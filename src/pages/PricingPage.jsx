@@ -30,39 +30,39 @@ function PricingCard({ plan }) {
   const { name, tagline, price, monthly, featured, badge, target, features, cta, ctaVariant } = plan;
   const cardStyle = featured
     ? { background: 'linear-gradient(135deg, rgba(99,102,241,0.12), rgba(52,211,153,0.08))', border: '1px solid rgba(99,102,241,0.5)', boxShadow: '0 0 40px rgba(99,102,241,0.2)', position: 'relative', overflow: 'hidden', borderRadius: '1rem', padding: '2rem', display: 'flex', flexDirection: 'column', height: '100%', transition: 'all 0.3s' }
-    : { background: 'rgba(255,255,255,0.04)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '1rem', padding: '2rem', display: 'flex', flexDirection: 'column', height: '100%', transition: 'all 0.3s' };
+    : { background: 'var(--glass-bg)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid var(--glass-border)', borderRadius: '1rem', padding: '2rem', display: 'flex', flexDirection: 'column', height: '100%', transition: 'all 0.3s' };
 
   return (
     <div className={featured ? '' : 'glass-hover'} style={cardStyle}>
-      {featured && <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '2px', background: 'linear-gradient(90deg, #6366f1, #34d399)' }} />}
+      {featured && <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '2px', background: 'linear-gradient(90deg, var(--accent), var(--accent-2))' }} />}
       {badge && (
         <div style={{ position: 'absolute', top: '-1rem', left: '50%', transform: 'translateX(-50%)', whiteSpace: 'nowrap', zIndex: 10 }}>
-          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.375rem', padding: '0.375rem 1rem', borderRadius: '9999px', background: 'linear-gradient(135deg, #6366f1, #10b981)', color: 'white', fontSize: '0.75rem', fontWeight: 600, boxShadow: '0 4px 14px rgba(99,102,241,0.3)' }}>{badge}</span>
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.375rem', padding: '0.375rem 1rem', borderRadius: '9999px', background: 'linear-gradient(135deg, var(--accent), var(--accent-2))', color: 'var(--accent-contrast)', fontSize: '0.75rem', fontWeight: 600, boxShadow: '0 4px 14px rgba(0,0,0,0.08)' }}>{badge}</span>
         </div>
       )}
 
       <div style={{ marginBottom: '1.5rem' }}>
-        <h3 className="font-display" style={{ fontWeight: 700, fontSize: '1.25rem', marginBottom: '0.25rem', color: featured ? undefined : 'white' }}>
+        <h3 className="font-display" style={{ fontWeight: 700, fontSize: '1.25rem', marginBottom: '0.25rem', color: featured ? undefined : 'var(--text)' }}>
           {featured ? <span className="gradient-text">{name}</span> : name}
         </h3>
-        <p style={{ color: '#94a3b8', fontSize: '0.875rem' }}>{tagline}</p>
+        <p style={{ color: 'var(--muted)', fontSize: '0.875rem' }}>{tagline}</p>
       </div>
 
       <div style={{ marginBottom: '1.5rem' }}>
         <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.5rem', marginBottom: '0.25rem' }}>
-          <span className="font-display" style={{ fontWeight: 900, fontSize: '3rem', color: 'white' }}>{price.toLocaleString('fr-FR')} €</span>
-          <span style={{ color: '#94a3b8', fontSize: '0.875rem' }}>à la création</span>
+          <span className="font-display" style={{ fontWeight: 900, fontSize: '3rem', color: 'var(--text)' }}>{price.toLocaleString('fr-FR')} €</span>
+          <span style={{ color: 'var(--muted)', fontSize: '0.875rem' }}>à la création</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <span style={{ fontSize: '1.5rem', fontWeight: 700, color: featured ? '#34d399' : '#e2e8f0' }}>
-            + {monthly} €<span style={{ fontSize: '1rem', fontWeight: 400, color: '#94a3b8' }}>/mois</span>
+          <span style={{ fontSize: '1.5rem', fontWeight: 700, color: featured ? 'var(--accent-2)' : 'var(--text)' }}>
+            + {monthly} €<span style={{ fontSize: '1rem', fontWeight: 400, color: 'var(--muted)' }}>/mois</span>
           </span>
-          <span style={{ color: '#64748b', fontSize: '0.75rem' }}>(maintenance)</span>
+          <span style={{ color: 'var(--muted)', fontSize: '0.75rem' }}>(maintenance)</span>
         </div>
-        <p style={{ fontSize: '0.75rem', color: '#64748b', marginTop: '0.5rem', fontStyle: 'italic' }}>TVA non applicable — art. 293 B CGI</p>
+        <p style={{ fontSize: '0.75rem', color: 'var(--muted)', marginTop: '0.5rem', fontStyle: 'italic' }}>TVA non applicable — art. 293 B CGI</p>
       </div>
 
-      <div style={{ borderRadius: '0.75rem', padding: '0.875rem', marginBottom: '1.5rem', fontSize: '0.875rem', background: featured ? 'rgba(99,102,241,0.15)' : 'rgba(255,255,255,0.04)', color: featured ? '#c7d2fe' : '#cbd5e1' }}>
+      <div style={{ borderRadius: '0.75rem', padding: '0.875rem', marginBottom: '1.5rem', fontSize: '0.875rem', background: 'var(--surface)', color: 'var(--muted)' }}>
         🎯 {target}
       </div>
 
@@ -90,13 +90,13 @@ export default function PricingPage() {
     <>
       <section className="hero-bg" style={{ paddingTop: '10rem', paddingBottom: '4rem', textAlign: 'center' }}>
         <div className="container-lg">
-          <div className="badge" style={{ background: 'rgba(99,102,241,0.1)', border: '1px solid rgba(99,102,241,0.3)', color: '#a5b4fc', marginBottom: '1.5rem', display: 'inline-flex' }}>
+          <div className="badge" style={{ background: 'var(--surface)', border: '1px solid var(--border)', color: 'var(--accent)', marginBottom: '1.5rem', display: 'inline-flex' }}>
             <Zap size={12} /> Offres & Tarifs
           </div>
-          <h1 className="font-display" style={{ fontWeight: 900, fontSize: 'clamp(2rem, 5vw, 3.75rem)', color: 'white', marginBottom: '1.25rem' }}>
+          <h1 className="font-display" style={{ fontWeight: 900, fontSize: 'clamp(2rem, 5vw, 3.75rem)', color: 'var(--text)', marginBottom: '1.25rem' }}>
             Des offres <span className="gradient-text">claires</span>,<br />sans mauvaise surprise
           </h1>
-          <p style={{ color: '#94a3b8', fontSize: '1.125rem', maxWidth: '42rem', margin: '0 auto' }}>
+          <p style={{ color: 'var(--muted)', fontSize: '1.125rem', maxWidth: '42rem', margin: '0 auto' }}>
             Choisissez l'offre qui correspond à vos ambitions. Tous nos sites sont 100% sur-mesure, sans WordPress, ultra-rapides.
           </p>
         </div>
@@ -104,8 +104,8 @@ export default function PricingPage() {
 
       <section style={{ paddingBottom: '6rem' }}>
         <div className="container-lg">
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginBottom: '3rem', color: '#64748b', fontSize: '0.875rem' }}>
-            <AlertCircle size={14} style={{ color: 'rgba(245,158,11,0.6)' }} />
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginBottom: '3rem', color: 'var(--muted)', fontSize: '0.875rem' }}>
+            <AlertCircle size={14} style={{ color: 'rgba(249,115,22,0.6)' }} />
             TVA non applicable — art. 293 B du CGI. Prix TTC pour les particuliers.
           </div>
 
@@ -114,23 +114,23 @@ export default function PricingPage() {
           </div>
 
           <div style={{ marginTop: '5rem', textAlign: 'center' }}>
-            <p style={{ color: '#94a3b8', marginBottom: '1.25rem', fontSize: '1.125rem' }}>
+            <p style={{ color: 'var(--muted)', marginBottom: '1.25rem', fontSize: '1.125rem' }}>
               Vous ne savez pas quelle offre choisir ? Parlez-nous de votre projet.
             </p>
             <Link to="/contact" className="btn-primary" style={{ fontSize: '1rem', padding: '1rem 2.5rem' }}>
-              Demander un conseil gratuit <ArrowRight size={18} />
+              Demander un devis <ArrowRight size={18} />
             </Link>
           </div>
 
           <div style={{ marginTop: '7rem' }}>
-            <h2 className="font-display" style={{ fontWeight: 700, fontSize: '1.875rem', color: 'white', textAlign: 'center', marginBottom: '3rem' }}>
+            <h2 className="font-display" style={{ fontWeight: 700, fontSize: '1.875rem', color: 'var(--text)', textAlign: 'center', marginBottom: '3rem' }}>
               Questions fréquentes
             </h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1.5rem' }}>
               {FAQS.map(({ q, a }) => (
                 <div key={q} className="glass" style={{ borderRadius: '0.75rem', padding: '1.5rem' }}>
-                  <h3 style={{ color: 'white', fontWeight: 600, marginBottom: '0.5rem', fontSize: '1rem' }}>{q}</h3>
-                  <p style={{ color: '#94a3b8', fontSize: '0.875rem', lineHeight: 1.7 }}>{a}</p>
+                  <h3 style={{ color: 'var(--text)', fontWeight: 600, marginBottom: '0.5rem', fontSize: '1rem' }}>{q}</h3>
+                  <p style={{ color: 'var(--muted)', fontSize: '0.875rem', lineHeight: 1.7 }}>{a}</p>
                 </div>
               ))}
             </div>

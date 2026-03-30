@@ -19,24 +19,27 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Close mobile menu on Escape key
+  useEffect(() => {
+    const onKey = (e) => { if (e.key === 'Escape') setOpen(false); };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, []);
+
   // Close mobile menu on route change
   useEffect(() => { setOpen(false); }, []);
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-[#0a0a0f]/90 backdrop-blur-xl border-b border-white/5 shadow-2xl'
-          : 'bg-transparent'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'nav-scrolled' : 'bg-transparent'}`}
     >
       <nav className="container-lg" style={{ height: '4rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 group" aria-label="INFORMEL-TIC — Accueil">
           <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-emerald-400 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-            <Zap size={16} className="text-white" strokeWidth={2.5} />
+            <Zap size={16} style={{ color: 'var(--accent-contrast, #fff)' }} strokeWidth={2.5} aria-hidden="true" />
           </div>
-          <span className="font-display font-bold text-white text-lg tracking-tight">
+          <span className="font-display font-bold text-lg tracking-tight">
             INFORMEL-<span className="gradient-text">TIC</span>
           </span>
         </Link>
@@ -59,7 +62,7 @@ export default function Navbar() {
         {/* Desktop CTA */}
         <div className="hidden md:block">
           <Link to="/contact" className="btn-primary text-sm py-2.5 px-5">
-            Devis Gratuit
+            Demander un devis
           </Link>
         </div>
 
@@ -70,15 +73,13 @@ export default function Navbar() {
           aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
           aria-expanded={open}
         >
-          {open ? <X size={22} /> : <Menu size={22} />}
+          {open ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
         </button>
       </nav>
 
       {/* Mobile menu */}
       <div
-        className={`md:hidden transition-all duration-300 overflow-hidden ${
-          open ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-        } bg-[#111118]/98 backdrop-blur-xl border-b border-white/5`}
+        className={`md:hidden transition-all duration-300 overflow-hidden ${open ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} mobile-menu-bg`}
       >
         <ul className="flex flex-col px-6 py-4 gap-1">
           {links.map(({ to, label, end }) => (
@@ -105,7 +106,7 @@ export default function Navbar() {
               onClick={() => setOpen(false)}
               className="btn-primary w-full justify-center text-sm"
             >
-              Devis Gratuit
+              Demander un devis
             </Link>
           </li>
         </ul>

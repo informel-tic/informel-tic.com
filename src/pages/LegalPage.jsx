@@ -47,7 +47,7 @@ export default function LegalPage() {
           <h1 className="font-display" style={{ fontWeight: 900, fontSize: 'clamp(2rem, 5vw, 3rem)', color: 'white', marginBottom: '1rem' }}>
             Mentions <span className="gradient-text">légales</span>
           </h1>
-          <p style={{ color: '#94a3b8', maxWidth: '36rem', margin: '0 auto' }}>
+          <p style={{ color: 'var(--muted)', maxWidth: '36rem', margin: '0 auto' }}>
             Informations légales conformes à la loi LCEN du 21 juin 2004.
           </p>
         </div>
@@ -58,7 +58,7 @@ export default function LegalPage() {
           {SECTIONS.map(({ title, content }) => (
             <div key={title} className="glass" style={{ borderRadius: '1rem', padding: '2rem' }}>
               <h2 style={{ color: 'white', fontWeight: 700, fontSize: '1.125rem', marginBottom: '0.75rem' }}>{title}</h2>
-              <p style={{ color: '#94a3b8', fontSize: '0.875rem', lineHeight: 1.8, whiteSpace: 'pre-line' }}>{content}</p>
+              <p style={{ color: 'var(--muted)', fontSize: '0.875rem', lineHeight: 1.8, whiteSpace: 'pre-line' }}>{content}</p>
             </div>
           ))}
         </div>
