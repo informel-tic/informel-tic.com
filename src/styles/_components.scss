@@ -2076,8 +2076,9 @@
     color: var(--text);
   }
 
-  td:first-child {
-    text-align: left;
+  td {
+    text-align: center;
+    ;
     font-weight: 500;
     color: var(--text);
   }
@@ -2747,7 +2748,12 @@
     border-bottom: 1px solid var(--border);
   }
 
-  thead th {
+  tr td {
+    text-align: center;
+  }
+
+  thead tr th {
+    text-align: center;
     background: var(--surface);
     font-weight: 700;
     font-size: 0.8rem;
@@ -2767,11 +2773,13 @@
   .aden-savings__subsidy {
     color: var(--success);
     font-weight: 700;
+    text-align: center;
   }
 
   .aden-savings__net {
     font-weight: 700;
     color: var(--text);
+    text-align: center;
   }
 }
 
