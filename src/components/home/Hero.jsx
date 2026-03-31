@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Zap, ArrowRight } from 'lucide-react';
+import { Zap, ArrowRight, Shield, Star, Clock, MapPin } from 'lucide-react';
 
 /* ── Typing effect ─────────────────────────────────── */
 const WORDS = ['trouvé sur Google.', 'entre de bonnes mains.', 'sans stress technique.', 'local et transparent.'];
@@ -28,38 +28,51 @@ function TypingWord() {
   return <span className="gradient-text typing-cursor">{text}</span>;
 }
 
+const TRUST_ITEMS = [
+  { icon: Shield, label: 'Devis gratuit sous 24h' },
+  { icon: Star, label: 'Code source 100% livré' },
+  { icon: Clock, label: 'Réponse rapide' },
+  { icon: MapPin, label: 'Basé à Lourches (59)' },
+];
+
 export default function Hero() {
   return (
     <section className="hero-section hero-bg grid-bg">
       <div className="container-md hero-body">
 
-        <div className="badge hero-badge">
+        <div className="badge hero-badge hero-badge--glow">
           <Zap size={14} aria-hidden="true" />
-          L'Artisan Numérique du Nord
+          L'Artisan Numérique du Nord — Lille & 59
         </div>
 
         <h1 className="hero-title">
-          Services de Grande Agence,<br />
-          Proximité d'un Artisan.<br />
+          La qualité d'une agence.<br />
+          La proximité d'un artisan.<br />
           <span className="typing-wrap"><TypingWord /></span>
         </h1>
 
         <p className="hero-desc">
-          Professionnels ou particuliers — site web, visibilité Google, logiciel de caisse,
-          dépannage ou formation — <strong className="text-strong">un seul interlocuteur local</strong> pour
-          tout votre numérique. À Lille et dans le 59.
+          Site web sur-mesure, visibilité Google, logiciel de caisse, dépannage
+          et formation — <strong className="text-strong">un interlocuteur unique</strong> pour
+          tout votre numérique. Professionnels et particuliers dans le Nord.
         </p>
 
         <div className="hero-actions">
-          <Link to="/contact" className="btn-primary">
-            Demander un diagnostic <ArrowRight size={18} aria-hidden="true" />
+          <Link to="/contact" className="btn-primary btn-lg">
+            Obtenir mon diagnostic gratuit <ArrowRight size={18} aria-hidden="true" />
           </Link>
-          <Link to="/pros" className="btn-secondary">
-            Espace Pros
+          <Link to="/offres" className="btn-secondary btn-lg">
+            Voir nos tarifs
           </Link>
-          <Link to="/particuliers" className="btn-secondary">
-            Espace Particuliers
-          </Link>
+        </div>
+
+        <div className="hero-trust-bar">
+          {TRUST_ITEMS.map(({ icon: Icon, label }) => (
+            <div key={label} className="hero-trust-item">
+              <Icon size={15} aria-hidden="true" />
+              <span>{label}</span>
+            </div>
+          ))}
         </div>
 
         <div className="scroll-hint">

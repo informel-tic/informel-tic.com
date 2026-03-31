@@ -35,7 +35,7 @@ export default function B2CFormationPage() {
 
       <section className="section-padding">
         <div className="container-md">
-          <div className="pricing-card pricing-card--featured glass glass-hover" style={{ maxWidth: '480px', margin: '0 auto' }}>
+          <div className="pricing-card pricing-card--featured glass glass-hover pricing-card--centered">
             <div className="pricing-header">
               <h3 className="pricing-title">Formation à domicile</h3>
               <p className="pricing-tagline">Cours personnalisés, à votre rythme, chez vous.</p>
@@ -61,7 +61,7 @@ export default function B2CFormationPage() {
       <section className="section-padding section-alt">
         <div className="container-md">
           <div className="glass glass--padded">
-            <h2 className="info-title" style={{ marginBottom: '1rem' }}>Conditions</h2>
+            <h2 className="info-title mb-4">Conditions</h2>
             <ul className="rules-list">
               <li><strong>1ère heure indivisible</strong> — facturée intégralement.</li>
               <li><strong>Ensuite :</strong> facturation par tranche de 30 minutes.</li>
@@ -70,7 +70,7 @@ export default function B2CFormationPage() {
               <li>Matériel pédagogique et supports de cours fournis.</li>
             </ul>
           </div>
-          <div className="text-center" style={{ marginTop: '2rem' }}>
+          <div className="text-center mt-8">
             <Link to="/contact" className="btn-primary">
               Réserver une séance <ArrowRight size={16} aria-hidden="true" />
             </Link>

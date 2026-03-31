@@ -46,7 +46,7 @@
 }
 
 .section-alt {
-  background-color: #f9fafb;
+  background-color: var(--surface);
 }
 
 // ─── Section header (centered) ───────────────────────
@@ -85,12 +85,44 @@
   }
 }
 
+.grid-2col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+
+  @include m.md {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.grid-2x2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+
+  @include m.md {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 // ─── Text & font utilities ───────────────────────────
 .text-center  { text-align: center; }
 .items-start  { align-items: flex-start; }
 .font-display { font-family: var(--font-display); }
 .font-black   { font-weight: 900; }
 .font-bold    { font-weight: 700; }
+
+// ─── Spacing utilities ───────────────────────────────
+.mb-0  { margin-bottom: 0; }
+.mb-4  { margin-bottom: 1rem; }
+.mb-6  { margin-bottom: 1.5rem; }
+.mb-8  { margin-bottom: 2rem; }
+.mt-4  { margin-top: 1rem; }
+.mt-6  { margin-top: 1.5rem; }
+.mt-8  { margin-top: 2rem; }
+.mt-10 { margin-top: 2.5rem; }
+.mt-12 { margin-top: 3rem; }
+.mt-16 { margin-top: 4rem; }
 
 // ─── 404 page ────────────────────────────────────────
 .page-404 {
@@ -117,6 +149,6 @@
 }
 
 .not-found-meta {
-  color: #94a3b8;
+  color: var(--muted);
   margin-bottom: 2rem;
 }

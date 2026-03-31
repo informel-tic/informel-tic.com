@@ -1,7 +1,6 @@
-import { Star } from 'lucide-react';
+import { Shield, FileCheck, Clock, Handshake, Sparkles } from 'lucide-react';
 import { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import config from '../../config';
 
 function useReveal() {
   const ref = useRef(null);
@@ -32,8 +31,28 @@ function RevealSection({ children, className = '', delay = 0 }) {
   );
 }
 
-// No real testimonials yet — startup mode. Keep array empty and show launch message.
-const TESTIMONIALS = [];
+const COMMITMENTS = [
+  {
+    icon: FileCheck,
+    title: 'Devis écrit & détaillé',
+    desc: 'Prix affichés, périmètre précis, aucune surprise. Vous validez avant qu\'on commence.',
+  },
+  {
+    icon: Shield,
+    title: 'Code source livré',
+    desc: 'Votre site vous appartient à 100%. Pas de verrouillage technique, pas de plugin propriétaire.',
+  },
+  {
+    icon: Clock,
+    title: 'Réponse sous 24h',
+    desc: 'Chaque demande reçoit une réponse dans la journée ouvrable. Un vrai interlocuteur, pas un ticket.',
+  },
+  {
+    icon: Handshake,
+    title: 'Satisfait ou on corrige',
+    desc: 'Chaque livraison inclut une phase de retour. On ajuste jusqu\'à ce que ce soit parfait.',
+  },
+];
 
 export default function Testimonials() {
   return (
@@ -41,53 +60,44 @@ export default function Testimonials() {
       <div className="container-lg">
         <RevealSection>
           <div className="section-header">
+            <div className="badge hero-badge hero-badge--glow" style={{ marginBottom: '1.5rem' }}>
+              <Sparkles size={14} aria-hidden="true" />
+              Nos engagements
+            </div>
             <h2 className="section-title">
-              Ils nous ont fait confiance
+              Pourquoi nous faire confiance ?
             </h2>
             <p className="section-subtitle">
-              Résultats concrets pour des professionnels locaux et des particuliers du secteur.
+              Des engagements concrets, pas des promesses en l'air.
+              Chaque projet est traité avec la rigueur d'une agence et l'écoute d'un artisan.
             </p>
           </div>
         </RevealSection>
 
-        <div className="grid-3col">
-          {TESTIMONIALS.length === 0 ? (
-            <RevealSection>
-              <div className="glass glass-hover testimonial-card">
-                <p className="testimonial-quote">Activité en cours de lancement — Soyez parmi les premiers clients de la zone.</p>
-                <div className="testimonial-footer">
-                  <p className="testimonial-name">{config.OWNER_NAME} — Auto-entrepreneur</p>
-                  <p className="testimonial-role">Basé à {config.SERVICE_AREA}</p>
+        <div className="grid-2x2">
+          {COMMITMENTS.map(({ icon: Icon, title, desc }, i) => (
+            <RevealSection key={title} delay={i * 100}>
+              <div className="glass glass-hover commitment-card">
+                <div className="commitment-icon-wrap">
+                  <Icon size={24} aria-hidden="true" />
                 </div>
-                <ul className="launch-benefits">
-                  <li>Offre de lancement : audit gratuit pour les 5 premiers clients</li>
-                  <li>Web · GBP · Caisse · Dépannage · Formation — tout en un</li>
-                  <li>Travail de proximité — intervention locale, interlocuteur unique</li>
-                </ul>
-                <div style={{marginTop:12}}>
-                  <Link to="/contact?early=1" className="btn-primary">Devenez client pilote</Link>
-                </div>
+                <h3 className="commitment-title">{title}</h3>
+                <p className="commitment-desc">{desc}</p>
               </div>
             </RevealSection>
-          ) : (
-            TESTIMONIALS.map(({ name, role, text, stars }, i) => (
-              <RevealSection key={name} delay={i * 100}>
-                <div className="glass glass-hover testimonial-card">
-                  <div className="stars">
-                    {[...Array(stars)].map((_, j) => (
-                      <Star key={j} size={16} className="star" aria-hidden="true" />
-                    ))}
-                  </div>
-                  <p className="testimonial-quote">"{text}"</p>
-                  <div className="testimonial-footer">
-                    <p className="testimonial-name">{name}</p>
-                    <p className="testimonial-role">{role}</p>
-                  </div>
-                </div>
-              </RevealSection>
-            ))
-          )}
+          ))}
         </div>
+
+        <RevealSection delay={400}>
+          <div className="trust-cta-strip">
+            <p className="trust-cta-text">
+              Activité récemment lancée — <strong>les 5 premiers clients bénéficient d'un audit gratuit.</strong>
+            </p>
+            <Link to="/contact?early=1" className="btn-primary">
+              Devenir client pilote
+            </Link>
+          </div>
+        </RevealSection>
       </div>
     </section>
   );

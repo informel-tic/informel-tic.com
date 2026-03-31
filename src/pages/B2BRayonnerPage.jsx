@@ -30,8 +30,6 @@ const OFFERS = [
     priceSub: 'one-shot',
     tagline: 'Votre vitrine en ligne professionnelle, clé en main.',
     target: 'Commerces et artisans sans site web',
-    featured: true,
-    featuredLabel: 'Produit d\'appel',
     inclusions: [
       'Site One-Page responsive et optimisé',
       'CTA (appels, itinéraire, formulaire)',
@@ -66,18 +64,23 @@ const OFFERS = [
   },
   {
     name: 'Sur-Mesure',
-    price: 'Dès 2 500 €',
+    pricePrefix: 'Dès',
+    price: '3 000 €',
     priceSub: 'sur devis',
-    tagline: 'Un projet unique ? Une solution unique.',
-    target: 'Projets spécifiques, e-commerce, applications',
+    tagline: 'E-commerce, CRM, ERP — la Région finance jusqu\'à 40 %.',
+    target: 'TPE artisanales et commerciales — Hauts-de-France',
+    featured: true,
+    featuredLabel: '💰 Subventionnable ADEN',
     inclusions: [
-      'Cahier des charges personnalisé',
-      'Développement sur-mesure (React, API…)',
-      'Accompagnement de A à Z',
-      'Éligible aux aides INAC (jusqu\'à 40%)',
+      'Site e-commerce sur-mesure (React, API)',
+      'Mise en place CRM ou ERP (+ 1 an d\'abonnement)',
+      'Cahier des charges et accompagnement complet',
+      'Montage du dossier ADEN inclus',
+      'Exemple : 5 000 € investis → vous payez 3 000 €',
     ],
     exclusions: [],
-    cta: { label: 'Discuter de mon projet', to: '/contact' },
+    cta: { label: 'Estimer mon projet', to: '/contact' },
+    note: '⚠️ Le dossier ADEN doit être déposé avant tout paiement. Nous gérons ça pour vous.',
   },
 ];
 
@@ -118,10 +121,10 @@ export default function B2BRayonnerPage() {
         <div className="container-md">
           <h2 className="section-title">Des aides existent pour financer votre projet</h2>
           <p className="section-subtitle">
-            Le dispositif INAC Hauts-de-France peut prendre en charge jusqu'à 40% de votre projet numérique.
+            Le dispositif ADEN Hauts-de-France peut prendre en charge jusqu'à 40% de votre projet numérique.
           </p>
-          <Link to="/pros/aides-inac" className="btn-secondary" style={{ marginTop: '1.5rem' }}>
-            Découvrir les aides INAC <ArrowRight size={16} aria-hidden="true" />
+          <Link to="/pros/aides-aden" className="btn-secondary mt-6">
+            Découvrir les aides ADEN <ArrowRight size={16} aria-hidden="true" />
           </Link>
         </div>
       </section>

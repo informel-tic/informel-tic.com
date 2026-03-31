@@ -95,7 +95,7 @@ export default function B2CDepannagePage() {
       <section className="section-padding section-alt">
         <div className="container-md">
           <div className="glass glass--padded">
-            <h2 className="info-title" style={{ marginBottom: '1rem' }}>Conditions de facturation</h2>
+            <h2 className="info-title mb-4">Conditions de facturation</h2>
             <ul className="rules-list">
               <li><strong>1ère heure indivisible</strong> — facturée intégralement.</li>
               <li><strong>Ensuite :</strong> facturation par tranche de 30 minutes.</li>
@@ -103,7 +103,7 @@ export default function B2CDepannagePage() {
               <li><strong>Zone 2 ({'>'} 20 km)</strong> : forfait fixe de 15 € ou 0,60 €/km supplémentaire.</li>
             </ul>
           </div>
-          <div className="text-center" style={{ marginTop: '2rem' }}>
+          <div className="text-center mt-8">
             <Link to="/contact" className="btn-primary">
               Prendre rendez-vous <ArrowRight size={16} aria-hidden="true" />
             </Link>

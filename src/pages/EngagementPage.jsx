@@ -49,7 +49,7 @@ export default function EngagementPage() {
               <Heart size={28} className="icon-accent" aria-hidden="true" />
               <h2 className="info-title">Mécénat de Compétences Numériques</h2>
             </div>
-            <p className="story-text" style={{ marginBottom: '1.5rem' }}>
+            <p className="story-text mb-6">
               En tant qu'artisan numérique, je crois que la technologie doit profiter à tous,
               pas seulement à ceux qui peuvent se la payer. C'est pourquoi INFORMEL-TIC consacre
               chaque mois du temps et des compétences à une association locale.
@@ -86,7 +86,7 @@ export default function EngagementPage() {
       <section className="section-padding section-alt">
         <div className="container-md">
           <h2 className="section-title text-center">Ce que nous offrons</h2>
-          <p className="section-subtitle text-center" style={{ marginBottom: '2rem' }}>
+          <p className="section-subtitle text-center mb-8">
             Des compétences numériques concrètes pour renforcer votre association.
           </p>
           <div className="glass glass--padded">
@@ -106,7 +106,7 @@ export default function EngagementPage() {
       <section className="section-padding">
         <div className="container-md">
           <h2 className="section-title text-center">Critères d'éligibilité</h2>
-          <p className="section-subtitle text-center" style={{ marginBottom: '2rem' }}>
+          <p className="section-subtitle text-center mb-8">
             Pour postuler au mécénat de compétences INFORMEL-TIC.
           </p>
           <div className="glass glass--padded">
@@ -126,7 +126,7 @@ export default function EngagementPage() {
       <section className="section-padding section-alt text-center">
         <div className="container-sm">
           <h2 className="section-title">Comment postuler ?</h2>
-          <p className="section-subtitle" style={{ marginBottom: '2rem' }}>
+          <p className="section-subtitle mb-8">
             Envoyez-nous un message en précisant le nom de votre association,
             votre projet et vos besoins numériques. Nous vous répondrons sous 48h.
           </p>

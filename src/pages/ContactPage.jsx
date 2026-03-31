@@ -4,6 +4,7 @@ import {
   Send, Loader, CheckCircle, XCircle, User, Mail,
   Phone, MessageSquare, FileText, ArrowRight, MapPin
 } from 'lucide-react';
+import SEO from '../components/SEO';
 
 /* ── Regex validation rules ─────────────────────── */
 const RULES = {
@@ -128,6 +129,11 @@ export default function ContactPage() {
 
   return (
     <>
+      <SEO
+        title="Contact — Devis gratuit sous 24h"
+        description="Contactez INFORMEL-TIC pour un devis gratuit et personnalisé. Site web, visibilité Google, caisse, dépannage ou formation — réponse sous 24h, sans engagement."
+        url="https://informel-tic.com/contact"
+      />
       {/* Header */}
       <section className="hero-bg page-hero text-center">
         <div className="container-lg">

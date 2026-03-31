@@ -19,7 +19,11 @@ const PILLARS = [
 export default function AboutPage() {
   return (
     <>
-      <SEO title="À propos — INFORMEL-TIC" description="INFORMEL-TIC — L'artisan connecté du Nord. Site web, Google Business, caisse, dépannage et formation. Un interlocuteur unique pour toute votre vie numérique." />
+      <SEO
+        title="À propos — Qui est INFORMEL-TIC ?"
+        description="Artisan numérique local basé à Lourches (59). Site web, visibilité Google, logiciel de caisse, dépannage et formation. Découvrez notre histoire, nos valeurs et nos garanties."
+        url="https://informel-tic.com/a-propos"
+      />
 
       {/* Header */}
       <section className="hero-bg about-hero">

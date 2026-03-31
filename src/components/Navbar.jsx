@@ -11,7 +11,7 @@ const NAV_LINKS = [
       { to: '/pros/rayonner', label: 'Rayonner' },
       { to: '/pros/organiser', label: 'S\'organiser' },
       { to: '/pros/securiser', label: 'Sécuriser' },
-      { to: '/pros/aides-inac', label: 'Aides INAC' },
+      { to: '/pros/aides-aden', label: 'Aides ADEN' },
     ],
   },
   {

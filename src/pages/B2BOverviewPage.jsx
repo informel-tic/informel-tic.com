@@ -65,20 +65,20 @@ export default function B2BOverviewPage() {
         </div>
       </section>
 
-      {/* Aides INAC */}
+      {/* Aides ADEN */}
       <section className="section-padding section-alt">
         <div className="container-md text-center">
           <div className="inac-promo glass">
             <Landmark size={32} className="icon-accent" aria-hidden="true" />
-            <h2 className="section-title" style={{ marginTop: '1rem' }}>
+            <h2 className="section-title mt-4">
               Financez votre Transformation Numérique jusqu'à <span className="gradient-text">40%</span>
             </h2>
             <p className="section-subtitle">
-              Le dispositif INAC Hauts-de-France finance vos projets de digitalisation.
+              Le dispositif ADEN Hauts-de-France subventionne vos projets de digitalisation.
               Découvrez si vous êtes éligible.
             </p>
-            <Link to="/pros/aides-inac" className="btn-primary" style={{ marginTop: '1.5rem' }}>
-              En savoir plus sur les aides INAC <ArrowRight size={18} aria-hidden="true" />
+            <Link to="/pros/aides-aden" className="btn-primary mt-6">
+              En savoir plus sur les aides ADEN <ArrowRight size={18} aria-hidden="true" />
             </Link>
           </div>
         </div>

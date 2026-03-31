@@ -6,7 +6,7 @@ const B2B_BENEFITS = [
   'Visibilité Google & réseaux sociaux',
   'Logiciel de caisse paramétré à votre métier',
   'Maintenance & dépannage prioritaire',
-  'Aides INAC jusqu\'à 40% sur vos projets numériques',
+  'Aides ADEN jusqu\'à 40% sur vos projets numériques',
 ];
 
 const B2C_BENEFITS = [

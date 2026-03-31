@@ -93,7 +93,7 @@ const B2B_RAYONNER = [
     priceLabel: 'À partir de 3 000 € Net',
     monthly: null,
     featured: false,
-    badge: '🔐 Subventionnable INAC',
+    badge: '🔐 Subventionnable ADEN',
     includes: [
       'Refonte d\'un site existant (WordPress cassé, site obsolète)',
       'Pages SEO géolocalisées ("Plombier à Béthune", "Plombier à Lens"…)',
@@ -103,7 +103,7 @@ const B2B_RAYONNER = [
     ],
     excludes: [],
     upsell: null,
-    inacNote: '💰 À ce tarif, l\'argument INAC/ADEN s\'active : la Région peut prendre en charge 40% — le projet ne vous coûte que 1 800 €.',
+    inacNote: '💰 À ce tarif, l\'argument ADEN s\'active : la Région peut prendre en charge 40% — le projet ne vous coûte que 1 800 €.',
   },
 ];
 
@@ -238,7 +238,7 @@ const FAQS = [
   { q: 'Je possède le code source de mon site ?', a: "Oui, à 100%. À la livraison, vous recevez l'intégralité du code source. Vous pouvez le confier à n'importe quel développeur par la suite — sans dépendance à notre égard." },
   { q: "Puis-je évoluer vers une offre supérieure ?", a: "Absolument. Vous pouvez monter en gamme à tout moment. Nous récupérons le projet existant et l'enrichissons. Votre investissement initial est valorisé." },
   { q: "Que se passe-t-il si j'arrête l'abonnement ?", a: "Votre site est suspendu (l'hébergement s'arrête), mais vous restez propriétaire du code source. Si vous souhaitez héberger vous-même, nous vous transférons tous les fichiers." },
-  { q: "C'est quoi le levier INAC/ADEN ?", a: "Pour les projets supérieurs à 1 500 €, la Région Hauts-de-France peut prendre en charge jusqu'à 40% du montant via les dispositifs INAC/ADEN. Renseignez-vous en mairie ou chambre consulaire — nous vous aidons à monter le dossier." },
+  { q: "C'est quoi le levier ADEN ?", a: "Le dispositif ADEN (Aide à la Digitalisation des Entreprises) de la Région Hauts-de-France peut prendre en charge jusqu'à 40% de vos investissements numériques (de 3 000 à 30 000 € HT). Nous vous aidons à monter le dossier." },
   { q: "Quel est l'engagement sur les abonnements ?", a: "3 mois minimum. Cela nous permet d'amortir le travail de mise en place initial et de vous garantir un service de qualité dès le premier mois." },
 ];
 
@@ -360,8 +360,9 @@ export default function PricingPage() {
   return (
     <>
       <SEO
-        title="Offres & Tarifs — INFORMEL-TIC"
-        description="Catalogue complet INFORMEL-TIC : création web, visibilité locale, logiciel de caisse, dépannage et formation. Tarifs clairs pour professionnels et particuliers."
+        title="Tarifs & Offres — Services numériques pour pros et particuliers"
+        description="Tous nos tarifs clairs et sans surprise : site web sur-mesure dès 490 €, visibilité Google, logiciel de caisse, dépannage 60 €/h et formation. Devis gratuit."
+        url="https://informel-tic.com/offres"
       />
 
       {/* ── Hero ── */}
@@ -377,7 +378,7 @@ export default function PricingPage() {
             Un interlocuteur unique, local et transparent pour toute votre vie numérique.
             Création web, visibilité locale, logiciels métiers, dépannage — tout est ici.
           </p>
-          <div className="center-note muted" style={{ marginTop: '1.5rem' }}>
+          <div className="center-note muted mt-6">
             <AlertCircle size={14} className="accent-icon" />
             TVA non applicable — art. 293 B du CGI. Tous prix indiqués en Net.
           </div>
@@ -410,19 +411,19 @@ export default function PricingPage() {
             {B2B_RAYONNER.map((plan) => <B2BCard key={plan.id} offer={plan} />)}
           </div>
 
-          {/* INAC Banner */}
+          {/* ADEN Banner */}
           <div className="inac-banner">
             <div className="inac-banner__icon">💰</div>
             <div>
-              <strong>Levier INAC / ADEN — Hauts-de-France</strong>
-              <p>Sur les projets Sur-Mesure (≥ 1 500 €), la Région peut prendre en charge jusqu'à <strong>40%</strong> du montant.
+              <strong>Levier ADEN — Hauts-de-France</strong>
+              <p>Sur les projets numériques (≥ 3 000 € HT), la Région peut prendre en charge jusqu'à <strong>40%</strong> du montant.
               Un projet à 3 000 € vous revient à <strong>1 800 €</strong>. Nous vous aidons à monter le dossier.</p>
             </div>
             <Link to="/contact" className="btn-secondary">En savoir plus</Link>
           </div>
 
           {/* Pilier 2 */}
-          <div className="segment-header" style={{ marginTop: '4rem' }}>
+          <div className="segment-header mt-16">
             <h2 className="font-display section-title">
               Pilier 2 — <span className="gradient-text">S'organiser</span>
               <span className="pillar-sub"> Logiciels Métiers</span>
@@ -453,7 +454,7 @@ export default function PricingPage() {
                   <ul className="exclude-list">
                     {B2B_ORGANISER.excludes.map((e) => <li key={e}>{e}</li>)}
                   </ul>
-                  <p className="list-label" style={{ marginTop: '1rem' }}>Options disponibles</p>
+                  <p className="list-label mt-4">Options disponibles</p>
                   <ul className="check-list pricing-features">
                     {B2B_ORGANISER.options.map((o) => <li key={o}>{o}</li>)}
                   </ul>
@@ -468,7 +469,7 @@ export default function PricingPage() {
           </div>
 
           {/* Pilier 3 + Conciergerie */}
-          <div className="segment-header" style={{ marginTop: '4rem' }}>
+          <div className="segment-header mt-16">
             <h2 className="font-display section-title">
               Pilier 3 — <span className="gradient-text">Sécuriser</span>
               <span className="pillar-sub"> Dépannage & Conciergerie</span>
@@ -498,7 +499,7 @@ export default function PricingPage() {
 
           {/* Conciergerie Digitale */}
           <div className="concierge-section">
-            <div className="section-header" style={{ textAlign: 'center', marginBottom: '2rem' }}>
+            <div className="section-header text-center mb-8">
               <h3 className="font-display section-title">
                 Abonnement <span className="gradient-text">Conciergerie Digitale</span>
               </h3>
@@ -565,8 +566,8 @@ export default function PricingPage() {
           </div>
 
           {/* Tunnel upsell B2C vers B2B */}
-          <div className="upsell-tunnel glass glass--small" style={{ marginTop: '2.5rem' }}>
-            <p className="muted" style={{ marginBottom: 0 }}>
+          <div className="upsell-tunnel glass glass--small mt-10">
+            <p className="muted mb-0">
               🔁 <strong>Ce particulier a une boutique ou une activité professionnelle ?</strong>{' '}
               Le diagnostic mène naturellement vers le <Link to="/offres#radar-local" className="link-accent">Pack Radar Local (290 €)</Link>.
             </p>
@@ -581,8 +582,8 @@ export default function PricingPage() {
         <div className="container-lg">
 
           <div className="rules-block glass glass--padded">
-            <h2 className="font-display section-title" style={{ marginBottom: '1.5rem' }}>
-              <Shield size={20} style={{ verticalAlign: 'middle', marginRight: 8 }} aria-hidden="true" />
+            <h2 className="font-display section-title mb-6">
+                  <Shield size={20} className="icon-inline" aria-hidden="true" />
               Les 5 Règles d'Or — Anti-Débordement
             </h2>
             <ol className="rules-list">
@@ -594,7 +595,7 @@ export default function PricingPage() {
             </ol>
           </div>
 
-          <div className="text-center mt-5" style={{ marginTop: '3rem' }}>
+          <div className="text-center mt-12">
             <p className="muted lead-lg">Vous ne savez pas quelle offre est faite pour vous ?</p>
             <Link to="/contact" className="btn-primary btn-lg">
               Parlons de votre projet <ArrowRight size={18} />
@@ -602,7 +603,7 @@ export default function PricingPage() {
           </div>
 
           {/* FAQ */}
-          <div className="mt-7" style={{ marginTop: '4rem' }}>
+          <div className="mt-16">
             <h2 className="font-display section-title text-center mb-3">Questions fréquentes</h2>
             <div className="faq-grid">
               {FAQS.map(({ q, a }) => (

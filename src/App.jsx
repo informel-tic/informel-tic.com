@@ -12,7 +12,7 @@ import B2BOverviewPage from './pages/B2BOverviewPage';
 import B2BRayonnerPage from './pages/B2BRayonnerPage';
 import B2BOrganiserPage from './pages/B2BOrganiserPage';
 import B2BSecuriserPage from './pages/B2BSecuriserPage';
-import AidesINACPage from './pages/AidesINACPage';
+import AidesADENPage from './pages/AidesADENPage';
 import B2COverviewPage from './pages/B2COverviewPage';
 import B2CDepannagePage from './pages/B2CDepannagePage';
 import B2CFormationPage from './pages/B2CFormationPage';
@@ -42,7 +42,7 @@ export default function App() {
             <Route path="/pros/rayonner"       element={<B2BRayonnerPage />} />
             <Route path="/pros/organiser"      element={<B2BOrganiserPage />} />
             <Route path="/pros/securiser"      element={<B2BSecuriserPage />} />
-            <Route path="/pros/aides-inac"     element={<AidesINACPage />} />
+            <Route path="/pros/aides-aden"     element={<AidesADENPage />} />
             {/* B2C */}
             <Route path="/particuliers"                     element={<B2COverviewPage />} />
             <Route path="/particuliers/depannage-installation" element={<B2CDepannagePage />} />

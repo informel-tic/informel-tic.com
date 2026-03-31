@@ -39,9 +39,9 @@
 // ─── Reveal on scroll ────────────────────────────────
 .reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
-              transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms);
   will-change: opacity, transform;
 
   &.visible {
@@ -65,20 +65,16 @@
   animation: float linear infinite;
   opacity: 0;
 
-  @media (max-width: 768px) { display: none !important; }
+  @media (max-width: 767px) { display: none !important; }
 }
 
 // ─── Scroll hint (hero bounce) ───────────────────────
 .scroll-hint {
-  position: absolute  ;
-  bottom: 0rem;
-  left: 50%;
-  animation: scrollBounce 1s infinite;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  color: #64748b;
+  color: var(--muted);
 
   span {
     font-size: 0.75rem;
@@ -93,7 +89,7 @@
   width: 0.375rem;
   height: 0.375rem;
   border-radius: 50%;
-  background-color: #34d399;
+  background-color: var(--success);
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 

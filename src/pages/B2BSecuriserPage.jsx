@@ -86,7 +86,7 @@ export default function B2BSecuriserPage() {
       {/* Abonnements */}
       <section className="section-padding">
         <div className="container-lg">
-          <h2 className="section-title text-center" style={{ marginBottom: '2rem' }}>Abonnements Maintenance</h2>
+          <h2 className="section-title text-center mb-8">Abonnements Maintenance</h2>
           <div className="pricing-grid grid-3col">
             {ABOS.map((abo) => (
               <PricingCardB2B key={abo.name} {...abo} icon={Shield} />
@@ -108,7 +108,7 @@ export default function B2BSecuriserPage() {
                 <p className="pricing-tagline">Intervention ponctuelle pour les urgences.</p>
               </div>
               <div className="depannage-price">
-                <span className="price-number" style={{ fontSize: '2rem' }}>75 €</span>
+                <span className="price-number price-number--lg">75 €</span>
                 <span className="price-sub">/heure</span>
               </div>
             </div>
@@ -118,7 +118,7 @@ export default function B2BSecuriserPage() {
               <li>1ère heure indivisible</li>
               <li>Puis facturation par tranche de 15 min</li>
             </ul>
-            <Link to="/contact" className="btn-primary" style={{ marginTop: '1.5rem' }}>
+            <Link to="/contact" className="btn-primary mt-6">
               Demander une intervention <ArrowRight size={16} aria-hidden="true" />
             </Link>
           </div>

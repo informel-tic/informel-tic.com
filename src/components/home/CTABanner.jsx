@@ -41,18 +41,18 @@ export default function CTABanner() {
             <div className="cta-card__border" />
             <div className="cta-card__body">
               <h2 className="cta-title">
-                Pas sûr de quelle offre vous avez besoin ?
+                Prêt à passer au numérique sans stress ?
               </h2>
               <p className="cta-desc">
-                Décrivez votre situation en 2 lignes — pro ou particulier. 
-                On vous rappelle et on identifie ensemble l'offre la plus adaptée. Gratuit, sans engagement.
+                Décrivez votre situation en 2 lignes — pro ou particulier.
+                On vous répond sous 24h avec un devis personnalisé. <strong>Gratuit, sans engagement.</strong>
               </p>
               <div className="cta-actions">
                 <Link to="/contact" className="btn-primary btn-lg">
-                  Je décris ma situation <ArrowRight size={18} aria-hidden="true" />
+                  Obtenir mon devis gratuit <ArrowRight size={18} aria-hidden="true" />
                 </Link>
                 <Link to="/offres" className="btn-secondary btn-lg">
-                  Voir le catalogue complet
+                  Voir tous nos tarifs
                 </Link>
               </div>
             </div>
