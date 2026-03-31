@@ -1,6 +1,9 @@
 import { Search, MapPin, Laptop, Zap, Wrench, GraduationCap, ArrowRight, ShieldAlert } from 'lucide-react';
 import { useRef, useEffect } from 'react';
 
+/**
+ * Return a ref that reveals its element when it enters the viewport.
+ */
 function useReveal() {
   const ref = useRef(null);
   useEffect(() => {
@@ -15,6 +18,9 @@ function useReveal() {
   return ref;
 }
 
+/**
+ * Wrap a risk card so it can participate in the shared reveal animation.
+ */
 function RevealSection({ children, className = '', delay = 0, vars = {} }) {
   const ref = useReveal();
   useEffect(() => {
@@ -32,44 +38,47 @@ function RevealSection({ children, className = '', delay = 0, vars = {} }) {
 }
 
 const RISKS = [
-  { 
-    icon: Search, title: 'Invisible sur Google', subtitle: 'Pas de fiche GBP / fiche incomplète', 
+  {
+    icon: Search, title: 'Invisible sur Google', subtitle: 'Pas de fiche GBP / fiche incomplète',
     problem: 'Vos clients cherchent votre service dans votre ville — mais c\'est la concurrence qui apparaît. Votre fiche est vide, les horaires sont faux, zéro photo.',
     solution: 'Pack Radar Local (290 €) : fiche GBP optimisée, 3 annuaires synchronisés, livraison 5 jours. ROI immédiat.',
     iconColor: 'var(--error)', bg: 'rgba(185, 28, 28, 0.08)'
   },
-  { 
-    icon: MapPin, title: 'Site absent ou inefficace', subtitle: 'Carte de visite numérique morte', 
+  {
+    icon: MapPin, title: 'Site absent ou inefficace', subtitle: 'Carte de visite numérique morte',
     problem: 'Vous avez un site WordPress qui met 5s à charger, ou pire : aucun site. 53% des visiteurs partent si le chargement dépasse 3s.',
     solution: 'Site sur-mesure ultra-rapide (< 1s). Code livré, vous en êtes propriétaire. Aucune dépendance plugin.',
     iconColor: 'var(--accent)', bg: 'rgba(249,115,22,0.08)'
   },
-  { 
-    icon: Laptop, title: 'Caisse mal configurée', subtitle: 'Pertes de temps & erreurs comptables', 
+  {
+    icon: Laptop, title: 'Caisse mal configurée', subtitle: 'Pertes de temps & erreurs comptables',
     problem: 'Logiciel de caisse installé mais jamais paramétré correctement. TVA mal affectée, articles en vrac, tickets illisibles.',
     solution: 'Pack Caisse Clé en Main : analyse, paramétrage complet (Hiboutik), formation 2h sur site. Opérationnel le jour J.',
     iconColor: 'var(--accent)', bg: 'rgba(249,115,22,0.08)'
   },
-  { 
-    icon: Zap, title: 'Panne au mauvais moment', subtitle: 'PC bloqué, messagerie muette, réseau coupé', 
+  {
+    icon: Zap, title: 'Panne au mauvais moment', subtitle: 'PC bloqué, messagerie muette, réseau coupé',
     problem: 'Une panne pro sans interlocuteur de confiance = journée perdue, devis ratés, clients qui ne rappellent pas.',
     solution: 'Dépannage Pro 60 €/h — intervention 48h sur site ou à distance. Réseau, poste, messagerie, imprimante.',
     iconColor: 'var(--error)', bg: 'rgba(185, 28, 28, 0.08)'
   },
-  { 
-    icon: Wrench, title: 'PC qui ralentit', subtitle: 'Particuliers : virus, lenteurs, récupération', 
+  {
+    icon: Wrench, title: 'PC qui ralentit', subtitle: 'Particuliers : virus, lenteurs, récupération',
     problem: 'Votre PC rame, affiche des popups bizarres ou ne démarre plus. Acheter un nouveau coûte 500 €+. Peut-être qu\'on peut réparer.',
     solution: 'Diagnostic PC 49 € (forfait) pour identifier le problème avant de dépenser. Dépannage 45 €/h si on intervient.',
-    iconColor: 'var(--accent)', bg: 'rgba(249,115,22,0.08)' 
+    iconColor: 'var(--accent)', bg: 'rgba(249,115,22,0.08)'
   },
-  { 
-    icon: GraduationCap, title: 'Se sentir dépassé', subtitle: 'Arnaques, messagerie, smartphone', 
+  {
+    icon: GraduationCap, title: 'Se sentir dépassé', subtitle: 'Arnaques, messagerie, smartphone',
     problem: 'Phishing, faux conseillers, mot de passe oublié, WhatsApp qui ne marche plus. Trop de jargon, personne pour expliquer simplement.',
     solution: 'Formation à domicile 45 €/h — à votre rythme, sur vos propres appareils.',
-    iconColor: 'var(--accent)', bg: 'rgba(249,115,22,0.08)' 
+    iconColor: 'var(--accent)', bg: 'rgba(249,115,22,0.08)'
   },
 ];
 
+/**
+ * Render the homepage problem/solution grid.
+ */
 export default function RisksAndSolutions() {
   return (
     <section className="section-padding section-alt">
@@ -80,7 +89,7 @@ export default function RisksAndSolutions() {
               Vos <span className="text-error">problèmes</span>, nos solutions
             </h2>
             <p className="section-subtitle">
-              Web, visibilité Google, logiciel de caisse, dépannage ou formation — 
+              Web, visibilité Google, logiciel de caisse, dépannage ou formation —
               un interlocuteur unique pour chaque situation du quotidien numérique.
             </p>
           </div>
@@ -92,7 +101,7 @@ export default function RisksAndSolutions() {
               <div className="glass glass-hover risk-card">
 
                 {/* Header: Icon & Title */}
-                  <div className="risk-card__header">
+                <div className="risk-card__header">
                   <div className="risk-icon-wrap">
                     <Icon size={24} className="risk-icon" aria-hidden="true" />
                   </div>

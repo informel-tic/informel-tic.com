@@ -8,17 +8,20 @@ import SEO from '../components/SEO';
 
 /* ── Regex validation rules ─────────────────────── */
 const RULES = {
-  name:    { regex: /^[a-zA-ZÀ-ÿ\s'\-]{2,100}$/,                  msg: 'Prénom et nom requis (2–100 caractères, lettres uniquement).' },
-  email:   { regex: /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/, msg: 'Adresse e-mail invalide.' },
-  phone:   { regex: /^[\d\s\+\-\(\)\.]{7,20}$/,                    msg: 'Numéro de téléphone invalide.' },
-  subject: { regex: /^.{3,150}$/,                                   msg: 'Sujet requis (3–150 caractères).' },
-  message: { regex: /^[\s\S]{10,5000}$/,                            msg: 'Message requis (10–5000 caractères).' },
+  name: { regex: /^[a-zA-ZÀ-ÿ\s'-]{2,100}$/, msg: 'Prénom et nom requis (2–100 caractères, lettres uniquement).' },
+  email: { regex: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, msg: 'Adresse e-mail invalide.' },
+  phone: { regex: /^[\d\s+().-]{7,20}$/, msg: 'Numéro de téléphone invalide.' },
+  subject: { regex: /^.{3,150}$/, msg: 'Sujet requis (3–150 caractères).' },
+  message: { regex: /^[\s\S]{10,5000}$/, msg: 'Message requis (10–5000 caractères).' },
 };
 
 const INITIAL_VALUES = { name: '', email: '', phone: '', subject: '', message: '' };
 const INITIAL_ERRORS = { name: '', email: '', phone: '', subject: '', message: '' };
 
 /* ── Form field component ────────────────────────── */
+/**
+ * Render a labeled form field with shared accessibility wiring.
+ */
 function Field({ id, label, icon: Icon, type = 'text', value, onChange, onBlur, error, required, placeholder, rows }) {
   const isTextarea = !!rows;
   const commonProps = {
@@ -49,12 +52,15 @@ function Field({ id, label, icon: Icon, type = 'text', value, onChange, onBlur, 
 }
 
 /* ── Main Contact Page ───────────────────────────── */
+/**
+ * Present the contact form and its supporting contact information.
+ */
 export default function ContactPage() {
-  const [values, setValues]           = useState(INITIAL_VALUES);
-  const [errors, setErrors]           = useState(INITIAL_ERRORS);
-  const [touched, setTouched]         = useState({});
+  const [values, setValues] = useState(INITIAL_VALUES);
+  const [errors, setErrors] = useState(INITIAL_ERRORS);
+  const [touched, setTouched] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [toast, setToast]             = useState(null);
+  const [toast, setToast] = useState(null);
   const toastTimer = useRef(null);
 
   useEffect(() => {
@@ -65,6 +71,9 @@ export default function ContactPage() {
     return () => clearTimeout(toastTimer.current);
   }, [toast]);
 
+  /**
+   * Validate a single contact field against the shared regex rules.
+   */
   function validateField(name, value) {
     if (name === 'phone' && !value) return '';
     const rule = RULES[name];
@@ -72,6 +81,9 @@ export default function ContactPage() {
     return rule.regex.test(value) ? '' : rule.msg;
   }
 
+  /**
+   * Validate every contact field before submit.
+   */
   function validateAll() {
     const newErrors = {};
     for (const key of Object.keys(RULES)) {
@@ -80,6 +92,9 @@ export default function ContactPage() {
     return newErrors;
   }
 
+  /**
+   * Update form state and re-validate fields that were already touched.
+   */
   function handleChange(e) {
     const { name, value } = e.target;
     setValues((v) => ({ ...v, [name]: value }));
@@ -88,12 +103,18 @@ export default function ContactPage() {
     }
   }
 
+  /**
+   * Mark a field as touched and validate it on blur.
+   */
   function handleBlur(e) {
     const { name, value } = e.target;
     setTouched((t) => ({ ...t, [name]: true }));
     setErrors((err) => ({ ...err, [name]: validateField(name, value) }));
   }
 
+  /**
+   * Submit the contact form and map the server response to a toast message.
+   */
   async function handleSubmit(e) {
     e.preventDefault();
     setTouched({ name: true, email: true, phone: true, subject: true, message: true });

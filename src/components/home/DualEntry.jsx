@@ -17,6 +17,9 @@ const B2C_BENEFITS = [
   'Un artisan patient et pédagogue',
 ];
 
+/**
+ * Present the two entry paths to the site's B2B and B2C services.
+ */
 export default function DualEntry() {
   return (
     <section className="section-padding dual-entry-section">

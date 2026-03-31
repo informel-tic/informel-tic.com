@@ -1,47 +1,35 @@
 import { render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import { describe, it, expect } from 'vitest';
 import Testimonials from './Testimonials';
 
-const renderTestimonials = () => render(<Testimonials />);
+const renderTestimonials = () => render(<MemoryRouter><Testimonials /></MemoryRouter>);
 
 describe('Testimonials – Header', () => {
-  it('renders h2 "Ils nous font confiance"', () => {
+  it('renders the current section heading', () => {
     renderTestimonials();
-    expect(screen.getByRole('heading', { level: 2, name: /Ils nous font confiance/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2, name: /Pourquoi nous faire confiance/i })).toBeInTheDocument();
   });
 
-  it('renders subtitle about "résultats concrets"', () => {
+  it('renders the current subtitle', () => {
     renderTestimonials();
-    expect(screen.getByText(/résultats concrets/i)).toBeInTheDocument();
+    expect(screen.getByText(/Des engagements concrets/i)).toBeInTheDocument();
   });
 });
 
 describe('Testimonials – Cards Content', () => {
-  it('renders Sophie M. (boulangerie, +30%)', () => {
+  it('renders the four commitment cards', () => {
     renderTestimonials();
-    expect(screen.getByText(/Sophie M\./i)).toBeInTheDocument();
-    expect(screen.getByText(/Boulangerie artisanale/i)).toBeInTheDocument();
-    expect(screen.getByText(/30%/)).toBeInTheDocument();
+    expect(screen.getByText(/Devis écrit & détaillé/i)).toBeInTheDocument();
+    expect(screen.getByText(/Code source livré/i)).toBeInTheDocument();
+    expect(screen.getByText(/Réponse sous 24h/i)).toBeInTheDocument();
+    expect(screen.getByText(/Satisfait ou on corrige/i)).toBeInTheDocument();
   });
 
-  it('renders Karim L. (plombier, 10 demandes)', () => {
+  it('renders exactly 4 cards', () => {
     renderTestimonials();
-    expect(screen.getByText(/Karim L\./i)).toBeInTheDocument();
-    expect(screen.getByText(/Plombier chauffagiste/i)).toBeInTheDocument();
-    expect(screen.getByText(/10 demandes/i)).toBeInTheDocument();
-  });
-
-  it('renders Nathalie P. (institut de beauté)', () => {
-    renderTestimonials();
-    expect(screen.getByText(/Nathalie P\./i)).toBeInTheDocument();
-    expect(screen.getByText(/Institut de beauté/i)).toBeInTheDocument();
-    expect(screen.getByText(/Réactivité parfaite/i)).toBeInTheDocument();
-  });
-
-  it('renders exactly 3 testimonial cards', () => {
-    renderTestimonials();
-    const cards = document.querySelectorAll('.glass.glass-hover.rounded-2xl');
-    expect(cards.length).toBe(3);
+    const cards = document.querySelectorAll('.glass.glass-hover.commitment-card');
+    expect(cards.length).toBe(4);
   });
 });
 
@@ -51,16 +39,13 @@ describe('Testimonials – Structure & Responsive', () => {
     expect(document.querySelector('section')).toBeInTheDocument();
   });
 
-  it('grid is responsive: grid-cols-1 md:grid-cols-2 lg:grid-cols-3', () => {
+  it('renders the trust CTA strip', () => {
     renderTestimonials();
-    const grid = document.querySelector('.grid.grid-cols-1');
-    expect(grid?.className).toContain('md:grid-cols-2');
-    expect(grid?.className).toContain('lg:grid-cols-3');
+    expect(document.querySelector('.trust-cta-strip')).toBeInTheDocument();
   });
 
-  it('each card has a divider between quote and author', () => {
+  it('links to /contact?early=1', () => {
     renderTestimonials();
-    const dividers = document.querySelectorAll('.border-t.border-gray-200');
-    expect(dividers.length).toBe(3);
+    expect(screen.getByRole('link', { name: /Devenir client pilote/i })).toHaveAttribute('href', '/contact?early=1');
   });
 });

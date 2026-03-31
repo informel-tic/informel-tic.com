@@ -17,6 +17,9 @@ const SERVICES_OFFERED = [
   'Optimisation de la visibilité locale (Google Business)',
 ];
 
+/**
+ * Present the monthly pro bono commitment and eligibility criteria.
+ */
 export default function EngagementPage() {
   return (
     <>

@@ -23,6 +23,9 @@ const PILLARS = [
   },
 ];
 
+/**
+ * Present the B2B service overview and entry points.
+ */
 export default function B2BOverviewPage() {
   return (
     <>

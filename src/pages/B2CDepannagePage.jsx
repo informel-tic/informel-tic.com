@@ -41,6 +41,9 @@ const SERVICES = [
   },
 ];
 
+/**
+ * Present the B2C repair, diagnosis, and installation offers.
+ */
 export default function B2CDepannagePage() {
   return (
     <>

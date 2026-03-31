@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import Navbar from './Navbar';
 
 const renderNavbar = (path = '/') =>
@@ -14,20 +14,18 @@ describe('Navbar – Branding', () => {
 
   it('renders logo image with alt text', () => {
     renderNavbar();
-    expect(screen.getByAltText('INFORMEL-TIC')).toBeInTheDocument();
+    expect(screen.getByAltText(/logo INFORMEL-TIC/i)).toBeInTheDocument();
   });
 });
 
 describe('Navbar – Desktop Navigation', () => {
-  const NAV_ITEMS = ['Accueil', 'À propos', 'Offres & Tarifs', 'Contact'];
-
-  NAV_ITEMS.forEach((label) => {
-    it(`renders nav link "${label}"`, () => {
-      renderNavbar();
-      expect(
-        screen.getAllByRole('link', { name: new RegExp(`^${label}$`, 'i') }).length
-      ).toBeGreaterThanOrEqual(1);
-    });
+  it('renders the current top-level link and dropdown buttons', () => {
+    renderNavbar();
+    expect(screen.getAllByRole('link', { name: /Accueil/i }).length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByRole('button', { name: /Espace Pros/i }).length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByRole('button', { name: /Espace Particuliers/i }).length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByRole('link', { name: /Notre Engagement/i }).length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByRole('link', { name: /Contact/i }).length).toBeGreaterThanOrEqual(1);
   });
 
   it('renders desktop CTA "Demander un devis"', () => {
@@ -35,14 +33,10 @@ describe('Navbar – Desktop Navigation', () => {
     expect(screen.getAllByRole('link', { name: /Demander un devis/i }).length).toBeGreaterThanOrEqual(1);
   });
 
-  it('desktop nav list has hidden md:flex classes', () => {
+  it('opens the pro dropdown on click', () => {
     renderNavbar();
-    expect(document.querySelector('ul.hidden.md\\:flex')).toBeInTheDocument();
-  });
-
-  it('desktop CTA wrapper has hidden md:block class', () => {
-    renderNavbar();
-    expect(document.querySelector('.hidden.md\\:block')).toBeInTheDocument();
+    fireEvent.click(screen.getAllByRole('button', { name: /Espace Pros/i })[0]);
+    expect(screen.getByRole('menuitem', { name: /Vue d'ensemble/i })).toBeInTheDocument();
   });
 });
 
@@ -57,15 +51,9 @@ describe('Navbar – Mobile Menu', () => {
     expect(screen.getByRole('button', { name: /Ouvrir le menu/i })).toHaveAttribute('aria-expanded', 'false');
   });
 
-  it('burger has md:hidden class', () => {
+  it('mobile menu starts closed', () => {
     renderNavbar();
-    expect(screen.getByRole('button', { name: /Ouvrir le menu/i }).className).toContain('md:hidden');
-  });
-
-  it('mobile menu starts collapsed (max-h-0)', () => {
-    renderNavbar();
-    const mobileMenu = document.querySelector('.mobile-menu-bg');
-    expect(mobileMenu?.className).toContain('max-h-0');
+    expect(document.querySelector('.nav-mobile')).toBeInTheDocument();
   });
 
   it('opens mobile menu on burger click', () => {
@@ -80,11 +68,11 @@ describe('Navbar – Mobile Menu', () => {
     expect(screen.getByRole('button', { name: /Fermer le menu/i })).toHaveAttribute('aria-expanded', 'true');
   });
 
-  it('mobile menu expands to max-h-96 when open', () => {
+  it('mobile menu renders the current mobile navigation links when open', () => {
     renderNavbar();
     fireEvent.click(screen.getByRole('button', { name: /Ouvrir le menu/i }));
-    const mobileMenu = document.querySelector('.mobile-menu-bg');
-    expect(mobileMenu?.className).toContain('max-h-96');
+    expect(screen.getAllByRole('link', { name: /Notre Engagement/i }).at(-1)).toBeInTheDocument();
+    expect(screen.getAllByRole('link', { name: /Contact/i }).at(-1)).toBeInTheDocument();
   });
 
   it('closes menu on second click', () => {

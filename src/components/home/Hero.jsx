@@ -4,10 +4,14 @@ import { Zap, ArrowRight, Shield, Star, Clock, MapPin } from 'lucide-react';
 
 /* ── Typing effect ─────────────────────────────────── */
 const WORDS = ['trouvé sur Google.', 'entre de bonnes mains.', 'sans stress technique.', 'local et transparent.'];
+
+/**
+ * Animate the hero keyword by typing and deleting each word in sequence.
+ */
 function TypingWord() {
-  const [idx, setIdx]   = useState(0);
+  const [idx, setIdx] = useState(0);
   const [text, setText] = useState('');
-  const [del, setDel]   = useState(false);
+  const [del, setDel] = useState(false);
 
   useEffect(() => {
     const word = WORDS[idx];
@@ -19,8 +23,10 @@ function TypingWord() {
     } else if (del && text.length > 0) {
       timeout = setTimeout(() => setText(text.slice(0, -1)), 40);
     } else if (del && text.length === 0) {
-      setDel(false);
-      setIdx((i) => (i + 1) % WORDS.length);
+      timeout = setTimeout(() => {
+        setDel(false);
+        setIdx((i) => (i + 1) % WORDS.length);
+      }, 0);
     }
     return () => clearTimeout(timeout);
   }, [text, del, idx]);
@@ -35,6 +41,9 @@ const TRUST_ITEMS = [
   { icon: MapPin, label: 'Basé à Lourches (59)' },
 ];
 
+/**
+ * Render the homepage hero with the main positioning message and CTA links.
+ */
 export default function Hero() {
   return (
     <section className="hero-section hero-bg grid-bg">

@@ -23,6 +23,9 @@ const SERVICES = [
   },
 ];
 
+/**
+ * Present the B2C service overview and entry points.
+ */
 export default function B2COverviewPage() {
   return (
     <>

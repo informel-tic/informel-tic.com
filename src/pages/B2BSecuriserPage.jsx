@@ -60,6 +60,9 @@ const ABOS = [
   },
 ];
 
+/**
+ * Present the B2B maintenance, SLA, and break/fix offers.
+ */
 export default function B2BSecuriserPage() {
   return (
     <>

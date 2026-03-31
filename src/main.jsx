@@ -1,3 +1,7 @@
+/**
+ * Application bootstrap.
+ * Loads the global SCSS bundle, mounts the React tree, and enables Helmet support.
+ */
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './main.scss'

@@ -2,7 +2,11 @@ import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import config from '../config'
 
+/**
+ * Emit LocalBusiness structured data for search engines.
+ */
 export default function LocalBusinessJsonLd() {
+  // Build the schema payload from shared site configuration.
   const data = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -23,7 +27,7 @@ export default function LocalBusinessJsonLd() {
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
         "opens": "09:00",
         "closes": "18:00"
       }

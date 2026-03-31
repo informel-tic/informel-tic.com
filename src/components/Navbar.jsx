@@ -26,23 +26,29 @@ const NAV_LINKS = [
   { to: '/contact', label: 'Contact' },
 ];
 
+/**
+ * Render a dropdown navigation entry with outside-click and route-change resets.
+ */
 function DropdownItem({ item, closeAll }) {
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef(null);
   const location = useLocation();
 
-  // Is any child route active?
+  // Keep the parent entry highlighted while any child route is active.
   const isChildActive = item.dropdown?.some((d) => location.pathname === d.to || location.pathname.startsWith(d.to + '/'));
 
-  // Close on click outside
+  // Close the dropdown when the user clicks outside the menu.
   useEffect(() => {
     const handler = (e) => { if (ref.current && !ref.current.contains(e.target)) setIsOpen(false); };
     document.addEventListener('mousedown', handler);
     return () => document.removeEventListener('mousedown', handler);
   }, []);
 
-  // Close on route change
-  useEffect(() => { setIsOpen(false); }, [location.pathname]);
+  // Reset the dropdown when navigation changes.
+  useEffect(() => {
+    const timeout = setTimeout(() => setIsOpen(false), 0);
+    return () => clearTimeout(timeout);
+  }, [location.pathname]);
 
   return (
     <li ref={ref} className="nav-dropdown-wrap">
@@ -76,17 +82,22 @@ function DropdownItem({ item, closeAll }) {
   );
 }
 
+/**
+ * Render the primary site navigation with desktop and mobile variants.
+ */
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [mobileDropdowns, setMobileDropdowns] = useState({});
 
+  // Switch to the compact header once the page has been scrolled a little.
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Let keyboard users dismiss the mobile menu with Escape.
   useEffect(() => {
     const onKey = (e) => { if (e.key === 'Escape') setOpen(false); };
     document.addEventListener('keydown', onKey);
@@ -94,8 +105,16 @@ export default function Navbar() {
   }, []);
 
   const location = useLocation();
-  useEffect(() => { setOpen(false); setMobileDropdowns({}); }, [location.pathname]);
+  // Collapse every mobile panel after route transitions.
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setOpen(false);
+      setMobileDropdowns({});
+    }, 0);
+    return () => clearTimeout(timeout);
+  }, [location.pathname]);
 
+  // Toggle only the requested mobile submenu.
   const toggleMobileDropdown = (label) => {
     setMobileDropdowns((prev) => ({ ...prev, [label]: !prev[label] }));
   };

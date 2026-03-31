@@ -11,53 +11,51 @@ describe('Hero – Headings & Tagline', () => {
     expect(screen.getAllByRole('heading', { level: 1 })).toHaveLength(1);
   });
 
-  it('h1 contains "Votre site et votre visibilité"', () => {
+  it('h1 contains the main positioning line', () => {
     renderHero();
-    expect(
-      screen.getByRole('heading', { level: 1, name: /Votre site et votre visibilité/i })
-    ).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1, name: /La qualité d'une agence/i })).toBeInTheDocument();
   });
 
-  it('badge displays "Partenaire Digital des Commerces de Proximité"', () => {
+  it('badge displays the current positioning line', () => {
     renderHero();
-    expect(screen.getByText(/Partenaire Digital des Commerces de Proximité/i)).toBeInTheDocument();
+    expect(screen.getByText(/L'Artisan Numérique du Nord/i)).toBeInTheDocument();
   });
 
-  it('description mentions "zone de chalandise"', () => {
+  it('description mentions the unique-interlocutor promise', () => {
     renderHero();
-    expect(screen.getByText(/zone de chalandise/i)).toBeInTheDocument();
+    expect(screen.getByText(/un interlocuteur unique/i)).toBeInTheDocument();
   });
 
-  it('description mentions "sans stress technique"', () => {
+  it('description mentions the Nord coverage', () => {
     renderHero();
-    expect(screen.getByText(/sans stress technique/i)).toBeInTheDocument();
+    expect(screen.getByText(/Professionnels et particuliers dans le Nord/i)).toBeInTheDocument();
   });
 });
 
 describe('Hero – CTAs', () => {
   it('primary CTA leads to /contact', () => {
     renderHero();
-    expect(screen.getByRole('link', { name: /Demander un devis/i })).toHaveAttribute('href', '/contact');
+    expect(screen.getByRole('link', { name: /Obtenir mon diagnostic gratuit/i })).toHaveAttribute('href', '/contact');
   });
 
   it('secondary CTA leads to /offres', () => {
     renderHero();
-    expect(screen.getByRole('link', { name: /Voir nos offres/i })).toHaveAttribute('href', '/offres');
+    expect(screen.getByRole('link', { name: /Voir nos tarifs/i })).toHaveAttribute('href', '/offres');
   });
 
   it('primary CTA has btn-primary class', () => {
     renderHero();
-    expect(screen.getByRole('link', { name: /Demander un devis/i }).className).toContain('btn-primary');
+    expect(screen.getByRole('link', { name: /Obtenir mon diagnostic gratuit/i }).className).toContain('btn-primary');
   });
 
   it('secondary CTA has btn-secondary class', () => {
     renderHero();
-    expect(screen.getByRole('link', { name: /Voir nos offres/i }).className).toContain('btn-secondary');
+    expect(screen.getByRole('link', { name: /Voir nos tarifs/i }).className).toContain('btn-secondary');
   });
 });
 
 describe('Hero – Trust Badges', () => {
-  const TRUST = ['Zéro charge mentale', 'Visibilité maximale', 'Code source livré', 'Sans engagement'];
+  const TRUST = ['Devis gratuit sous 24h', 'Code source 100% livré', 'Réponse rapide', 'Basé à Lourches (59)'];
 
   TRUST.forEach((label) => {
     it(`renders trust badge "${label}"`, () => {
@@ -73,29 +71,13 @@ describe('Hero – Structure & UX', () => {
     expect(document.querySelector('section.hero-bg.grid-bg')).toBeInTheDocument();
   });
 
-  it('section is full viewport height (min-h-screen)', () => {
-    renderHero();
-    expect(document.querySelector('section.min-h-screen')).toBeInTheDocument();
-  });
-
-  it('h1 uses clamp() for responsive font size', () => {
-    renderHero();
-    expect(screen.getByRole('heading', { level: 1 }).className).toMatch(/clamp/);
-  });
-
   it('renders scroll indicator "Découvrir"', () => {
     renderHero();
     expect(screen.getByText('Découvrir')).toBeInTheDocument();
   });
 
-  it('CTA row uses flex-wrap for mobile stacking', () => {
+  it('renders the trust bar', () => {
     renderHero();
-    expect(document.querySelector('.flex.flex-wrap.justify-center.gap-4')).toBeInTheDocument();
-  });
-
-  it('trust badges row wraps on small screens (flex-wrap)', () => {
-    renderHero();
-    const badgeRow = document.querySelector('.flex.flex-wrap.justify-center.gap-5');
-    expect(badgeRow).toBeInTheDocument();
+    expect(document.querySelector('.hero-trust-bar')).toBeInTheDocument();
   });
 });

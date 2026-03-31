@@ -84,6 +84,9 @@ const OFFERS = [
   },
 ];
 
+/**
+ * Present the B2B visibility and web offers.
+ */
 export default function B2BRayonnerPage() {
   return (
     <>

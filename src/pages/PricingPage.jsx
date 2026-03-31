@@ -245,12 +245,18 @@ const FAQS = [
 /* ─────────────────────────────────────────────────────
    Sub-composants
    ───────────────────────────────────────────────────── */
+/**
+ * Render a feature indicator inside the pricing cards.
+ */
 function FeatureCheck({ value }) {
   if (value === true) return <CheckCircle size={16} className="check-yes" aria-label="Inclus" />;
   if (value === false) return <X size={14} className="check-no" aria-label="Non inclus" />;
   return <span className="check-value">{value}</span>;
 }
 
+/**
+ * Render a B2B pricing card from an offer definition.
+ */
 function B2BCard({ offer }) {
   const { icon: Icon, name, tagline, price, priceLabel, monthly, featured, badge, includes, excludes, upsell, upsellTarget, bundleNote, inacNote } = offer;
   return (
@@ -316,6 +322,9 @@ function B2BCard({ offer }) {
   );
 }
 
+/**
+ * Render a B2C pricing card from an offer definition.
+ */
 function B2CCard({ offer }) {
   const { icon: Icon, name, tagline, priceLabel, includes, excludes, note } = offer;
   return (
@@ -356,6 +365,9 @@ function B2CCard({ offer }) {
 /* ─────────────────────────────────────────────────────
    PAGE
    ───────────────────────────────────────────────────── */
+/**
+ * Present the full pricing catalog for B2B and B2C services.
+ */
 export default function PricingPage() {
   return (
     <>
@@ -417,7 +429,7 @@ export default function PricingPage() {
             <div>
               <strong>Levier ADEN — Hauts-de-France</strong>
               <p>Sur les projets numériques (≥ 3 000 € HT), la Région peut prendre en charge jusqu'à <strong>40%</strong> du montant.
-              Un projet à 3 000 € vous revient à <strong>1 800 €</strong>. Nous vous aidons à monter le dossier.</p>
+                Un projet à 3 000 € vous revient à <strong>1 800 €</strong>. Nous vous aidons à monter le dossier.</p>
             </div>
             <Link to="/contact" className="btn-secondary">En savoir plus</Link>
           </div>
@@ -583,7 +595,7 @@ export default function PricingPage() {
 
           <div className="rules-block glass glass--padded">
             <h2 className="font-display section-title mb-6">
-                  <Shield size={20} className="icon-inline" aria-hidden="true" />
+              <Shield size={20} className="icon-inline" aria-hidden="true" />
               Les 5 Règles d'Or — Anti-Débordement
             </h2>
             <ol className="rules-list">

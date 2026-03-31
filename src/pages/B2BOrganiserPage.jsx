@@ -39,6 +39,9 @@ const OFFERS = [
   },
 ];
 
+/**
+ * Present the B2B organization and software setup offers.
+ */
 export default function B2BOrganiserPage() {
   return (
     <>

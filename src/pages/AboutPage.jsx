@@ -16,6 +16,9 @@ const PILLARS = [
   { icon: GraduationCap, title: 'Apprendre', desc: 'Formation à domicile pour particuliers : messagerie, sécurité, smartphone, tablette.' },
 ];
 
+/**
+ * Present the company story, values, and guarantees.
+ */
 export default function AboutPage() {
   return (
     <>
@@ -119,7 +122,7 @@ export default function AboutPage() {
             <h3 className="info-title">🤝 Mécénat de compétences associatif</h3>
             <p className="value-desc">
               INFORMEL-TIC réserve du temps pour accompagner des associations loi 1901 à but non lucratif ou d'utilité sociale.
-              Maximum 1 projet actif à la fois, périmètre défini par un brief écrit. 
+              Maximum 1 projet actif à la fois, périmètre défini par un brief écrit.
               Délai de livraison non garanti — traité hors plages commerciales.
             </p>
             <div className="text-right">

@@ -2,21 +2,9 @@ import { Link } from 'react-router-dom';
 import { CheckCircle, XCircle, Star } from 'lucide-react';
 
 /**
- * Carte de prix réutilisable pour le B2B.
- * Props :
- *   name        — Nom de l'offre
- *   price       — Prix principal (string, ex: "290 €")
- *   priceSub    — Sous-texte prix (ex: "one-shot", "/mois")
- *   monthlyPrice — Prix mensuel optionnel (ex: "+ 35 €/mois")
- *   tagline     — Courte description de l'offre
- *   target      — Cible (ex: "Artisans & commerçants")
- *   inclusions  — Array de strings (éléments inclus, check vert)
- *   exclusions  — Array de strings (éléments exclus, croix rouge)
- *   featured    — Boolean, met la carte en surbrillance
- *   featuredLabel — Texte du badge (ex: "Meilleur rapport qualité/prix")
- *   cta         — { label, to } pour le bouton CTA
- *   note        — Note additionnelle en bas de carte
- *   icon        — Composant Lucide optionnel
+ * Render a reusable B2B pricing card.
+ *
+ * @param {object} props - Offer content, pricing, and CTA configuration.
  */
 export default function PricingCardB2B({
     name,

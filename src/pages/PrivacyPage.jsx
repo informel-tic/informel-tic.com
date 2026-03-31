@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
 
-export default function PrivacyPage(){
+/**
+ * Present the privacy policy and data handling summary.
+ */
+export default function PrivacyPage() {
   return (
     <>
       <section className="hero-bg page-hero text-center">

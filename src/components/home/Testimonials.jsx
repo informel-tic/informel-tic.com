@@ -2,6 +2,9 @@ import { Shield, FileCheck, Clock, Handshake, Sparkles } from 'lucide-react';
 import { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+/**
+ * Return a ref that reveals its element when it enters the viewport.
+ */
 function useReveal() {
   const ref = useRef(null);
   useEffect(() => {
@@ -16,6 +19,9 @@ function useReveal() {
   return ref;
 }
 
+/**
+ * Wrap testimonial-style content so it shares the reveal animation.
+ */
 function RevealSection({ children, className = '', delay = 0 }) {
   const ref = useReveal();
   useEffect(() => {
@@ -55,6 +61,9 @@ const COMMITMENTS = [
 ];
 
 export default function Testimonials() {
+  /**
+   * Render the trust and commitment section on the homepage.
+   */
   return (
     <section className="section-padding section-alt">
       <div className="container-lg">

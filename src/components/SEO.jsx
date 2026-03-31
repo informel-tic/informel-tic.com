@@ -1,7 +1,11 @@
 import React from 'react'
 import { Helmet } from 'react-helmet-async'
 
+/**
+ * Inject page metadata, social cards, and the canonical URL into the document head.
+ */
 export default function SEO({ title, description, image = '/og-image.svg', url = 'https://informel-tic.com', noSuffix = false }) {
+  // Build the final document title while preserving page-specific overrides.
   const fullTitle = noSuffix
     ? (title || 'INFORMEL-TIC — Artisan Numérique du Nord')
     : title ? `${title} | INFORMEL-TIC` : 'INFORMEL-TIC — Artisan Numérique du Nord'

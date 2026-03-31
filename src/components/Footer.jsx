@@ -2,14 +2,17 @@ import { Link } from 'react-router-dom';
 import { Mail, MapPin } from 'lucide-react';
 
 const quickLinks = [
-  { to: '/',                  label: 'Accueil' },
-  { to: '/pros',              label: 'Espace Pros' },
-  { to: '/particuliers',      label: 'Espace Particuliers' },
-  { to: '/engagement',        label: 'Notre Engagement' },
-  { to: '/contact',           label: 'Contact' },
-  { to: '/mentions-legales',  label: 'Mentions légales' },
+  { to: '/', label: 'Accueil' },
+  { to: '/pros', label: 'Espace Pros' },
+  { to: '/particuliers', label: 'Espace Particuliers' },
+  { to: '/engagement', label: 'Notre Engagement' },
+  { to: '/contact', label: 'Contact' },
+  { to: '/mentions-legales', label: 'Mentions légales' },
 ];
 
+/**
+ * Render the global footer with quick links, contact details, and legal links.
+ */
 export default function Footer() {
   const year = new Date().getFullYear();
 

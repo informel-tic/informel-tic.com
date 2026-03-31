@@ -6,7 +6,7 @@ import AboutPage from './AboutPage';
 const renderAbout = () => render(<MemoryRouter><AboutPage /></MemoryRouter>);
 
 describe('AboutPage – Header', () => {
-  it('renders h1 "Qui est INFORMEL-TIC ?"', () => {
+  it('renders the page heading', () => {
     renderAbout();
     expect(screen.getByRole('heading', { level: 1, name: /Qui est INFORMEL-TIC/i })).toBeInTheDocument();
   });
@@ -16,14 +16,9 @@ describe('AboutPage – Header', () => {
     expect(screen.getByText('À propos')).toBeInTheDocument();
   });
 
-  it('renders micro-entreprise location description', () => {
+  it('mentions the current legal status and location', () => {
     renderAbout();
-    expect(screen.getByText(/micro-entreprise/i)).toBeInTheDocument();
-  });
-
-  it('mentions Nord de la France', () => {
-    renderAbout();
-    expect(screen.getAllByText(/Nord de la France/i).length).toBeGreaterThanOrEqual(1);
+    expect(screen.getByText(/Entrepreneur Individuel — Lourches/i)).toBeInTheDocument();
   });
 });
 
@@ -33,24 +28,19 @@ describe('AboutPage – Story & Identity', () => {
     expect(screen.getByText(/Rachid Chon/i)).toBeInTheDocument();
   });
 
-  it('mentions founder base "Lourches"', () => {
+  it('mentions the local origin story', () => {
     renderAbout();
-    expect(screen.getAllByText(/Lourches/i).length).toBeGreaterThanOrEqual(1);
-  });
-
-  it('claims sites 3 to 5× faster', () => {
-    renderAbout();
-    expect(screen.getByText(/3 à 5/i)).toBeInTheDocument();
+    expect(screen.getByText(/un seul interlocuteur de confiance/i)).toBeInTheDocument();
   });
 
   it('emphasizes "sans WordPress"', () => {
     renderAbout();
-    expect(screen.getByText(/sans WordPress/i)).toBeInTheDocument();
+    expect(screen.getByText(/sans WordPress ni plugin tiers/i)).toBeInTheDocument();
   });
 
-  it('mentions "générateur de clients locaux"', () => {
+  it('mentions the association commitment', () => {
     renderAbout();
-    expect(screen.getByText(/générateur de clients/i)).toBeInTheDocument();
+    expect(screen.getByText(/mécénat de compétences/i)).toBeInTheDocument();
   });
 });
 
@@ -60,18 +50,18 @@ describe('AboutPage – Valeurs', () => {
     expect(screen.getByRole('heading', { level: 2, name: /Nos valeurs/i })).toBeInTheDocument();
   });
 
-  const VALUES = ['Code propre', 'Centré résultats', 'Relation de confiance', 'Artisans & PME'];
+  const VALUES = ['Code propre', 'Centré résultats', 'Transparence totale', 'Interlocuteur unique'];
   VALUES.forEach((value) => {
     it(`renders value card "${value}"`, () => {
       renderAbout();
-      expect(screen.getByText(new RegExp(value, 'i'))).toBeInTheDocument();
+      expect(screen.getByRole('heading', { level: 3, name: new RegExp(value, 'i') })).toBeInTheDocument();
     });
   });
 
-  it('renders 4 value card headings under "Nos valeurs"', () => {
+  it('renders the four expertise cards and four value cards', () => {
     renderAbout();
     const h3s = screen.getAllByRole('heading', { level: 3 });
-    expect(h3s.length).toBeGreaterThanOrEqual(4);
+    expect(h3s.length).toBeGreaterThanOrEqual(8);
   });
 });
 
@@ -81,9 +71,9 @@ describe('AboutPage – Garanties', () => {
     expect(screen.getByText(/Nos garanties/i)).toBeInTheDocument();
   });
 
-  it('renders "100% sur-mesure, sans WordPress" guarantee', () => {
+  it('renders the current guarantees copy', () => {
     renderAbout();
-    expect(screen.getByText(/100% sur-mesure, sans WordPress/i)).toBeInTheDocument();
+    expect(screen.getByText(/Sites 100% sur-mesure, sans WordPress ni plugin tiers/i)).toBeInTheDocument();
   });
 });
 

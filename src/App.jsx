@@ -1,5 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
-import { BrowserRouter, Routes, Route, NavLink, Link, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { Phone } from 'lucide-react';
 import config from './config';
 import HomePage from './pages/HomePage';
@@ -21,6 +20,10 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 
+/**
+ * Main application shell.
+ * Wires routing, persistent chrome, and the shared skip-link affordance.
+ */
 export default function App() {
   return (
     <BrowserRouter>
@@ -36,26 +39,26 @@ export default function App() {
         )}
         <main id="content" className="main-content">
           <Routes>
-            <Route path="/"            element={<HomePage />} />
+            <Route path="/" element={<HomePage />} />
             {/* B2B */}
-            <Route path="/pros"                element={<B2BOverviewPage />} />
-            <Route path="/pros/rayonner"       element={<B2BRayonnerPage />} />
-            <Route path="/pros/organiser"      element={<B2BOrganiserPage />} />
-            <Route path="/pros/securiser"      element={<B2BSecuriserPage />} />
-            <Route path="/pros/aides-aden"     element={<AidesADENPage />} />
+            <Route path="/pros" element={<B2BOverviewPage />} />
+            <Route path="/pros/rayonner" element={<B2BRayonnerPage />} />
+            <Route path="/pros/organiser" element={<B2BOrganiserPage />} />
+            <Route path="/pros/securiser" element={<B2BSecuriserPage />} />
+            <Route path="/pros/aides-aden" element={<AidesADENPage />} />
             {/* B2C */}
-            <Route path="/particuliers"                     element={<B2COverviewPage />} />
+            <Route path="/particuliers" element={<B2COverviewPage />} />
             <Route path="/particuliers/depannage-installation" element={<B2CDepannagePage />} />
-            <Route path="/particuliers/formation"           element={<B2CFormationPage />} />
+            <Route path="/particuliers/formation" element={<B2CFormationPage />} />
             {/* Autres */}
-            <Route path="/engagement"  element={<EngagementPage />} />
-            <Route path="/contact"     element={<ContactPage />} />
+            <Route path="/engagement" element={<EngagementPage />} />
+            <Route path="/contact" element={<ContactPage />} />
             <Route path="/mentions-legales" element={<LegalPage />} />
             <Route path="/politique-de-confidentialite" element={<PrivacyPage />} />
             {/* Legacy redirects */}
-            <Route path="/a-propos"    element={<AboutPage />} />
-            <Route path="/offres"      element={<PricingPage />} />
-            <Route path="*"            element={<NotFound />} />
+            <Route path="/a-propos" element={<AboutPage />} />
+            <Route path="/offres" element={<PricingPage />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <Footer />
@@ -64,6 +67,9 @@ export default function App() {
   );
 }
 
+/**
+ * Render the fallback page shown for unknown routes.
+ */
 function NotFound() {
   return (
     <div className="page-404">

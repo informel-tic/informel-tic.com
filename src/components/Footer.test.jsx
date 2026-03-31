@@ -16,19 +16,19 @@ describe('Footer – Branding', () => {
     expect(screen.getByText(/Disponible/i)).toBeInTheDocument();
   });
 
-  it('renders tagline about "Développement web sur-mesure"', () => {
+  it('renders the current tagline', () => {
     renderFooter();
-    expect(screen.getByText(/Développement web sur-mesure/i)).toBeInTheDocument();
+    expect(screen.getByText(/Services de grande agence, proximité d'un artisan/i)).toBeInTheDocument();
   });
 
-  it('renders "Sans WordPress. Sans compromis."', () => {
+  it('renders the Nord positioning', () => {
     renderFooter();
-    expect(screen.getByText(/Sans WordPress/i)).toBeInTheDocument();
+    expect(screen.getByText(/Lille et dans le 59/i)).toBeInTheDocument();
   });
 });
 
 describe('Footer – Navigation Links', () => {
-  const NAV_ITEMS = ['Accueil', 'À propos', 'Offres & Tarifs', 'Contact', 'Mentions légales'];
+  const NAV_ITEMS = ['Accueil', 'Espace Pros', 'Espace Particuliers', 'Notre Engagement', 'Contact', 'Mentions légales'];
 
   NAV_ITEMS.forEach((label) => {
     it(`renders nav link "${label}"`, () => {

@@ -1,3 +1,6 @@
+/**
+ * Centralized public configuration shared by components and metadata helpers.
+ */
 export const CONTACT_EMAIL = "contact@informel-tic.com";
 export const CONTACT_PHONE = "+33 6 00 00 00 00"; // placeholder — replace with real number
 export const OWNER_NAME = "CHON Rachid"; // replace with your public name if needed

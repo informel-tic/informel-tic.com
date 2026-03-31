@@ -61,6 +61,9 @@ const STEPS = [
 ];
 
 export default function AidesADENPage() {
+  /**
+   * Explain the ADEN subsidy and how to check eligibility.
+   */
   return (
     <>
       <SEO

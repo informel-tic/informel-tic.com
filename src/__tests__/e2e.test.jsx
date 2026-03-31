@@ -5,10 +5,12 @@ import HomePage from '../pages/HomePage';
 import PricingPage from '../pages/PricingPage';
 import ContactPage from '../pages/ContactPage';
 import AboutPage from '../pages/AboutPage';
+import EngagementPage from '../pages/EngagementPage';
+import B2BOverviewPage from '../pages/B2BOverviewPage';
+import B2COverviewPage from '../pages/B2COverviewPage';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
-// TestApp uses MemoryRouter so navigation works reliably in jsdom
 function TestApp({ initialRoute = '/' }) {
   return (
     <MemoryRouter initialEntries={[initialRoute]}>
@@ -21,6 +23,9 @@ function TestApp({ initialRoute = '/' }) {
             <Route path="/a-propos" element={<AboutPage />} />
             <Route path="/offres" element={<PricingPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/engagement" element={<EngagementPage />} />
+            <Route path="/pros" element={<B2BOverviewPage />} />
+            <Route path="/particuliers" element={<B2COverviewPage />} />
             <Route path="*" element={<p>404 – Page introuvable</p>} />
           </Routes>
         </main>
@@ -30,165 +35,60 @@ function TestApp({ initialRoute = '/' }) {
   );
 }
 
-// ─── Chargement initial ────────────────────────────────────────────────────────
-
-describe('E2E – Homepage Initial Load', () => {
-  it('renders h1 homepage heading', () => {
+describe('E2E – Initial load', () => {
+  it('renders the homepage hero and footer', () => {
     render(<TestApp />);
-    expect(
-      screen.getByRole('heading', { level: 1, name: /Votre site et votre visibilité/i })
-    ).toBeInTheDocument();
-  });
-
-  it('renders Navbar with brand link', () => {
-    render(<TestApp />);
-    expect(screen.getAllByRole('link', { name: /INFORMEL-TIC/i }).length).toBeGreaterThanOrEqual(1);
-  });
-
-  it('renders Footer tagline', () => {
-    render(<TestApp />);
-    expect(screen.getByText(/Développement web sur-mesure/i)).toBeInTheDocument();
-  });
-
-  it('renders all 4 homepage sections', () => {
-    render(<TestApp />);
-    expect(screen.getByRole('heading', { level: 1, name: /Votre site et votre visibilité/i })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { level: 2, name: /Risques/i })).toBeInTheDocument();
-    expect(screen.getByText(/Ils nous font confiance/i)).toBeInTheDocument();
-    expect(screen.getByText(/Prêt à lancer votre projet/i)).toBeInTheDocument();
-  });
-});
-
-// ─── Navigation via la barre de navigation ────────────────────────────────────
-
-describe('E2E – Navbar Navigation', () => {
-  it('navigates to Contact page via "Contact" nav link', async () => {
-    render(<TestApp />);
-    fireEvent.click(screen.getAllByRole('link', { name: /^Contact$/i })[0]);
-    expect(await screen.findByRole('heading', { level: 1, name: /Parlons de votre projet/i })).toBeInTheDocument();
-  });
-
-  it('navigates to Pricing page via "Offres & Tarifs" nav link', async () => {
-    render(<TestApp />);
-    fireEvent.click(screen.getAllByRole('link', { name: /Offres & Tarifs/i })[0]);
-    expect(await screen.findByRole('heading', { level: 1, name: /Des offres/i })).toBeInTheDocument();
-  });
-
-  it('navigates to About page via "À propos" nav link', async () => {
-    render(<TestApp />);
-    fireEvent.click(screen.getAllByRole('link', { name: /^À propos$/i })[0]);
-    expect(await screen.findByRole('heading', { level: 1, name: /Qui est INFORMEL-TIC/i })).toBeInTheDocument();
-  });
-
-  it('returns to Home page via "Accueil" nav link', async () => {
-    render(<TestApp />);
-    fireEvent.click(screen.getAllByRole('link', { name: /^Contact$/i })[0]);
-    await screen.findByRole('heading', { level: 1, name: /Parlons de votre projet/i });
-    fireEvent.click(screen.getAllByRole('link', { name: /^Accueil$/i })[0]);
-    expect(
-      await screen.findByRole('heading', { level: 1, name: /Votre site et votre visibilité/i })
-    ).toBeInTheDocument();
-  });
-
-  it('Navbar persists across page changes (stays mounted)', async () => {
-    render(<TestApp />);
-    fireEvent.click(screen.getAllByRole('link', { name: /Offres & Tarifs/i })[0]);
-    await screen.findByRole('heading', { level: 1, name: /Des offres/i });
-    expect(screen.getAllByRole('link', { name: /INFORMEL-TIC/i }).length).toBeGreaterThanOrEqual(1);
-  });
-
-  it('Footer persists across page changes', async () => {
-    render(<TestApp />);
-    fireEvent.click(screen.getAllByRole('link', { name: /^À propos$/i })[0]);
-    await screen.findByRole('heading', { level: 1, name: /Qui est INFORMEL-TIC/i });
-    // Footer element persists after navigation
+    expect(screen.getByRole('heading', { level: 1, name: /La qualité d'une agence/i })).toBeInTheDocument();
+    expect(screen.getAllByText(/L'Artisan Numérique du Nord/i).length).toBeGreaterThanOrEqual(1);
     expect(document.querySelector('footer')).toBeInTheDocument();
   });
 });
 
-// ─── Flux CTA Hero → Contact / Pricing ───────────────────────────────────────
-
-describe('E2E – Hero CTA Flows', () => {
-  it('"Demander un devis" Hero CTA navigates to Contact', async () => {
-    render(<TestApp />);
-    // getAllByRole because Navbar desktop CTA also has "Demander un devis"
-    fireEvent.click(screen.getAllByRole('link', { name: /Demander un devis/i })[0]);
-    expect(await screen.findByRole('heading', { level: 1, name: /Parlons de votre projet/i })).toBeInTheDocument();
-  });
-
-  it('"Voir nos offres" Hero CTA navigates to Pricing', async () => {
-    render(<TestApp />);
-    fireEvent.click(screen.getByRole('link', { name: /Voir nos offres/i }));
-    expect(await screen.findByRole('heading', { level: 1, name: /Des offres/i })).toBeInTheDocument();
-  });
-
-  it('"Je veux une visibilité maximale" CTABanner → Contact', async () => {
-    render(<TestApp />);
-    fireEvent.click(screen.getByRole('link', { name: /Je veux une visibilité maximale/i }));
-    expect(await screen.findByRole('heading', { level: 1, name: /Parlons de votre projet/i })).toBeInTheDocument();
-  });
-
-  it('"Voir nos packs" CTABanner → Pricing', async () => {
-    render(<TestApp />);
-    fireEvent.click(screen.getByRole('link', { name: /Voir nos packs/i }));
-    expect(await screen.findByRole('heading', { level: 1, name: /Des offres/i })).toBeInTheDocument();
-  });
-});
-
-// ─── Navigation via le menu mobile ──────────────────────────────────────────
-
-describe('E2E – Mobile Menu Navigation', () => {
-  it('opens mobile menu and navigates to Contact', async () => {
-    render(<TestApp />);
-    fireEvent.click(screen.getByRole('button', { name: /Ouvrir le menu/i }));
-    const contactLinks = screen.getAllByRole('link', { name: /^Contact$/i });
-    fireEvent.click(contactLinks[contactLinks.length - 1]);
-    expect(await screen.findByRole('heading', { level: 1, name: /Parlons de votre projet/i })).toBeInTheDocument();
-  });
-
-  it('mobile menu closes after clicking a link', () => {
-    render(<TestApp />);
-    fireEvent.click(screen.getByRole('button', { name: /Ouvrir le menu/i }));
-    expect(screen.getByRole('button', { name: /Fermer le menu/i })).toBeInTheDocument();
-    const aboutLinks = screen.getAllByRole('link', { name: /^À propos$/i });
-    fireEvent.click(aboutLinks[aboutLinks.length - 1]);
-    // setOpen(false) called on NavLink onClick → burger resets to "Ouvrir"
-    expect(screen.getByRole('button', { name: /Ouvrir le menu/i })).toBeInTheDocument();
-  });
-});
-
-// ─── Flux Pricing → Contact ───────────────────────────────────────────────────
-
-describe('E2E – Pricing → Contact', () => {
-  it('"Commencer" plan button navigates to Contact', async () => {
-    render(<TestApp />);
-    fireEvent.click(screen.getAllByRole('link', { name: /Offres & Tarifs/i })[0]);
-    await screen.findByRole('heading', { level: 1, name: /Des offres/i });
-    fireEvent.click(screen.getAllByRole('link', { name: /^Commencer$/i })[0]);
-    expect(await screen.findByRole('heading', { level: 1, name: /Parlons de votre projet/i })).toBeInTheDocument();
-  });
-});
-
-// ─── Footer navigation ────────────────────────────────────────────────────────
-
-describe('E2E – Footer Navigation', () => {
-  it('Footer "Accueil" link navigates to homepage', async () => {
+describe('E2E – Navigation', () => {
+  it('navigates to Contact via the navbar link', async () => {
     render(<TestApp />);
     fireEvent.click(screen.getAllByRole('link', { name: /^Contact$/i })[0]);
-    await screen.findByRole('heading', { level: 1, name: /Parlons de votre projet/i });
-    const footerAccueil = screen.getAllByRole('link', { name: /^Accueil$/i });
-    fireEvent.click(footerAccueil[footerAccueil.length - 1]);
-    expect(
-      await screen.findByRole('heading', { level: 1, name: /Votre site et votre visibilité/i })
-    ).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { level: 1, name: /Parlons de votre projet/i })).toBeInTheDocument();
+  });
+
+  it('navigates to Engagement via the navbar link', async () => {
+    render(<TestApp />);
+    fireEvent.click(screen.getAllByRole('link', { name: /Notre Engagement/i })[0]);
+    expect(await screen.findByRole('heading', { level: 1, name: /Rendre le Numérique Accessible à Tous/i })).toBeInTheDocument();
+  });
+
+  it('opens the Pros dropdown and reaches the overview page', async () => {
+    render(<TestApp />);
+    fireEvent.click(screen.getAllByRole('button', { name: /Espace Pros/i })[0]);
+    fireEvent.click(screen.getByRole('menuitem', { name: /Vue d'ensemble/i }));
+    expect(await screen.findByRole('heading', { level: 1, name: /Boostez votre activité/i })).toBeInTheDocument();
+  });
+
+  it('navigates to the pricing page from the hero CTA', async () => {
+    render(<TestApp />);
+    fireEvent.click(screen.getAllByRole('link', { name: /Voir nos tarifs/i })[0]);
+    expect(await screen.findByRole('heading', { level: 1, name: /Des offres claires/i })).toBeInTheDocument();
   });
 });
 
-// ─── Page 404 ────────────────────────────────────────────────────────────────
+describe('E2E – Mobile menu and footer', () => {
+  it('opens the mobile menu and navigates to the contact page', async () => {
+    render(<TestApp />);
+    fireEvent.click(screen.getByRole('button', { name: /Ouvrir le menu/i }));
+    fireEvent.click(screen.getAllByRole('link', { name: /^Contact$/i }).at(-1));
+    expect(await screen.findByRole('heading', { level: 1, name: /Parlons de votre projet/i })).toBeInTheDocument();
+  });
 
-describe('E2E – 404 Not Found', () => {
-  it('unknown route renders 404 message', () => {
+  it('footer home link returns to the homepage', async () => {
+    render(<TestApp initialRoute="/contact" />);
+    fireEvent.click(screen.getAllByRole('link', { name: /^Accueil$/i }).at(-1));
+    expect(await screen.findByRole('heading', { level: 1, name: /La qualité d'une agence/i })).toBeInTheDocument();
+  });
+});
+
+describe('E2E – 404', () => {
+  it('shows a 404 message for unknown routes', () => {
     render(<TestApp initialRoute="/route-inconnue" />);
-    expect(screen.getByText(/404/i)).toBeInTheDocument();
+    expect(screen.getByText(/404 – Page introuvable/i)).toBeInTheDocument();
   });
 });

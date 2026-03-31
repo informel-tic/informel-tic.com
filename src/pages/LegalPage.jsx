@@ -39,6 +39,9 @@ Email hébergeur : contact@informel-tic.com`,
   },
 ];
 
+/**
+ * Present the legal notices required for the site.
+ */
 export default function LegalPage() {
   return (
     <>

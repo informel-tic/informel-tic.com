@@ -11,6 +11,9 @@ const DETAILS = [
   'Réseaux sociaux et communication',
 ];
 
+/**
+ * Present the B2C home-training offer.
+ */
 export default function B2CFormationPage() {
   return (
     <>

@@ -7,6 +7,9 @@ import CTABanner from '../components/home/CTABanner';
 import SEO from '../components/SEO';
 import LocalBusinessJsonLd from '../components/LocalBusinessJsonLd';
 
+/**
+ * Compose the homepage sections and page-level metadata.
+ */
 export default function HomePage() {
   return (
     <main>

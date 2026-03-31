@@ -18,6 +18,9 @@ const VALUES = [
   },
 ];
 
+/**
+ * Render the value pillars that support the homepage positioning.
+ */
 export default function ValuesSection() {
   return (
     <section className="section-padding section-alt values-section">
