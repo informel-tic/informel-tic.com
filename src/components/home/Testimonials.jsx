@@ -42,10 +42,10 @@ export default function Testimonials() {
         <RevealSection>
           <div className="section-header">
             <h2 className="section-title">
-              Ils nous font confiance
+              Ils nous ont fait confiance
             </h2>
             <p className="section-subtitle">
-              Des résultats concrets pour des professionnels locaux.
+              Résultats concrets pour des professionnels locaux et des particuliers du secteur.
             </p>
           </div>
         </RevealSection>
@@ -54,15 +54,15 @@ export default function Testimonials() {
           {TESTIMONIALS.length === 0 ? (
             <RevealSection>
               <div className="glass glass-hover testimonial-card">
-                <p className="testimonial-quote">Nous lançons l'activité — soyez parmi les premiers clients locaux.</p>
+                <p className="testimonial-quote">Activité en cours de lancement — Soyez parmi les premiers clients de la zone.</p>
                 <div className="testimonial-footer">
                   <p className="testimonial-name">{config.OWNER_NAME} — Auto-entrepreneur</p>
                   <p className="testimonial-role">Basé à {config.SERVICE_AREA}</p>
                 </div>
                 <ul className="launch-benefits">
                   <li>Offre de lancement : audit gratuit pour les 5 premiers clients</li>
-                  <li>Code source livré • Optimisation SEO local</li>
-                  <li>Travail de proximité — intervention locale et accompagnement personnalisé</li>
+                  <li>Web · GBP · Caisse · Dépannage · Formation — tout en un</li>
+                  <li>Travail de proximité — intervention locale, interlocuteur unique</li>
                 </ul>
                 <div style={{marginTop:12}}>
                   <Link to="/contact?early=1" className="btn-primary">Devenez client pilote</Link>

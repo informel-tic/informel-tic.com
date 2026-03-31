@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
 import { Mail, MapPin } from 'lucide-react';
 
-const navLinks = [
+const quickLinks = [
   { to: '/',                  label: 'Accueil' },
-  { to: '/a-propos',          label: 'À propos' },
-  { to: '/offres',            label: 'Offres & Tarifs' },
+  { to: '/pros',              label: 'Espace Pros' },
+  { to: '/particuliers',      label: 'Espace Particuliers' },
+  { to: '/engagement',        label: 'Notre Engagement' },
   { to: '/contact',           label: 'Contact' },
   { to: '/mentions-legales',  label: 'Mentions légales' },
 ];
@@ -22,8 +23,8 @@ export default function Footer() {
             <img src="/logo.svg" alt="INFORMEL-TIC" className="footer-logo" />
           </Link>
           <p className="footer-tagline">
-            Développement web sur-mesure et optimisation de visibilité locale
-            pour les commerces et artisans. Sans WordPress. Sans compromis.
+            L'Artisan Numérique du Nord — Services de grande agence, proximité d'un artisan.
+            Pros et particuliers, à Lille et dans le 59.
           </p>
           <div className="footer-status">
             <span className="status-badge">
@@ -35,9 +36,9 @@ export default function Footer() {
 
         {/* Navigation */}
         <div>
-          <h3 className="footer-section-title">Navigation</h3>
+          <h3 className="footer-section-title">Liens rapides</h3>
           <ul className="footer-nav-list">
-            {navLinks.map(({ to, label }) => (
+            {quickLinks.map(({ to, label }) => (
               <li key={to}>
                 <Link to={to} className="footer-link">
                   <span className="footer-link__arrow">→</span>
@@ -48,7 +49,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Contact */}
+        {/* Contact & Zone */}
         <div>
           <h3 className="footer-section-title">Contact</h3>
           <ul className="footer-contact-list">
@@ -63,6 +64,9 @@ export default function Footer() {
               <span>1333 Rue Jean Jaurès<br />59156 Lourches, France</span>
             </li>
           </ul>
+          <p className="footer-zone">
+            <strong>Zone d'intervention :</strong> Lille & département du Nord (59)
+          </p>
           <div className="footer-cta">
             <Link to="/contact" className="btn-primary">
               Demander un devis

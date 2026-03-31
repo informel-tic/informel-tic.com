@@ -1,4 +1,4 @@
-import { Search, MapPin, Navigation, Zap, Palette, ArrowRight, ShieldAlert } from 'lucide-react';
+import { Search, MapPin, Laptop, Zap, Wrench, GraduationCap, ArrowRight, ShieldAlert } from 'lucide-react';
 import { useRef, useEffect } from 'react';
 
 function useReveal() {
@@ -33,34 +33,40 @@ function RevealSection({ children, className = '', delay = 0, vars = {} }) {
 
 const RISKS = [
   { 
-    icon: Search, title: 'Mauvais Référencement (SEO)', subtitle: 'Vous êtes invisible sur Google', 
-    problem: 'Vos clients cherchent un service dans votre ville, mais ce sont vos concurrents qui apparaissent.',
-    solution: 'Ciblage précis avec un SEO local agressif. Vous devenez le premier choix dans votre zone de chalandise.',
+    icon: Search, title: 'Invisible sur Google', subtitle: 'Pas de fiche GBP / fiche incomplète', 
+    problem: 'Vos clients cherchent votre service dans votre ville — mais c\'est la concurrence qui apparaît. Votre fiche est vide, les horaires sont faux, zéro photo.',
+    solution: 'Pack Radar Local (290 €) : fiche GBP optimisée, 3 annuaires synchronisés, livraison 5 jours. ROI immédiat.',
     iconColor: 'var(--error)', bg: 'rgba(185, 28, 28, 0.08)'
   },
   { 
-    icon: MapPin, title: 'Profil Google Business Profile', subtitle: 'Laissé vide, incomplet ou piraté', 
-    problem: 'Horaires erronés, pas de photos, pas de réponses aux avis. Vous perdez la confiance des clients locaux.',
-    solution: 'Création et sécurisation de votre fiche (double authentification). Photos pros, horaires exacts et avis gérés.',
+    icon: MapPin, title: 'Site absent ou inefficace', subtitle: 'Carte de visite numérique morte', 
+    problem: 'Vous avez un site WordPress qui met 5s à charger, ou pire : aucun site. 53% des visiteurs partent si le chargement dépasse 3s.',
+    solution: 'Site sur-mesure ultra-rapide (< 1s). Code livré, vous en êtes propriétaire. Aucune dépendance plugin.',
     iconColor: 'var(--accent)', bg: 'rgba(249,115,22,0.08)'
   },
   { 
-    icon: Navigation, title: 'Incohérences dans les Annuaires', subtitle: 'Infos dispersées (Waze, Apple Maps)', 
-    problem: 'Une adresse différente sur Waze et Google Maps = GPS perdu = Client mécontent.',
-    solution: 'Synchronisation parfaite des données de votre commerce sur tous les annuaires vitaux.',
+    icon: Laptop, title: 'Caisse mal configurée', subtitle: 'Pertes de temps & erreurs comptables', 
+    problem: 'Logiciel de caisse installé mais jamais paramétré correctement. TVA mal affectée, articles en vrac, tickets illisibles.',
+    solution: 'Pack Caisse Clé en Main : analyse, paramétrage complet (Hiboutik), formation 2h sur site. Opérationnel le jour J.',
     iconColor: 'var(--accent)', bg: 'rgba(249,115,22,0.08)'
   },
   { 
-    icon: Zap, title: 'Un Site Lent ou Non Sécurisé', subtitle: 'Impact fort sur la rétention', 
-    problem: 'Site basé sur un CMS lourd qui met 5 secondes à charger. 70% des visiteurs abandonnent avant même de payer.',
-    solution: 'Sites créés sur-mesure, ultra-rapides (chargement < 1s), hébergés sur serveurs premium. 100% sécurisés.',
+    icon: Zap, title: 'Panne au mauvais moment', subtitle: 'PC bloqué, messagerie muette, réseau coupé', 
+    problem: 'Une panne pro sans interlocuteur de confiance = journée perdue, devis ratés, clients qui ne rappellent pas.',
+    solution: 'Dépannage Pro 60 €/h — intervention 48h sur site ou à distance. Réseau, poste, messagerie, imprimante.',
     iconColor: 'var(--error)', bg: 'rgba(185, 28, 28, 0.08)'
   },
   { 
-    icon: Palette, title: 'Une Identité Visuelle Dispersée', subtitle: 'Site, Réseaux, Impression', 
-    problem: 'Logos et couleurs différents selon la plateforme. Vos clients ne reconnaissent pas votre marque.',
-    solution: 'Application d\'une charte graphique unifiée et cohérente sur tous vos supports numériques et imprimés.',
-    iconColor: 'var(--accent-2)', bg: 'rgba(249, 115, 22, 0.08)' 
+    icon: Wrench, title: 'PC qui ralentit', subtitle: 'Particuliers : virus, lenteurs, récupération', 
+    problem: 'Votre PC rame, affiche des popups bizarres ou ne démarre plus. Acheter un nouveau coûte 500 €+. Peut-être qu\'on peut réparer.',
+    solution: 'Diagnostic PC 49 € (forfait) pour identifier le problème avant de dépenser. Dépannage 45 €/h si on intervient.',
+    iconColor: 'var(--accent)', bg: 'rgba(249,115,22,0.08)' 
+  },
+  { 
+    icon: GraduationCap, title: 'Se sentir dépassé', subtitle: 'Arnaques, messagerie, smartphone', 
+    problem: 'Phishing, faux conseillers, mot de passe oublié, WhatsApp qui ne marche plus. Trop de jargon, personne pour expliquer simplement.',
+    solution: 'Formation à domicile 45 €/h — à votre rythme, sur vos propres appareils.',
+    iconColor: 'var(--accent)', bg: 'rgba(249,115,22,0.08)' 
   },
 ];
 
@@ -71,10 +77,11 @@ export default function RisksAndSolutions() {
         <RevealSection>
           <div className="section-header">
             <h2 className="section-title">
-              Les <span className="text-error">Risques</span> des Outils Mal Utilisés
+              Vos <span className="text-error">problèmes</span>, nos solutions
             </h2>
             <p className="section-subtitle">
-              De nombreux commerçants utilisent des outils inadaptés. Voici les pièges les plus fréquents, et comment nous vous en protégeons.
+              Web, visibilité Google, logiciel de caisse, dépannage ou formation — 
+              un interlocuteur unique pour chaque situation du quotidien numérique.
             </p>
           </div>
         </RevealSection>

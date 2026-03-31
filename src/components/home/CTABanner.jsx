@@ -41,17 +41,18 @@ export default function CTABanner() {
             <div className="cta-card__border" />
             <div className="cta-card__body">
               <h2 className="cta-title">
-                Prêt à lancer votre projet ?
+                Pas sûr de quelle offre vous avez besoin ?
               </h2>
               <p className="cta-desc">
-                Décrivez-nous votre activité. Nous vous proposerons la solution idéale gratuitement et sans engagement.
+                Décrivez votre situation en 2 lignes — pro ou particulier. 
+                On vous rappelle et on identifie ensemble l'offre la plus adaptée. Gratuit, sans engagement.
               </p>
               <div className="cta-actions">
                 <Link to="/contact" className="btn-primary btn-lg">
-                  Je veux une visibilité maximale <ArrowRight size={18} aria-hidden="true" />
+                  Je décris ma situation <ArrowRight size={18} aria-hidden="true" />
                 </Link>
                 <Link to="/offres" className="btn-secondary btn-lg">
-                  Voir nos packs
+                  Voir le catalogue complet
                 </Link>
               </div>
             </div>

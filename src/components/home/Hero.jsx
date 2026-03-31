@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Zap, ArrowRight, CheckCircle } from 'lucide-react';
-import config from '../../config';
+import { Zap, ArrowRight } from 'lucide-react';
 
 /* ── Typing effect ─────────────────────────────────── */
-const WORDS = ['sous contrôle.', 'ultra-rapide.', 'sans WordPress.', 'pour vous.'];
+const WORDS = ['trouvé sur Google.', 'entre de bonnes mains.', 'sans stress technique.', 'local et transparent.'];
 function TypingWord() {
   const [idx, setIdx]   = useState(0);
   const [text, setText] = useState('');
@@ -30,70 +29,43 @@ function TypingWord() {
 }
 
 export default function Hero() {
-  const [photoSrc, setPhotoSrc] = useState(config.FOUNDER_PHOTO || '/assets/team-placeholder.svg');
-
   return (
     <section className="hero-section hero-bg grid-bg">
       <div className="container-md hero-body">
 
         <div className="badge hero-badge">
           <Zap size={14} aria-hidden="true" />
-          Le Partenaire Digital des Commerces de Proximité
+          L'Artisan Numérique du Nord
         </div>
 
         <h1 className="hero-title">
-          Votre site et votre visibilité,<br />
+          Services de Grande Agence,<br />
+          Proximité d'un Artisan.<br />
           <span className="typing-wrap"><TypingWord /></span>
         </h1>
 
         <p className="hero-desc">
-          Nous construisons des écosystèmes numériques locaux pour que vous soyez les premiers trouvés dans votre zone de chalandise, <strong className="text-strong">sans stress technique</strong>.
+          Professionnels ou particuliers — site web, visibilité Google, logiciel de caisse,
+          dépannage ou formation — <strong className="text-strong">un seul interlocuteur local</strong> pour
+          tout votre numérique. À Lille et dans le 59.
         </p>
 
         <div className="hero-actions">
           <Link to="/contact" className="btn-primary">
-            Demander un devis <ArrowRight size={18} aria-hidden="true" />
+            Demander un diagnostic <ArrowRight size={18} aria-hidden="true" />
           </Link>
-          <Link to="/offres" className="btn-secondary">
-            Voir nos offres
+          <Link to="/pros" className="btn-secondary">
+            Espace Pros
           </Link>
-          <Link to="/contact?audit=1" className="btn-tertiary" aria-label="Demander un audit gratuit">
-            Audit gratuit
+          <Link to="/particuliers" className="btn-secondary">
+            Espace Particuliers
           </Link>
-        </div>
-
-        <div className="hero-features">
-          {['Zéro charge mentale', 'Visibilité maximale', 'Code source livré', 'Sans engagement'].map((item) => (
-            <span key={item} className="feature-item">
-              <CheckCircle size={16} className="feature-icon" aria-hidden="true" /> {item}
-            </span>
-          ))}
-        </div>
-        <div className="hero-media">
-          <div className="founder-card">
-            <img
-              src={photoSrc}
-              alt={config.FOUNDER_PHOTO_ALT || `Photo de ${config.OWNER_NAME}`}
-              className="founder-photo"
-              loading="lazy"
-              width="380"
-              height="250"
-              onError={() => setPhotoSrc('/assets/team-placeholder.svg')}
-            />
-            <div className="founder-info">
-              <p className="founder-name">{config.OWNER_NAME} — Auto-entrepreneur</p>
-              <p className="founder-area">Basé à {config.SERVICE_AREA}</p>
-            </div>
-          </div>
-          <img src="/assets/mockup-site.svg" alt="Mockup : exemple de site sur-mesure" className="hero-mockup" />
         </div>
 
         <div className="scroll-hint">
-        <span>Découvrir</span>
-        <div className="scroll-line" />
-      </div>
-
-      
+          <span>Découvrir</span>
+          <div className="scroll-line" />
+        </div>
       </div>
     </section>
   );

@@ -1,0 +1,105 @@
+import { Link } from 'react-router-dom';
+import { CheckCircle, XCircle, Star } from 'lucide-react';
+
+/**
+ * Carte de prix réutilisable pour le B2B.
+ * Props :
+ *   name        — Nom de l'offre
+ *   price       — Prix principal (string, ex: "290 €")
+ *   priceSub    — Sous-texte prix (ex: "one-shot", "/mois")
+ *   monthlyPrice — Prix mensuel optionnel (ex: "+ 35 €/mois")
+ *   tagline     — Courte description de l'offre
+ *   target      — Cible (ex: "Artisans & commerçants")
+ *   inclusions  — Array de strings (éléments inclus, check vert)
+ *   exclusions  — Array de strings (éléments exclus, croix rouge)
+ *   featured    — Boolean, met la carte en surbrillance
+ *   featuredLabel — Texte du badge (ex: "Meilleur rapport qualité/prix")
+ *   cta         — { label, to } pour le bouton CTA
+ *   note        — Note additionnelle en bas de carte
+ *   icon        — Composant Lucide optionnel
+ */
+export default function PricingCardB2B({
+  name,
+  price,
+  priceSub,
+  monthlyPrice,
+  tagline,
+  target,
+  inclusions = [],
+  exclusions = [],
+  featured = false,
+  featuredLabel,
+  cta,
+  note,
+  icon: Icon,
+}) {
+  return (
+    <div className={`pricing-card${featured ? ' pricing-card--featured' : ''}`}>
+      {featured && <div className="pricing-accent-line" />}
+
+      {featured && featuredLabel && (
+        <div className="pricing-badge-wrap">
+          <span className="pricing-badge">
+            <Star size={12} aria-hidden="true" /> {featuredLabel}
+          </span>
+        </div>
+      )}
+
+      <div className="pricing-header">
+        {Icon && (
+          <div className="pricing-icon-wrap">
+            <Icon size={20} aria-hidden="true" />
+          </div>
+        )}
+        <h3 className="pricing-title">{name}</h3>
+        {tagline && <p className="pricing-tagline">{tagline}</p>}
+      </div>
+
+      <div className="pricing-prices">
+        <div className="pricing-main">
+          <span className="price-number">{price}</span>
+          {priceSub && <span className="price-sub">{priceSub}</span>}
+        </div>
+        {monthlyPrice && (
+          <div className="pricing-sub">
+            <span className="price-month accent">{monthlyPrice}</span>
+          </div>
+        )}
+        {target && <p className="pricing-target">{target}</p>}
+      </div>
+
+      <div className="pricing-features">
+        {inclusions.length > 0 && (
+          <ul className="check-list" aria-label="Inclus">
+            {inclusions.map((item) => (
+              <li key={item}>
+                <CheckCircle size={14} className="icon-check-green" aria-hidden="true" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        )}
+        {exclusions.length > 0 && (
+          <ul className="exclude-list" aria-label="Non inclus">
+            {exclusions.map((item) => (
+              <li key={item}>
+                <XCircle size={14} className="icon-exclude-red" aria-hidden="true" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      {note && <p className="pricing-note muted">{note}</p>}
+
+      {cta && (
+        <div className="pricing-cta">
+          <Link to={cta.to} className={featured ? 'btn-primary' : 'btn-secondary'}>
+            {cta.label}
+          </Link>
+        </div>
+      )}
+    </div>
+  );
+}

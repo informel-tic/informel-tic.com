@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2816 1536" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <filter id="darkenForLightBg" color-interpolation-filters="sRGB">
+      <feComponentTransfer>
+        <feFuncR type="linear" slope="0.56" intercept="-0.04" />
+        <feFuncG type="linear" slope="0.56" intercept="-0.04" />
+        <feFuncB type="linear" slope="0.56" intercept="-0.04" />
+      </feComponentTransfer>
+      <feColorMatrix type="saturate" values="1.08" />
+      <feDropShadow dx="0" dy="1" stdDeviation="1.4" flood-color="#000000" flood-opacity="0.34" />
+    </filter>
+  </defs>
+
+  <image href="/logo.svg" width="2816" height="1536" filter="url(#darkenForLightBg)" preserveAspectRatio="xMidYMid meet" />
+</svg>
