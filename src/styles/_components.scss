@@ -584,8 +584,13 @@
 }
 
 .nav-logo {
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, filter 0.15s ease;
   display: block;
+
+  // Navbar sits on a light/white background — darken slightly and add a tiny shadow
+  // so the logo reads clearly even when the nav is not scrolled.
+  filter: brightness(0.78) contrast(1.12) saturate(1.1)
+          drop-shadow(0 1px 3px rgba(0, 0, 0, 0.20));
 
   // Use fixed heights with auto width to preserve aspect ratio
   height: 2.5rem;
@@ -674,6 +679,13 @@
   // Larger footer logo for better visibility across breakpoints
   @include m.sm { height: 3.75rem; }
   @include m.md { height: 4.25rem; }
+
+  // Footer is on a very dark background (#0a0a0f):
+  // invert() flips dark pixels to light, then brightness/contrast/saturate
+  // restore vivid colours and ensure readability.
+  transition: filter 0.15s ease;
+  filter: invert(1) brightness(1.15) contrast(1.08) saturate(1.1)
+          drop-shadow(0 1px 4px rgba(0, 0, 0, 0.35));
 }
 
 .footer-tagline {
