@@ -34,7 +34,7 @@ describe('Contenu – Homepage', () => {
 
   it('CTA banner uses the current copy', () => {
     wrap(<CTABanner />);
-    expect(screen.getByText(/Prêt à passer au numérique sans stress/i)).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2, name: /Prêt à passer au numérique sans stress/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /Obtenir mon devis gratuit/i })).toBeInTheDocument();
   });
 });

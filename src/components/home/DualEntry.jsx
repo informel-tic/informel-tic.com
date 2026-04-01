@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Briefcase, User, ArrowRight, CheckCircle } from 'lucide-react';
+import { IMAGES } from '../../assets/images';
 
 const B2B_BENEFITS = [
   'Site web professionnel sur-mesure, sans WordPress',
@@ -17,9 +18,6 @@ const B2C_BENEFITS = [
   'Un artisan patient et pédagogue',
 ];
 
-/**
- * Present the two entry paths to the site's B2B and B2C services.
- */
 export default function DualEntry() {
   return (
     <section className="section-padding dual-entry-section">
@@ -35,49 +33,75 @@ export default function DualEntry() {
 
         <div className="dual-entry-grid">
           {/* Bloc B2B */}
-          <div className="dual-entry-card glass glass-hover">
-            <div className="dual-entry-icon-wrap dual-entry-icon-wrap--b2b">
-              <Briefcase size={28} aria-hidden="true" />
+          <div className="dual-entry-card glass">
+            <div className="dual-entry-image-wrap">
+              <img
+                src={IMAGES.b2b}
+                alt={IMAGES.b2bAlt}
+                className="dual-entry-image"
+                loading="lazy"
+                width="560"
+                height="240"
+              />
+              <div className="dual-entry-image-overlay dual-entry-image-overlay--b2b" />
+              <div className="dual-entry-icon-float dual-entry-icon-float--b2b">
+                <Briefcase size={22} aria-hidden="true" />
+              </div>
             </div>
-            <h3 className="dual-entry-title">Vous êtes un Professionnel ou Commerçant ?</h3>
-            <p className="dual-entry-desc">
-              Boostez votre activité avec un expert numérique local. Site web, visibilité Google,
-              logiciel de caisse et maintenance — tout en un seul interlocuteur.
-            </p>
-            <ul className="dual-entry-list">
-              {B2B_BENEFITS.map((item) => (
-                <li key={item}>
-                  <CheckCircle size={16} className="dual-entry-check" aria-hidden="true" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <Link to="/pros" className="btn-primary dual-entry-cta">
-              Découvrir l'Espace Pros <ArrowRight size={18} aria-hidden="true" />
-            </Link>
+            <div className="dual-entry-body">
+              <h3 className="dual-entry-title">Vous êtes un Professionnel ou Commerçant ?</h3>
+              <p className="dual-entry-desc">
+                Boostez votre activité avec un expert numérique local. Site web, visibilité Google,
+                logiciel de caisse et maintenance — tout en un seul interlocuteur.
+              </p>
+              <ul className="dual-entry-list">
+                {B2B_BENEFITS.map((item) => (
+                  <li key={item}>
+                    <CheckCircle size={16} className="dual-entry-check" aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Link to="/pros" className="btn-primary dual-entry-cta">
+                Découvrir l'Espace Pros <ArrowRight size={18} aria-hidden="true" />
+              </Link>
+            </div>
           </div>
 
           {/* Bloc B2C */}
-          <div className="dual-entry-card glass glass-hover">
-            <div className="dual-entry-icon-wrap dual-entry-icon-wrap--b2c">
-              <User size={28} aria-hidden="true" />
+          <div className="dual-entry-card glass">
+            <div className="dual-entry-image-wrap">
+              <img
+                src={IMAGES.b2c}
+                alt={IMAGES.b2cAlt}
+                className="dual-entry-image"
+                loading="lazy"
+                width="560"
+                height="240"
+              />
+              <div className="dual-entry-image-overlay dual-entry-image-overlay--b2c" />
+              <div className="dual-entry-icon-float dual-entry-icon-float--b2c">
+                <User size={22} aria-hidden="true" />
+              </div>
             </div>
-            <h3 className="dual-entry-title">Vous êtes un Particulier ?</h3>
-            <p className="dual-entry-desc">
-              L'informatique facile à domicile, 50% moins chère grâce à l'agrément Services à la Personne.
-              Dépannage, installation ou formation — on s'occupe de tout.
-            </p>
-            <ul className="dual-entry-list">
-              {B2C_BENEFITS.map((item) => (
-                <li key={item}>
-                  <CheckCircle size={16} className="dual-entry-check" aria-hidden="true" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <Link to="/particuliers" className="btn-primary dual-entry-cta">
-              Découvrir l'Espace Particuliers <ArrowRight size={18} aria-hidden="true" />
-            </Link>
+            <div className="dual-entry-body">
+              <h3 className="dual-entry-title">Vous êtes un Particulier ?</h3>
+              <p className="dual-entry-desc">
+                L'informatique facile à domicile, 50% moins chère grâce à l'agrément Services à la Personne.
+                Dépannage, installation ou formation — on s'occupe de tout.
+              </p>
+              <ul className="dual-entry-list">
+                {B2C_BENEFITS.map((item) => (
+                  <li key={item}>
+                    <CheckCircle size={16} className="dual-entry-check" aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Link to="/particuliers" className="btn-primary dual-entry-cta">
+                Découvrir l'Espace Particuliers <ArrowRight size={18} aria-hidden="true" />
+              </Link>
+            </div>
           </div>
         </div>
       </div>

@@ -71,7 +71,7 @@ export default function Footer() {
             <strong>Zone d'intervention :</strong> Lille & département du Nord (59)
           </p>
           <div className="footer-cta">
-            <Link to="/contact" className="btn-primary">
+            <Link to="/contact?subject=devis" className="btn-primary">
               Demander un devis
             </Link>
           </div>

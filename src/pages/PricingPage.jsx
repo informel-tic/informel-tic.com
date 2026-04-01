@@ -314,7 +314,7 @@ function B2BCard({ offer }) {
       )}
 
       <div className="pricing-cta">
-        <Link to="/contact" className={featured ? 'btn-primary' : 'btn-secondary'}>
+        <Link to={`/contact?subject=${offer.id === 'caisse' ? 'caisse' : (['radar-local', 'presence-web', 'ecosysteme'].includes(offer.id) ? 'visibilite' : 'devis')}`} className={featured ? 'btn-primary' : 'btn-secondary'}>
           Démarrer ce pack <ArrowRight size={16} />
         </Link>
       </div>
@@ -354,7 +354,7 @@ function B2CCard({ offer }) {
       {note && <p className="pricing-note muted">{note}</p>}
 
       <div className="pricing-cta">
-        <Link to="/contact" className="btn-secondary">
+        <Link to={`/contact?subject=${offer.id === 'formation' ? 'formation' : 'depannage'}`} className="btn-secondary">
           Prendre rendez-vous <ArrowRight size={16} />
         </Link>
       </div>
@@ -431,7 +431,7 @@ export default function PricingPage() {
               <p>Sur les projets numériques (≥ 3 000 € HT), la Région peut prendre en charge jusqu'à <strong>40%</strong> du montant.
                 Un projet à 3 000 € vous revient à <strong>1 800 €</strong>. Nous vous aidons à monter le dossier.</p>
             </div>
-            <Link to="/contact" className="btn-secondary">En savoir plus</Link>
+            <Link to="/contact?subject=devis" className="btn-secondary">En savoir plus</Link>
           </div>
 
           {/* Pilier 2 */}
@@ -473,7 +473,7 @@ export default function PricingPage() {
                 </div>
               </div>
               <div className="pricing-cta">
-                <Link to="/contact" className="btn-secondary">
+                <Link to="/contact?subject=caisse" className="btn-secondary">
                   Demander un devis <ArrowRight size={16} />
                 </Link>
               </div>
@@ -609,7 +609,7 @@ export default function PricingPage() {
 
           <div className="text-center mt-12">
             <p className="muted lead-lg">Vous ne savez pas quelle offre est faite pour vous ?</p>
-            <Link to="/contact" className="btn-primary btn-lg">
+            <Link to="/contact?subject=devis" className="btn-primary btn-lg">
               Parlons de votre projet <ArrowRight size={18} />
             </Link>
           </div>

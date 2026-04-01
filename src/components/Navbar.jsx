@@ -148,7 +148,7 @@ export default function Navbar() {
 
         {/* Desktop CTA */}
         <div className="nav-desktop-cta">
-          <Link to="/contact" className="btn-primary">
+          <Link to="/contact?subject=devis" className="btn-primary">
             Demander un devis
           </Link>
         </div>
@@ -214,7 +214,7 @@ export default function Navbar() {
             )
           )}
           <li className="nav-mobile__cta-item">
-            <Link to="/contact" onClick={() => setOpen(false)} className="btn-primary">
+            <Link to="/contact?subject=devis" onClick={() => setOpen(false)} className="btn-primary">
               Demander un devis
             </Link>
           </li>

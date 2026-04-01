@@ -74,7 +74,7 @@ export default function B2CFormationPage() {
             </ul>
           </div>
           <div className="text-center mt-8">
-            <Link to="/contact" className="btn-primary">
+            <Link to="/contact?subject=formation" className="btn-primary">
               Réserver une séance <ArrowRight size={16} aria-hidden="true" />
             </Link>
           </div>

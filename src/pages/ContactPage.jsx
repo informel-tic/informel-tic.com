@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import {
   Send, Loader, CheckCircle, XCircle, User, Mail,
   Phone, MessageSquare, FileText, ArrowRight, MapPin
@@ -11,11 +11,21 @@ const RULES = {
   name: { regex: /^[a-zA-ZÀ-ÿ\s'-]{2,100}$/, msg: 'Prénom et nom requis (2–100 caractères, lettres uniquement).' },
   email: { regex: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, msg: 'Adresse e-mail invalide.' },
   phone: { regex: /^[\d\s+().-]{7,20}$/, msg: 'Numéro de téléphone invalide.' },
-  subject: { regex: /^.{3,150}$/, msg: 'Sujet requis (3–150 caractères).' },
+  subject: { regex: /^[a-z_]{3,20}$/, msg: 'Sujet invalide.' },
   message: { regex: /^[\s\S]{10,5000}$/, msg: 'Message requis (10–5000 caractères).' },
 };
 
-const INITIAL_VALUES = { name: '', email: '', phone: '', subject: '', message: '' };
+export const SUBJECT_OPTIONS = [
+  { value: 'devis', label: 'Créer ou refondre mon site web' },
+  { value: 'visibilite', label: 'Améliorer ma visibilité locale (Google)' },
+  { value: 'caisse', label: 'Paramétrer mon logiciel de caisse' },
+  { value: 'depannage', label: 'Demander un dépannage ou une assistance' },
+  { value: 'formation', label: 'Me former à l\'informatique' },
+  { value: 'mecenat', label: 'Solliciter un mécénat (Associations)' },
+  { value: 'autre', label: 'Autre demande' },
+];
+
+const INITIAL_VALUES = { name: '', email: '', phone: '', subject: 'devis', message: '' };
 const INITIAL_ERRORS = { name: '', email: '', phone: '', subject: '', message: '' };
 
 /* ── Form field component ────────────────────────── */
@@ -56,12 +66,23 @@ function Field({ id, label, icon: Icon, type = 'text', value, onChange, onBlur, 
  * Present the contact form and its supporting contact information.
  */
 export default function ContactPage() {
-  const [values, setValues] = useState(INITIAL_VALUES);
+  const [searchParams] = useSearchParams();
+  const initSubject = searchParams.get('subject') || 'devis';
+  const initialSubject = SUBJECT_OPTIONS.some(o => o.value === initSubject) ? initSubject : 'devis';
+
+  const [values, setValues] = useState({ ...INITIAL_VALUES, subject: initialSubject });
   const [errors, setErrors] = useState(INITIAL_ERRORS);
   const [touched, setTouched] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [toast, setToast] = useState(null);
   const toastTimer = useRef(null);
+
+  useEffect(() => {
+    const defaultSubject = searchParams.get('subject');
+    if (defaultSubject && SUBJECT_OPTIONS.some(o => o.value === defaultSubject)) {
+      setValues(v => ({ ...v, subject: defaultSubject }));
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     if (toast) {
@@ -168,7 +189,7 @@ export default function ContactPage() {
             Décrivez-nous votre activité et vos besoins. Nous vous répondons sous <strong className="text-strong">24 heures</strong> avec un devis personnalisé, gratuit et sans engagement.
           </p>
           <div className="action-row">
-            <a href="https://calendly.com/your-username/15min" target="_blank" rel="noopener noreferrer" className="btn-secondary btn-lg">Réserver un appel 15 min</a>
+            <a href="mailto:contact@informel-tic.com?subject=Demande%20de%20rappel%2015%20min" className="btn-secondary btn-lg">Demander un rappel 15 min</a>
             <Link to="/contact" className="btn-primary btn-lg">Demander un devis</Link>
           </div>
         </div>
@@ -241,14 +262,40 @@ export default function ContactPage() {
                 <form onSubmit={handleSubmit} noValidate aria-label="Formulaire de contact">
                   <input type="text" name="website" tabIndex={-1} aria-hidden="true" className="sr-only" autoComplete="off" />
 
-                  <div className="form-grid">
+                  <div className="form-grid" style={{ gap: '1rem' }}>
                     <Field id="name" label="Nom complet" icon={User} value={values.name} onChange={handleChange} onBlur={handleBlur} error={touched.name ? errors.name : ''} required placeholder="Jean Dupont" />
                     <Field id="email" label="Adresse e-mail" icon={Mail} type="email" value={values.email} onChange={handleChange} onBlur={handleBlur} error={touched.email ? errors.email : ''} required placeholder="jean@exemple.fr" />
                   </div>
 
-                  <div className="form-grid">
+                  <div className="form-grid" style={{ gap: '1rem' }}>
                     <Field id="phone" label="Téléphone (optionnel)" icon={Phone} type="tel" value={values.phone} onChange={handleChange} onBlur={handleBlur} error={touched.phone ? errors.phone : ''} placeholder="+33 6 00 00 00 00" />
-                    <Field id="subject" label="Sujet" icon={FileText} value={values.subject} onChange={handleChange} onBlur={handleBlur} error={touched.subject ? errors.subject : ''} required placeholder="Création de site vitrine" />
+                    <div>
+                      <label htmlFor="subject" className="field-label">
+                        <FileText size={14} className="icon-accent" aria-hidden="true" />
+                        Sujet de votre demande
+                        <span className="required-star">*</span>
+                      </label>
+                      <select
+                        id="subject"
+                        name="subject"
+                        value={values.subject}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        className={`form-input ${touched.subject && errors.subject ? 'error' : ''}`}
+                        aria-invalid={!!(touched.subject && errors.subject)}
+                        required
+                        style={{ cursor: 'pointer', appearance: 'auto', backgroundColor: 'var(--surface)' }}
+                      >
+                        {SUBJECT_OPTIONS.map(opt => (
+                          <option key={opt.value} value={opt.value}>{opt.label}</option>
+                        ))}
+                      </select>
+                      {touched.subject && errors.subject && (
+                        <p id="subject-error" role="alert" className="field-error">
+                          <XCircle size={12} aria-hidden="true" /> {errors.subject}
+                        </p>
+                      )}
+                    </div>
                   </div>
 
                   <div className="mb-3">

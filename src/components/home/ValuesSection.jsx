@@ -34,7 +34,7 @@ export default function ValuesSection() {
           </p>
         </div>
 
-        <div className="grid-3col">
+        <div className="flex-3col">
           {VALUES.map(({ icon: Icon, title, desc }) => (
             <div key={title} className="value-card glass glass-hover">
               <div className="value-icon-wrap">

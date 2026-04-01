@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 const SECTIONS = [
   {
@@ -45,9 +45,14 @@ Email hébergeur : contact@informel-tic.com`,
 export default function LegalPage() {
   return (
     <>
+      <SEO
+        title="Mentions légales"
+        description="Mentions légales d'INFORMEL-TIC : éditeur, hébergement, propriété intellectuelle, RGPD et responsabilités."
+        url="https://informel-tic.com/mentions-legales"
+      />
       <section className="hero-bg page-hero text-center">
         <div className="container-lg">
-          <h1 className="font-display page-title page-title--inverse">
+          <h1 className="font-display page-title">
             Mentions <span className="gradient-text">légales</span>
           </h1>
           <p className="page-lead">
@@ -60,7 +65,7 @@ export default function LegalPage() {
         <div className="container-md stack-col">
           {SECTIONS.map(({ title, content }) => (
             <div key={title} className="glass glass--large">
-              <h2 className="section-title section-title--inverse">{title}</h2>
+              <h2 className="section-title">{title}</h2>
               <p className="muted body-sm pre-line">{content}</p>
             </div>
           ))}

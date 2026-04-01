@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Shield, Star, Wrench, ArrowRight } from 'lucide-react';
+import { Shield, Star, Wrench, ArrowRight, CheckCircle } from 'lucide-react';
 import SEO from '../components/SEO';
 import PricingCardB2B from '../components/PricingCardB2B';
 
@@ -19,7 +19,7 @@ const ABOS = [
       'Publications Google Business',
       'SLA garanti',
     ],
-    cta: { label: 'Souscrire', to: '/contact' },
+    cta: { label: 'Souscrire', to: '/contact?subject=autre' },
   },
   {
     name: 'Abo Pro',
@@ -37,7 +37,7 @@ const ABOS = [
       'SLA garanti',
       'Mises à jour illimitées',
     ],
-    cta: { label: 'Souscrire', to: '/contact' },
+    cta: { label: 'Souscrire', to: '/contact?subject=autre' },
   },
   {
     name: 'Abo VIP',
@@ -56,7 +56,7 @@ const ABOS = [
       'Support prioritaire',
     ],
     exclusions: [],
-    cta: { label: 'Choisir le VIP', to: '/contact' },
+    cta: { label: 'Choisir le VIP', to: '/contact?subject=autre' },
   },
 ];
 
@@ -101,7 +101,7 @@ export default function B2BSecuriserPage() {
       {/* Dépannage Pro */}
       <section className="section-padding section-alt">
         <div className="container-md">
-          <div className="depannage-pro glass">
+          <div className="depannage-pro glass glass--padded">
             <div className="depannage-header">
               <div className="value-icon-wrap">
                 <Wrench size={22} className="value-icon" aria-hidden="true" />
@@ -115,13 +115,13 @@ export default function B2BSecuriserPage() {
                 <span className="price-sub">/heure</span>
               </div>
             </div>
-            <ul className="depannage-details">
-              <li>Diagnostic sur site ou à distance</li>
-              <li>Résolution de pannes serveur, site, réseau</li>
-              <li>1ère heure indivisible</li>
-              <li>Puis facturation par tranche de 15 min</li>
+            <ul className="depannage-details check-list">
+              <li><CheckCircle size={16} className="icon-check-green icon-inline" aria-hidden="true" /> Diagnostic sur site ou à distance</li>
+              <li><CheckCircle size={16} className="icon-check-green icon-inline" aria-hidden="true" /> Résolution de pannes serveur, site, réseau</li>
+              <li><CheckCircle size={16} className="icon-check-green icon-inline" aria-hidden="true" /> 1ère heure indivisible</li>
+              <li><CheckCircle size={16} className="icon-check-green icon-inline" aria-hidden="true" /> Puis facturation par tranche de 15 min</li>
             </ul>
-            <Link to="/contact" className="btn-primary mt-6">
+            <Link to="/contact?subject=depannage" className="btn-primary mt-6">
               Demander une intervention <ArrowRight size={16} aria-hidden="true" />
             </Link>
           </div>

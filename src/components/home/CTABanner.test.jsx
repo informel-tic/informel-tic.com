@@ -30,11 +30,11 @@ describe('CTABanner – CTAs', () => {
     expect(cta).toHaveAttribute('href', '/contact');
   });
 
-  it('secondary CTA links to /offres', () => {
+  it('secondary CTA links to phone number', () => {
     renderCTA();
-    const cta = screen.getByRole('link', { name: /Voir tous nos tarifs/i });
+    const cta = screen.getByRole('link', { name: /Nous appeler/i });
     expect(cta).toBeInTheDocument();
-    expect(cta).toHaveAttribute('href', '/offres');
+    expect(cta.getAttribute('href')).toMatch(/^tel:/);
   });
 
   it('primary CTA has btn-primary class', () => {
@@ -44,7 +44,7 @@ describe('CTABanner – CTAs', () => {
 
   it('secondary CTA has btn-secondary class', () => {
     renderCTA();
-    expect(screen.getByRole('link', { name: /Voir tous nos tarifs/i }).className).toContain('btn-secondary');
+    expect(screen.getByRole('link', { name: /Nous appeler/i }).className).toContain('btn-secondary');
   });
 });
 

@@ -16,6 +16,7 @@ import B2COverviewPage from './pages/B2COverviewPage';
 import B2CDepannagePage from './pages/B2CDepannagePage';
 import B2CFormationPage from './pages/B2CFormationPage';
 import EngagementPage from './pages/EngagementPage';
+import SEO from './components/SEO';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
@@ -72,11 +73,18 @@ export default function App() {
  */
 function NotFound() {
   return (
-    <div className="page-404">
-      <p className="not-found-code gradient-text">404</p>
-      <h1 className="not-found-title">Page introuvable</h1>
-      <p className="not-found-meta">Cette page n'existe pas ou a été déplacée.</p>
-      <Link to="/" className="btn-primary">← Retour à l'accueil</Link>
-    </div>
+    <>
+      <SEO
+        title="404 — Page introuvable"
+        description="La page demandée n'existe pas ou a été déplacée."
+        url="https://informel-tic.com/404"
+      />
+      <div className="page-404">
+        <p className="not-found-code gradient-text">404</p>
+        <h1 className="not-found-title">Page introuvable</h1>
+        <p className="not-found-meta">Cette page n'existe pas ou a été déplacée.</p>
+        <Link to="/" className="btn-primary">← Retour à l'accueil</Link>
+      </div>
+    </>
   );
 }

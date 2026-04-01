@@ -16,7 +16,7 @@ const SERVICES = [
     ],
   },
   {
-    label: 'Dépannage / Réparation',
+    label: 'Dépannage & Réparation',
     price: '50 €',
     priceSub: '/heure',
     description: 'Résolution de pannes matérielles et logicielles à domicile.',
@@ -107,7 +107,7 @@ export default function B2CDepannagePage() {
             </ul>
           </div>
           <div className="text-center mt-8">
-            <Link to="/contact" className="btn-primary">
+            <Link to="/contact?subject=depannage" className="btn-primary">
               Prendre rendez-vous <ArrowRight size={16} aria-hidden="true" />
             </Link>
           </div>

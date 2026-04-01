@@ -1,10 +1,8 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Phone } from 'lucide-react';
 import { useRef, useEffect } from 'react';
+import { CONTACT_PHONE } from '../../config';
 
-/**
- * Return a ref that reveals its element when it enters the viewport.
- */
 function useReveal() {
   const ref = useRef(null);
   useEffect(() => {
@@ -19,9 +17,6 @@ function useReveal() {
   return ref;
 }
 
-/**
- * Wrap CTA content so it reuses the shared reveal animation.
- */
 function RevealSection({ children, className = '', delay = 0 }) {
   const ref = useReveal();
   useEffect(() => {
@@ -37,32 +32,35 @@ function RevealSection({ children, className = '', delay = 0 }) {
   );
 }
 
-/**
- * Render the final call-to-action banner on the homepage.
- */
 export default function CTABanner() {
   return (
-    <section className="section-padding">
-      <div className="container-md">
+    <section className="cta-section">
+      <div className="container-lg">
         <RevealSection>
-          <div className="cta-card">
+          <div className="cta-card cta-card--premium">
             <div className="cta-card__bg" />
+            <div className="cta-card__pattern" aria-hidden="true" />
             <div className="cta-card__border" />
             <div className="cta-card__body">
+              <div className="cta-badge">
+                <Phone size={14} aria-hidden="true" />
+                Diagnostic gratuit
+              </div>
               <h2 className="cta-title">
-                Prêt à passer au numérique sans stress ?
+                Prêt à passer au numérique <span className="gradient-text">sans stress ?</span>
               </h2>
               <p className="cta-desc">
                 Décrivez votre situation en 2 lignes — pro ou particulier.
                 On vous répond sous 24h avec un devis personnalisé. <strong>Gratuit, sans engagement.</strong>
               </p>
               <div className="cta-actions">
-                <Link to="/contact" className="btn-primary btn-lg">
+                <Link to="/contact?subject=devis" className="btn-primary btn-lg">
                   Obtenir mon devis gratuit <ArrowRight size={18} aria-hidden="true" />
                 </Link>
-                <Link to="/offres" className="btn-secondary btn-lg">
-                  Voir tous nos tarifs
-                </Link>
+                <a href={`tel:${CONTACT_PHONE.replace(/\s/g, '')}`} className="btn-secondary btn-lg">
+                  <Phone size={16} aria-hidden="true" />
+                  Nous appeler
+                </a>
               </div>
             </div>
           </div>

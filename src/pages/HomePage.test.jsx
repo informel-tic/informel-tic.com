@@ -11,9 +11,9 @@ describe('HomePage – Integration', () => {
     expect(container).toBeInTheDocument();
   });
 
-  it('renders <main> wrapper element', () => {
+  it('renders the homepage sections', () => {
     renderHome();
-    expect(document.querySelector('main')).toBeInTheDocument();
+    expect(document.querySelector('.hero-section')).toBeInTheDocument();
   });
 });
 
@@ -60,17 +60,17 @@ describe('HomePage – Testimonials Section', () => {
 
   it('renders all 4 commitment cards', () => {
     renderHome();
-    expect(screen.getByText(/Devis écrit & détaillé/i)).toBeInTheDocument();
-    expect(screen.getByText(/Code source livré/i)).toBeInTheDocument();
-    expect(screen.getByText(/Réponse sous 24h/i)).toBeInTheDocument();
-    expect(screen.getByText(/Satisfait ou on corrige/i)).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 3, name: /Devis écrit & détaillé/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 3, name: /Code source livré/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 3, name: /Réponse sous 24h/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 3, name: /Satisfait ou on corrige/i })).toBeInTheDocument();
   });
 });
 
 describe('HomePage – CTA Banner', () => {
   it('renders CTABanner heading', () => {
     renderHome();
-    expect(screen.getByText(/Prêt à passer au numérique sans stress/i)).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2, name: /Prêt à passer au numérique sans stress/i })).toBeInTheDocument();
   });
 
   it('renders final CTA link to /contact', () => {

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Globe, Monitor, Shield, ArrowRight, Landmark } from 'lucide-react';
 import SEO from '../components/SEO';
+import { IMAGES } from '../assets/images';
 
 const PILLARS = [
   {
@@ -8,24 +9,27 @@ const PILLARS = [
     title: 'Rayonner',
     desc: 'Site web, SEO local, Google Business, réseaux sociaux — devenez visible là où vos clients vous cherchent.',
     to: '/pros/rayonner',
+    image: IMAGES.webDesign,
+    imageAlt: IMAGES.webDesignAlt,
   },
   {
     icon: Monitor,
     title: 'S\'organiser',
     desc: 'Logiciel de caisse, outils métiers, paramétrage complet — digitalisez votre gestion au quotidien.',
     to: '/pros/organiser',
+    image: IMAGES.seo,
+    imageAlt: IMAGES.seoAlt,
   },
   {
     icon: Shield,
     title: 'Sécuriser',
     desc: 'Maintenance, mises à jour, dépannage express — gardez votre activité en ligne et protégée.',
     to: '/pros/securiser',
+    image: IMAGES.security,
+    imageAlt: IMAGES.securityAlt,
   },
 ];
 
-/**
- * Present the B2B service overview and entry points.
- */
 export default function B2BOverviewPage() {
   return (
     <>
@@ -35,7 +39,7 @@ export default function B2BOverviewPage() {
       />
 
       {/* Hero */}
-      <section className="page-hero hero-bg grid-bg text-center">
+      <section className="page-hero hero-bg text-center">
         <div className="container-md">
           <span className="badge badge--muted">Espace Pros (B2B)</span>
           <h1 className="page-title">
@@ -48,20 +52,26 @@ export default function B2BOverviewPage() {
         </div>
       </section>
 
-      {/* 3 Piliers */}
+      {/* 3 Piliers avec images */}
       <section className="section-padding">
         <div className="container-lg">
-          <div className="grid-3col">
-            {PILLARS.map(({ icon: Icon, title, desc, to }) => (
-              <Link key={title} to={to} className="pillar-card glass glass-hover" aria-label={`Découvrir : ${title}`}>
-                <div className="value-icon-wrap">
-                  <Icon size={24} className="value-icon" aria-hidden="true" />
+          <div className="pillar-grid">
+            {PILLARS.map(({ icon: Icon, title, desc, to, image, imageAlt }) => (
+              <Link key={title} to={to} className="pillar-card-v2 glass" aria-label={`Découvrir : ${title}`}>
+                <div className="pillar-card-v2__image-wrap">
+                  <img src={image} alt={imageAlt} className="pillar-card-v2__image" loading="lazy" width="400" height="200" />
+                  <div className="pillar-card-v2__image-overlay" />
                 </div>
-                <h2 className="value-title">{title}</h2>
-                <p className="value-desc">{desc}</p>
-                <span className="pillar-link">
-                  Voir les offres <ArrowRight size={16} aria-hidden="true" />
-                </span>
+                <div className="pillar-card-v2__body">
+                  <div className="pillar-card-v2__icon">
+                    <Icon size={20} aria-hidden="true" />
+                  </div>
+                  <h2 className="pillar-card-v2__title">{title}</h2>
+                  <p className="pillar-card-v2__desc">{desc}</p>
+                  <span className="pillar-link">
+                    Voir les offres <ArrowRight size={16} aria-hidden="true" />
+                  </span>
+                </div>
               </Link>
             ))}
           </div>

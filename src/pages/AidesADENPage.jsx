@@ -218,7 +218,7 @@ export default function AidesADENPage() {
             Contactez-nous avant de démarrer quoi que ce soit.
           </p>
           <div className="cta-actions mb-8">
-            <Link to="/contact" className="btn-primary">
+            <Link to="/contact?subject=devis" className="btn-primary">
               Demander un diagnostic gratuit <ArrowRight size={16} aria-hidden="true" />
             </Link>
             <a

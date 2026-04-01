@@ -42,7 +42,7 @@ const RISKS = [
     icon: Search, title: 'Invisible sur Google', subtitle: 'Pas de fiche GBP / fiche incomplète',
     problem: 'Vos clients cherchent votre service dans votre ville — mais c\'est la concurrence qui apparaît. Votre fiche est vide, les horaires sont faux, zéro photo.',
     solution: 'Pack Radar Local (290 €) : fiche GBP optimisée, 3 annuaires synchronisés, livraison 5 jours. ROI immédiat.',
-    iconColor: 'var(--error)', bg: 'rgba(185, 28, 28, 0.08)'
+    iconColor: 'var(--accent)', bg: 'rgba(249,115,22,0.08)'
   },
   {
     icon: MapPin, title: 'Site absent ou inefficace', subtitle: 'Carte de visite numérique morte',
@@ -60,7 +60,7 @@ const RISKS = [
     icon: Zap, title: 'Panne au mauvais moment', subtitle: 'PC bloqué, messagerie muette, réseau coupé',
     problem: 'Une panne pro sans interlocuteur de confiance = journée perdue, devis ratés, clients qui ne rappellent pas.',
     solution: 'Dépannage Pro 60 €/h — intervention 48h sur site ou à distance. Réseau, poste, messagerie, imprimante.',
-    iconColor: 'var(--error)', bg: 'rgba(185, 28, 28, 0.08)'
+    iconColor: 'var(--accent)', bg: 'rgba(249,115,22,0.08)'
   },
   {
     icon: Wrench, title: 'PC qui ralentit', subtitle: 'Particuliers : virus, lenteurs, récupération',
@@ -86,7 +86,7 @@ export default function RisksAndSolutions() {
         <RevealSection>
           <div className="section-header">
             <h2 className="section-title">
-              Vos <span className="text-error">problèmes</span>, nos solutions
+              Vos <span className="gradient-text">problèmes</span>, nos solutions
             </h2>
             <p className="section-subtitle">
               Web, visibilité Google, logiciel de caisse, dépannage ou formation —
@@ -95,7 +95,7 @@ export default function RisksAndSolutions() {
           </div>
         </RevealSection>
 
-        <div className="grid-3col">
+        <div className="flex-3col">
           {RISKS.map(({ icon: Icon, title, subtitle, problem, solution, iconColor, bg }, i) => (
             <RevealSection key={title} delay={i * 80} vars={{ '--risk-bg': bg, '--risk-icon': iconColor }}>
               <div className="glass glass-hover risk-card">

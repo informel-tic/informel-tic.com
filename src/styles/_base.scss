@@ -10,26 +10,28 @@
   --text: #111827;
   --text-secondary: #374151;
   /* Muted text and accents tuned for better contrast (A11y) */
-  --muted: #4b5563; /* darker muted for better small-text contrast */
+  --muted: #4b5563;
+  /* darker muted for better small-text contrast */
   --border: rgba(15, 23, 42, 0.08);
   --border-strong: rgba(15, 23, 42, 0.14);
   --accent: #ea580c;
   --accent-2: #f97316;
   --accent-light: #fff7ed;
-  --accent-contrast: #ffffff; /* use white text on accent backgrounds for contrast */
+  --accent-contrast: #ffffff;
+  /* use white text on accent backgrounds for contrast */
   --glass-bg: rgba(255, 255, 255, 0.80);
   --glass-border: rgba(0, 0, 0, 0.06);
   --error: #dc2626;
   --success: #16a34a;
 
   /* Elevation system */
-  --shadow-xs: 0 1px 2px rgba(0,0,0,0.04);
-  --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
-  --shadow-md: 0 8px 24px rgba(0,0,0,0.08);
-  --shadow-lg: 0 16px 48px rgba(0,0,0,0.10);
-  --shadow-xl: 0 24px 64px rgba(0,0,0,0.12);
-  --shadow-accent: 0 8px 32px rgba(234,88,12,0.18);
-  --shadow-accent-lg: 0 16px 48px rgba(234,88,12,0.22);
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.10);
+  --shadow-xl: 0 24px 64px rgba(0, 0, 0, 0.12);
+  --shadow-accent: 0 8px 32px rgba(234, 88, 12, 0.18);
+  --shadow-accent-lg: 0 16px 48px rgba(234, 88, 12, 0.22);
 }
 
 .theme-light {
@@ -38,7 +40,7 @@
   --surface-2: #f1f3f7;
   --text: #111827;
   --text-secondary: #374151;
-  --muted: #6b7280;
+  --muted: #4b5563;
   --border: rgba(0, 0, 0, 0.08);
   --border-strong: rgba(0, 0, 0, 0.14);
   --accent: #ea580c;
@@ -74,16 +76,33 @@ body {
 }
 
 // ─── Scrollbar ───────────────────────────────────────
-::-webkit-scrollbar        { width: 6px; }
-::-webkit-scrollbar-track  { background: var(--surface); }
-::-webkit-scrollbar-thumb  { background: var(--accent); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: var(--accent-2); }
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(15, 23, 42, 0.22);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(15, 23, 42, 0.36);
+}
 
 // ─── Text selection ──────────────────────────────────
-::selection { background-color: var(--accent); color: var(--accent-contrast); }
+::selection {
+  background-color: var(--accent);
+  color: var(--accent-contrast);
+}
 
 // ─── Footer link hover ───────────────────────────────
-footer a:hover { color: var(--accent-2); }
+footer a:hover {
+  color: var(--accent-2);
+}
 
 // ─── Focus visible ───────────────────────────────────
 :focus-visible {

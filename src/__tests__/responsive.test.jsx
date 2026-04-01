@@ -27,8 +27,8 @@ describe('Responsive – Navbar', () => {
 describe('Responsive – Hero', () => {
   it('keeps the hero layout container and action row', () => {
     render(<MemoryRouter><Hero /></MemoryRouter>);
-    expect(document.querySelector('section.hero-section.hero-bg.grid-bg')).toBeInTheDocument();
-    expect(document.querySelector('.container-md.hero-body')).toBeInTheDocument();
+    expect(document.querySelector('section.hero-section.hero-bg')).toBeInTheDocument();
+    expect(document.querySelector('.hero-grid.container-xl')).toBeInTheDocument();
     expect(document.querySelector('.hero-actions')).toBeInTheDocument();
     expect(document.querySelector('.hero-trust-bar')).toBeInTheDocument();
   });
@@ -37,7 +37,7 @@ describe('Responsive – Hero', () => {
 describe('Responsive – RisksAndSolutions', () => {
   it('keeps the 3-column grid wrapper', () => {
     render(<RisksAndSolutions />);
-    expect(document.querySelector('.grid-3col')).toBeInTheDocument();
+    expect(document.querySelector('.flex-3col')).toBeInTheDocument();
     expect(document.querySelectorAll('.glass.glass-hover.risk-card')).toHaveLength(6);
   });
 });
@@ -53,7 +53,7 @@ describe('Responsive – Testimonials', () => {
 describe('Responsive – CTABanner', () => {
   it('keeps the centered CTA card layout', () => {
     render(<MemoryRouter><CTABanner /></MemoryRouter>);
-    expect(document.querySelector('.container-md')).toBeInTheDocument();
+    expect(document.querySelector('.container-lg')).toBeInTheDocument();
     expect(document.querySelector('.cta-card')).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /Obtenir mon devis gratuit/i })).toBeInTheDocument();
   });

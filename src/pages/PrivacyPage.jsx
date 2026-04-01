@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 /**
  * Present the privacy policy and data handling summary.
@@ -6,6 +7,11 @@ import { Link } from 'react-router-dom';
 export default function PrivacyPage() {
   return (
     <>
+      <SEO
+        title="Politique de confidentialité"
+        description="Politique de confidentialité d'INFORMEL-TIC : collecte, durée de conservation et usage des cookies."
+        url="https://informel-tic.com/politique-de-confidentialite"
+      />
       <section className="hero-bg page-hero text-center">
         <div className="container-lg">
           <h1 className="font-display page-title">
@@ -35,7 +41,7 @@ export default function PrivacyPage() {
           </div>
 
           <div className="text-center">
-            <Link to="/contact" className="btn-primary">Demander un devis</Link>
+            <Link to="/contact?subject=devis" className="btn-primary">Demander un devis</Link>
           </div>
         </div>
       </section>

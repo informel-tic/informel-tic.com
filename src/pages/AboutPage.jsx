@@ -126,13 +126,13 @@ export default function AboutPage() {
               Délai de livraison non garanti — traité hors plages commerciales.
             </p>
             <div className="text-right">
-              <Link to="/contact" className="btn-secondary">Déposer une demande</Link>
+              <Link to="/contact?subject=autre" className="btn-secondary">Déposer une demande</Link>
             </div>
           </div>
 
           {/* CTA */}
           <div className="text-center">
-            <Link to="/contact" className="btn-primary">
+            <Link to="/contact?subject=devis" className="btn-primary">
               Parlons de votre projet <ArrowRight size={18} aria-hidden="true" />
             </Link>
           </div>

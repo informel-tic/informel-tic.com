@@ -26,9 +26,9 @@ describe('Hero – Headings & Tagline', () => {
     expect(screen.getByText(/un interlocuteur unique/i)).toBeInTheDocument();
   });
 
-  it('description mentions the Nord coverage', () => {
+  it('description mentions the full-service scope', () => {
     renderHero();
-    expect(screen.getByText(/Professionnels et particuliers dans le Nord/i)).toBeInTheDocument();
+    expect(screen.getByText(/tout votre numérique/i)).toBeInTheDocument();
   });
 });
 
@@ -66,9 +66,9 @@ describe('Hero – Trust Badges', () => {
 });
 
 describe('Hero – Structure & UX', () => {
-  it('section has hero-bg and grid-bg classes', () => {
+  it('section has hero-section and hero-bg classes', () => {
     renderHero();
-    expect(document.querySelector('section.hero-bg.grid-bg')).toBeInTheDocument();
+    expect(document.querySelector('section.hero-section.hero-bg')).toBeInTheDocument();
   });
 
   it('renders scroll indicator "Découvrir"', () => {

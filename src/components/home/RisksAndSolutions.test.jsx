@@ -52,7 +52,7 @@ describe('RisksAndSolutions – Structure', () => {
   it('is rendered inside a section with the expected layout classes', () => {
     renderRisks();
     expect(document.querySelector('section.section-padding.section-alt')).toBeInTheDocument();
-    expect(document.querySelector('.grid-3col')).toBeInTheDocument();
+    expect(document.querySelector('.flex-3col')).toBeInTheDocument();
     expect(document.querySelectorAll('.glass.glass-hover')).toHaveLength(6);
   });
 });

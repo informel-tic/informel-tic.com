@@ -133,7 +133,7 @@ export default function EngagementPage() {
             Envoyez-nous un message en précisant le nom de votre association,
             votre projet et vos besoins numériques. Nous vous répondrons sous 48h.
           </p>
-          <Link to="/contact" className="btn-primary">
+          <Link to="/contact?subject=mecenat" className="btn-primary">
             Postuler au mécénat <ArrowRight size={16} aria-hidden="true" />
           </Link>
         </div>
